@@ -104,6 +104,10 @@
                                 <input type="email" class="form-control" id="email" name="email" required placeholder="email@exemplo.com">
                             </div>
                             <div class="col-md-6 form-input mb-3">
+                                <label for="phone" class="small font-weight-bold" data-i18n="form.phone">Telefone</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" required placeholder="9XX XXX XXX">
+                            </div>
+                            <div class="col-md-6 form-input mb-3">
                                 <label for="business" class="small font-weight-bold" data-i18n="form.business">Tipo de negócio / serviço</label>
                                 <input type="text" class="form-control" id="business" name="business" required placeholder="Ex: salão, loja, freelancers…">
                             </div>
@@ -172,6 +176,7 @@
         "pricing.ent.for": "For larger businesses",
         "form.name": "Name",
         "form.email": "Email",
+        "form.phone": "Phone",
         "form.business": "Business / service type",
         "form.location": "Location",
         "form.plan": "Desired plan",
@@ -204,6 +209,7 @@
         "pricing.ent.for": "Para grandes negócios",
         "form.name": "Nome",
         "form.email": "Email",
+        "form.phone": "Telefone",
         "form.business": "Tipo de negócio / serviço",
         "form.location": "Localização",
         "form.plan": "Plano desejado",
@@ -272,6 +278,7 @@
     var data = {
       name: document.getElementById('name').value.trim(),
       email: document.getElementById('email').value.trim(),
+      phone: document.getElementById('phone').value.trim(),
       business: document.getElementById('business').value.trim(),
       location: document.getElementById('location').value.trim(),
       plan: document.getElementById('plan').value,
@@ -306,3 +313,4 @@
 </script>
 </body>
 </html>
+
