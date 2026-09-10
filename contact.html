@@ -1,281 +1,308 @@
 <!DOCTYPE html>
-<!--
-	Workers Dev
-	Professional websites for service businesses
--->
-<html lang="en">
-
+<html lang="pt">
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Contact — Workers Dev</title>
-    <meta name="description" content="Get in touch with Workers Dev. Fast professional websites for service businesses.">
+    <title>Contacto — Workers Dev</title>
+    <meta name="description" content="Fale com a Workers Dev. Peça o seu site profissional para serviço ou negócio.">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png" href="img/favicon.png">
+    <link rel="shortcut icon" href="img/favicon.png">
 
-    <!-- External CSS -->
     <link rel="stylesheet" href="vendor/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="vendor/select2/select2.min.css">
-    <link rel="stylesheet" href="vendor/owlcarousel/owl.carousel.min.css">
-    <link rel="stylesheet" href="vendor/lightcase/lightcase.css">
-
-    <!-- Fonts (non-blocking) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400|Work+Sans:300,400,700&display=swap" rel="stylesheet">
-
-    <!-- CSS -->
     <link rel="stylesheet" href="css/style.min.css">
-
+    <style>
+      .plan-chip {
+        border: 1px solid #dee2e6;
+        border-radius: 8px;
+        padding: 12px 14px;
+        height: 100%;
+        background: #fff;
+      }
+      .plan-chip strong { display: block; margin-bottom: 4px; }
+      .plan-chip .price { color: #0d6efd; font-weight: 700; }
+      #lang-toggle { font-weight: 600; min-width: 52px; }
+    </style>
 </head>
-<body data-spy="scroll" data-target="#navbar-nav-header" class="static-layout">
-	<div class="boxed-page">
-		<nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-center" href="index.html">
-            <strong style="font-size: 1.4rem; letter-spacing: -0.5px;">Workers<span style="color:#0d6efd;">Dev</span></strong>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid #ddd;padding:6px 8px;border-radius:4px;">
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-nav-header">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html" data-i18n="nav.back">Back to Home</a>
-                </li>
-                <li class="nav-item ml-2 d-flex align-items-center">
-                    <button id="lang-toggle" class="btn btn-sm btn-outline-primary px-3" style="font-weight: 600; min-width: 62px;">
-                        EN
-                    </button>
-                </li>
-            </ul>
-        </div>
-    </div>
-    
-</nav>		<div class="jumbotron d-flex align-items-center" style="background-image: url(img/hero-2.jpg)">
-  <div class="container text-center">
-    <h1 class="display-2 mb-4" data-i18n="hero.title">Let's build your site</h1>
-    <p class="lead" data-i18n="hero.subtitle">
-      Tell us about your business. We'll get back to you quickly.
-    </p>
-  </div>
-</div>		<!-- Contact Form Section -->
-<section id="gtco-contact-form" class="bg-white">
-    <div class="container">
-        <div class="section-content">
-            <!-- Section Title -->
-            <div class="title-wrap">
-                <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
-                <p class="section-sub-title" data-i18n="contact.subtitle">Prefer WhatsApp? Message us directly — that's usually the fastest way.</p>
-                
+<body class="static-layout">
+<div class="boxed-page">
+    <nav id="gtco-header-navbar" class="navbar navbar-expand-lg py-4">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <strong style="font-size: 1.4rem; letter-spacing: -0.5px;">Workers<span style="color:#0d6efd;">Dev</span></strong>
+            </a>
+            <div class="d-flex align-items-center ml-auto order-lg-2">
+                <button id="lang-toggle" type="button" class="btn btn-sm btn-outline-primary px-3 mr-2" aria-label="Change language">EN</button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid #ddd;padding:6px 8px;border-radius:4px;">
+                    <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+                    <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+                    <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+                </button>
             </div>
-            <!-- End of Section Title -->
+            <div class="collapse navbar-collapse order-lg-1" id="navbar-nav-header">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html" data-i18n="nav.home">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#who-we-are" data-i18n="nav.what">O Que Fazemos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html#pricing" data-i18n="nav.pricing">Preços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html" data-i18n="nav.contact">Contato</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-white py-5">
+        <div class="container">
+            <div class="title-wrap text-center mb-4">
+                <h2 class="section-title" data-i18n="contact.title">Fale connosco</h2>
+                <p class="section-sub-title" data-i18n="contact.subtitle">Preencha o formulário — respondemos depressa.</p>
+            </div>
+
+            <!-- Plans summary -->
+            <div class="row mb-5">
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="plan-chip">
+                        <strong data-i18n="pricing.bro.name">WORKER'S BRO</strong>
+                        <span class="price">5.000 Kz</span> <span data-i18n="pricing.permonth">/mês</span>
+                        <div class="small text-muted mt-1" data-i18n="pricing.bro.for">Ideal para pequenos negócios</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="plan-chip">
+                        <strong data-i18n="pricing.family.name">WORKER'S FAMILY</strong>
+                        <span class="price" style="color:#28a745;">50.000 Kz</span> <span data-i18n="pricing.peryear">/ano</span>
+                        <div class="small text-muted mt-1" data-i18n="pricing.family.for">Pague uma vez e poupe</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="plan-chip">
+                        <strong data-i18n="pricing.pro.name">PRO</strong>
+                        <span class="price" style="color:#17a2b8;">35.000 Kz</span> <span data-i18n="pricing.permonth">/mês</span>
+                        <div class="small text-muted mt-1" data-i18n="pricing.pro.for">Para negócios em crescimento</div>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3 mb-3">
+                    <div class="plan-chip">
+                        <strong data-i18n="pricing.ent.name">EMPRESA</strong>
+                        <span class="price" style="color:#dc3545;">75–120k Kz</span> <span data-i18n="pricing.permonth">/mês</span>
+                        <div class="small text-muted mt-1" data-i18n="pricing.ent.for">Para grandes negócios</div>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
-                <!-- Contact Form Holder -->
-                <div class="col-md-8 offset-md-2 contact-form-holder mt-4">
-                    <form id="contact-form" method="post" name="contact-us" action="">
+                <div class="col-md-8 offset-md-2">
+                    <form id="contact-form" method="post" action="">
                         <div class="row">
-                            <div class="col-md-6 form-input">
-                                <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                            <div class="col-md-6 form-input mb-3">
+                                <label for="name" class="small font-weight-bold" data-i18n="form.name">Nome</label>
+                                <input type="text" class="form-control" id="name" name="name" required placeholder="O seu nome">
                             </div>
-                            <div class="col-md-6 form-input">
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                            <div class="col-md-6 form-input mb-3">
+                                <label for="email" class="small font-weight-bold" data-i18n="form.email">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" required placeholder="email@exemplo.com">
                             </div>
-                            <div class="col-md-12 form-input">
-                                <input type="text" class="form-control" id="subject" name="subject" placeholder="Subject">
+                            <div class="col-md-6 form-input mb-3">
+                                <label for="business" class="small font-weight-bold" data-i18n="form.business">Tipo de negócio / serviço</label>
+                                <input type="text" class="form-control" id="business" name="business" required placeholder="Ex: salão, loja, freelancers…">
                             </div>
-                            <div class="col-md-12 form-textarea">
-                                <textarea class="form-control" id="message" name="message" rows="6" placeholder="Your Message ..." required></textarea>
+                            <div class="col-md-6 form-input mb-3">
+                                <label for="location" class="small font-weight-bold" data-i18n="form.location">Localização</label>
+                                <input type="text" class="form-control" id="location" name="location" placeholder="Cidade / bairro">
                             </div>
-                            <div class="col-md-12 form-btn text-center">
-                                <button class="btn btn-block btn-secondary btn-red" type="submit" id="submit-btn">Send Message</button>
+                            <div class="col-md-12 form-input mb-3">
+                                <label for="plan" class="small font-weight-bold" data-i18n="form.plan">Plano desejado</label>
+                                <select class="form-control" id="plan" name="plan" required>
+                                    <option value="" data-i18n="form.plan_choose">Escolha um plano</option>
+                                    <option value="Worker's Bro">Worker's Bro — 5.000 Kz/mês</option>
+                                    <option value="Worker's Family">Worker's Family — 50.000 Kz/ano</option>
+                                    <option value="Pro">Pro — 35.000 Kz/mês</option>
+                                    <option value="Empresa">Empresa — 75.000–120.000 Kz/mês</option>
+                                    <option value="Ainda não sei" data-i18n="form.plan_unsure">Ainda não sei</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 form-textarea mb-3">
+                                <label for="message" class="small font-weight-bold" data-i18n="form.message">Mensagem</label>
+                                <textarea class="form-control" id="message" name="message" rows="5" required placeholder="Conte-nos o que precisa…"></textarea>
+                            </div>
+                            <div class="col-md-12 text-center">
+                                <button class="btn btn-primary btn-lg px-5" type="submit" id="submit-btn" data-i18n="form.submit">Enviar mensagem</button>
                             </div>
                         </div>
                     </form>
-                    <div id="form-message-warning" style="display:none; color:#dc3545; margin-top:15px; text-align:center;"></div>
-                    <div id="form-message-success" style="display:none; color:#28a745; margin-top:15px; text-align:center; font-weight:600;">
-                        Your message was sent, thank you!
-                    </div>
+                    <div id="form-message-warning" style="display:none;color:#dc3545;margin-top:16px;text-align:center;"></div>
+                    <div id="form-message-success" style="display:none;color:#28a745;margin-top:16px;text-align:center;font-weight:600;" data-i18n="form.success">Mensagem enviada. Obrigado!</div>
                 </div>
-                <!-- End of Contact Form Holder -->
             </div>
         </div>
-    </div>
-</section>
-<!-- End of Contact Form Section -->		<footer class="mastfoot mb-3 bg-white py-4 border-top">
-    <div class="inner container">
-         <div class="row">
-         	<div class="col-md-6 d-flex align-items-center justify-content-md-start justify-content-center">
-         		<p class="mb-0" data-i18n="footer.copy">&copy; 2026 Workers Dev. Built for service businesses that want to look professional online.</p>
-         	</div>
-           
-            <div class="col-md-6">
-            	<nav class="nav nav-mastfoot justify-content-md-end justify-content-center">
-	                <a class="nav-link" href="#">
-	                	<i class="icon-facebook"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="icon-twitter"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="icon-instagram"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="icon-linkedin"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="icon-youtube"></i>
-	                </a>
-	                <a class="nav-link" href="#">
-	                	<i class="icon-pinterest"></i>
-	                </a>
-	            </nav>
-            </div>
-            
+    </section>
+
+    <footer class="mastfoot mb-3 bg-white py-4 border-top">
+        <div class="inner container">
+            <p class="mb-0 text-center" data-i18n="footer.copy">&copy; 2026 Workers Dev. Sites profissionais para serviços e negócios.</p>
         </div>
-    </div>
-</footer>	</div>
-	
+    </footer>
 </div>
-	<!-- External JS -->
-	<script src="vendor/jquery/jquery-3.6.0.min.js"></script>
-	<script src="vendor/bootstrap/popper.min.js"></script>
-	<script src="vendor/bootstrap/bootstrap.min.js"></script>
-	<script src="vendor/select2/select2.min.js"></script>
-	<script src="vendor/owlcarousel/owl.carousel.min.js"></script>
-	<script src="vendor/isotope/isotope.min.js"></script>
-	<script src="vendor/lightcase/lightcase.js"></script>
-	<script src="vendor/waypoints/waypoint.min.js"></script>
-	<script src="vendor/countTo/jquery.countTo.js"></script>
 
-	<!-- Main JS -->
-	<script src="js/app.min.js"></script>
 
-	<!-- Language Toggle (PT ↔ EN) -->
-	<script>
-	(function() {
-		try {
-		var translations = {
-			en: {
-				"nav.back": "Back to Home",
-				"hero.title": "Let's build your site",
-				"hero.subtitle": "Tell us about your business. We'll get back to you quickly.",
-				"contact.title": "Get In Touch",
-				"contact.subtitle": "Prefer WhatsApp? Message us directly — that's usually the fastest way.",
-				"footer.copy": "&copy; 2026 Workers Dev. Built for service businesses that want to look professional online."
-			},
-			pt: {
-				"nav.back": "Voltar ao Início",
-				"hero.title": "Vamos construir o seu site",
-				"hero.subtitle": "Conte-nos sobre o seu negócio. Respondemos rapidamente.",
-				"contact.title": "Entre em Contato",
-				"contact.subtitle": "Prefere WhatsApp? Mande mensagem direto — costuma ser o jeito mais rápido.",
-				"footer.copy": "&copy; 2026 Workers Dev. Feito para negócios de serviços que querem parecer profissionais online."
-			}
-		};
+<script src="vendor/jquery/jquery-3.6.0.min.js"></script>
+<script src="vendor/bootstrap/popper.min.js"></script>
+<script src="vendor/bootstrap/bootstrap.min.js"></script>
+<script>
+(function() {
+  try {
+    var translations = {
+      en: {
+        "nav.home": "Home",
+        "nav.what": "What We Do",
+        "nav.pricing": "Pricing",
+        "nav.contact": "Contact",
+        "contact.title": "Get in touch",
+        "contact.subtitle": "Fill the form — we reply quickly.",
+        "pricing.bro.name": "WORKER'S BRO",
+        "pricing.family.name": "WORKER'S FAMILY",
+        "pricing.pro.name": "PRO",
+        "pricing.ent.name": "ENTERPRISE",
+        "pricing.permonth": "/month",
+        "pricing.peryear": "/year",
+        "pricing.bro.for": "Ideal for small businesses",
+        "pricing.family.for": "Pay once and save",
+        "pricing.pro.for": "For growing businesses",
+        "pricing.ent.for": "For larger businesses",
+        "form.name": "Name",
+        "form.email": "Email",
+        "form.business": "Business / service type",
+        "form.location": "Location",
+        "form.plan": "Desired plan",
+        "form.plan_choose": "Choose a plan",
+        "form.plan_unsure": "Not sure yet",
+        "form.message": "Message",
+        "form.submit": "Send message",
+        "form.whatsapp": "Prefer WhatsApp",
+        "form.success": "Message sent. Thank you!",
+        "form.sending": "Sending...",
+        "form.error": "Could not send. Please try again.",
+        "footer.copy": "&copy; 2026 Workers Dev. Professional websites for services and businesses."
+      },
+      pt: {
+        "nav.home": "Início",
+        "nav.what": "O Que Fazemos",
+        "nav.pricing": "Preços",
+        "nav.contact": "Contato",
+        "contact.title": "Fale connosco",
+        "contact.subtitle": "Preencha o formulário — respondemos depressa.",
+        "pricing.bro.name": "WORKER'S BRO",
+        "pricing.family.name": "WORKER'S FAMILY",
+        "pricing.pro.name": "PRO",
+        "pricing.ent.name": "EMPRESA",
+        "pricing.permonth": "/mês",
+        "pricing.peryear": "/ano",
+        "pricing.bro.for": "Ideal para pequenos negócios",
+        "pricing.family.for": "Pague uma vez e poupe",
+        "pricing.pro.for": "Para negócios em crescimento",
+        "pricing.ent.for": "Para grandes negócios",
+        "form.name": "Nome",
+        "form.email": "Email",
+        "form.business": "Tipo de negócio / serviço",
+        "form.location": "Localização",
+        "form.plan": "Plano desejado",
+        "form.plan_choose": "Escolha um plano",
+        "form.plan_unsure": "Ainda não sei",
+        "form.message": "Mensagem",
+        "form.submit": "Enviar mensagem",
+        "form.whatsapp": "Preferir WhatsApp",
+        "form.success": "Mensagem enviada. Obrigado!",
+        "form.sending": "A enviar...",
+        "form.error": "Não foi possível enviar. Tente de novo.",
+        "footer.copy": "&copy; 2026 Workers Dev. Sites profissionais para serviços e negócios."
+      }
+    };
 
-		var currentLang = localStorage.getItem('workersdev-lang') || 'pt';
+    var currentLang = localStorage.getItem('workersdev-lang') || 'pt';
 
-		function applyLanguage(lang) {
-			document.querySelectorAll('[data-i18n]').forEach(function(el) {
-				var key = el.getAttribute('data-i18n');
-				if (translations[lang] && translations[lang][key]) {
-					el.innerHTML = translations[lang][key];
-				}
-			});
-			var btn = document.getElementById('lang-toggle');
-			if (btn) {
-				btn.textContent = lang === 'en' ? 'PT' : 'EN';
-			}
-			document.documentElement.lang = lang;
-			localStorage.setItem('workersdev-lang', lang);
-			currentLang = lang;
-		}
+    function applyLanguage(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(function(el) {
+        var key = el.getAttribute('data-i18n');
+        if (translations[lang] && translations[lang][key]) {
+          el.innerHTML = translations[lang][key];
+        }
+      });
+      var btn = document.getElementById('lang-toggle');
+      if (btn) btn.textContent = lang === 'en' ? 'PT' : 'EN';
+      document.documentElement.lang = lang;
+      localStorage.setItem('workersdev-lang', lang);
+      currentLang = lang;
+    }
 
-		function initLang() {
-			try {
-				applyLanguage(currentLang);
-				var langBtn = document.getElementById('lang-toggle');
-				if (langBtn) {
-					langBtn.addEventListener('click', function() {
-						var next = currentLang === 'en' ? 'pt' : 'en';
-						applyLanguage(next);
-					});
-				}
-			} catch (e) {}
-		}
+    function initLang() {
+      applyLanguage(currentLang);
+      var langBtn = document.getElementById('lang-toggle');
+      if (langBtn) {
+        langBtn.addEventListener('click', function() {
+          applyLanguage(currentLang === 'en' ? 'pt' : 'en');
+        });
+      }
+    }
 
-		if (document.readyState === 'loading') {
-			document.addEventListener('DOMContentLoaded', initLang);
-		} else {
-			initLang();
-		}
-		} catch (e) {}
-	})();
-	</script>
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initLang);
+    } else {
+      initLang();
+    }
+  } catch (e) {}
+})();
 
-	<!-- Floating WhatsApp Button -->
-	
+(function() {
+  var form = document.getElementById('contact-form');
+  var successMsg = document.getElementById('form-message-success');
+  var warningMsg = document.getElementById('form-message-warning');
+  var submitBtn = document.getElementById('submit-btn');
+  if (!form) return;
 
-	<!-- Contact Form → Cloudflare Worker -->
-	<script>
-	(function() {
-		var form = document.getElementById('contact-form');
-		var successMsg = document.getElementById('form-message-success');
-		var warningMsg = document.getElementById('form-message-warning');
-		var submitBtn = document.getElementById('submit-btn');
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    successMsg.style.display = 'none';
+    warningMsg.style.display = 'none';
+    submitBtn.disabled = true;
+    var sending = (localStorage.getItem('workersdev-lang') || 'pt') === 'en' ? 'Sending...' : 'A enviar...';
+    var original = submitBtn.textContent;
+    submitBtn.textContent = sending;
 
-		if (!form) return;
+    var data = {
+      name: document.getElementById('name').value.trim(),
+      email: document.getElementById('email').value.trim(),
+      business: document.getElementById('business').value.trim(),
+      location: document.getElementById('location').value.trim(),
+      plan: document.getElementById('plan').value,
+      message: document.getElementById('message').value.trim(),
+      subject: 'Pedido de site — ' + (document.getElementById('plan').value || 'contacto')
+    };
 
-		form.addEventListener('submit', async function(e) {
-			e.preventDefault();
-
-			// Hide previous messages
-			successMsg.style.display = 'none';
-			warningMsg.style.display = 'none';
-
-			// Disable button while sending
-			submitBtn.disabled = true;
-			submitBtn.textContent = 'Sending...';
-
-			var data = {
-				name: document.getElementById('name').value.trim(),
-				email: document.getElementById('email').value.trim(),
-				subject: document.getElementById('subject').value.trim(),
-				message: document.getElementById('message').value.trim()
-			};
-
-			try {
-				var response = await fetch('https://old-lab-e4bacontact-form.workersdevao.workers.dev', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
-				});
-
-				var result = await response.json();
-
-				if (response.ok && result.success) {
-					successMsg.style.display = 'block';
-					form.reset();
-				} else {
-					warningMsg.textContent = result.error || 'Something went wrong. Please try again.';
-					warningMsg.style.display = 'block';
-				}
-			} catch (err) {
-				warningMsg.textContent = 'Could not send message. Please try again or use WhatsApp.';
-				warningMsg.style.display = 'block';
-			}
-
-			// Re-enable button
-			submitBtn.disabled = false;
-			submitBtn.textContent = 'Send Message';
-		});
-	})();
-	</script>
+    try {
+      var response = await fetch('https://old-lab-e4bacontact-form.workersdevao.workers.dev', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      var result = await response.json();
+      if (response.ok && result.success) {
+        successMsg.style.display = 'block';
+        form.reset();
+      } else {
+        warningMsg.textContent = result.error || ((localStorage.getItem('workersdev-lang') || 'pt') === 'en' ? 'Something went wrong.' : 'Algo correu mal.');
+        warningMsg.style.display = 'block';
+      }
+    } catch (err) {
+      warningMsg.textContent = (localStorage.getItem('workersdev-lang') || 'pt') === 'en'
+        ? 'Could not send. Please try again.'
+        : 'Não foi possível enviar. Tente de novo.';
+      warningMsg.style.display = 'block';
+    }
+    submitBtn.disabled = false;
+    submitBtn.textContent = original;
+  });
+})();
+</script>
 </body>
 </html>
