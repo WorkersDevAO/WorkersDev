@@ -38,37 +38,36 @@
         <a class="navbar-brand d-flex align-items-center" href="index.html">
             <strong style="font-size: 1.4rem; letter-spacing: -0.5px;">Workers<span style="color:#0d6efd;">Dev</span></strong>
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid #ddd;padding:6px 8px;border-radius:4px;">
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-            <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbar-nav-header">
+        <div class="d-flex align-items-center ml-auto order-lg-2">
+            <button id="lang-toggle" type="button" class="btn btn-sm btn-outline-primary px-3 mr-2" style="font-weight: 600; min-width: 52px;" aria-label="Change language">
+                EN
+            </button>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-nav-header" aria-controls="navbar-nav-header" aria-expanded="false" aria-label="Toggle navigation" style="border:1px solid #ddd;padding:6px 8px;border-radius:4px;">
+                <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+                <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+                <span style="display:block;width:22px;height:2px;background:#333;margin:4px 0;"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse order-lg-1" id="navbar-nav-header">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home" data-i18n="nav.home">Home</a>
+                    <a class="nav-link" href="#home" data-i18n="nav.home">Início</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#who-we-are" data-i18n="nav.what">What We Do</a>
+                    <a class="nav-link" href="#who-we-are" data-i18n="nav.what">O Que Fazemos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#gtco-client" data-i18n="nav.work">Clientes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#pricing" data-i18n="nav.pricing">Pricing</a>
+                    <a class="nav-link" href="#pricing" data-i18n="nav.pricing">Preços</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html" data-i18n="nav.contact">Contact</a>
-                </li>
-                <li class="nav-item ml-2 d-flex align-items-center">
-                    <button id="lang-toggle" class="btn btn-sm btn-outline-primary px-3" style="font-weight: 600; min-width: 62px;">
-                        EN
-                    </button>
+                    <a class="nav-link" href="contact.html" data-i18n="nav.contact">Contato</a>
                 </li>
             </ul>
         </div>
     </div>
-    
 </nav>		<div id="home" class="jumbotron d-flex align-items-center" style="background-image: url(img/hero-2.jpg)">
   <div class="container text-center">
     <h1 class="display-2 mb-4" data-i18n="hero.title">Sites que funcionam<br>para o seu serviço ou negócio</h1>
@@ -324,14 +323,14 @@
                         <div class="col-md-4 blog-item-wrapper">
                             <div class="blog-item">
                                 <div class="blog-img">
-                                    <a href="single.html"><img src="img/blog-1.jpg" alt=""></a>
+                                    <img src="img/blog-1.jpg" alt="">
                                 </div>
                                 <div class="blog-text">
                                     <div class="blog-tag">
-                                        <a href="#"><h6><small data-i18n="blog1.tag">TIPS</small></h6></a>
+                                        <h6><small data-i18n="blog1.tag">TIPS</small></h6>
                                     </div>
                                     <div class="blog-title">
-                                        <a href="single.html"><h4 data-i18n="blog1.title">Por que todo negócio de serviços precisa de um site simples</h4></a>
+                                        <h4 data-i18n="blog1.title">Por que todo serviço ou negócio precisa de um site simples</h4>
                                     </div>
                                     <div class="blog-meta">
                                         <p class="blog-date">15 Aug 2026</p>
@@ -339,14 +338,6 @@
                                     <div class="blog-desc">
                                         <p data-i18n="blog1.desc">Uma presença online limpa gera confiança, responde às dúvidas dos clientes sobre o seu serviço e facilita o contacto pelo WhatsApp.</p>
                                     </div>
-                                    <div class="blog-share-wrapper">
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-facebook-square"></i>
-                                        </a>
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-twitter-square"></i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -355,14 +346,14 @@
                         <div class="col-md-4 blog-item-wrapper">
                             <div class="blog-item">
                                 <div class="blog-img">
-                                    <a href="#"><img src="img/blog-2.jpg" alt=""></a>
+                                    <img src="img/blog-2.jpg" alt="">
                                 </div>
                                 <div class="blog-text">
                                     <div class="blog-tag">
-                                        <a href="#"><h6><small data-i18n="blog2.tag">WHATSAPP</small></h6></a>
+                                        <h6><small data-i18n="blog2.tag">WHATSAPP</small></h6>
                                     </div>
                                     <div class="blog-title">
-                                        <a href="#"><h4 data-i18n="blog2.title">Como um botão de WhatsApp acelera o contacto</h4></a>
+                                        <h4 data-i18n="blog2.title">Como um botão de WhatsApp acelera o contacto</h4>
                                     </div>
                                     <div class="blog-meta">
                                         <p class="blog-date">08 Aug 2026</p>
@@ -370,14 +361,6 @@
                                     <div class="blog-desc">
                                         <p data-i18n="blog2.desc">Com o WhatsApp integrado no site, a comunicação entre o cliente e o seu serviço fica mais rápida e direta — um toque e já estão a conversar.</p>
                                     </div>
-                                    <div class="blog-share-wrapper">
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-facebook-square"></i>
-                                        </a>
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-twitter-square"></i>
-                                        </a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -386,28 +369,20 @@
                         <div class="col-md-4 blog-item-wrapper">
                             <div class="blog-item">
                                 <div class="blog-img">
-                                    <a href="#"><img src="img/blog-3.jpg" alt=""></a>
+                                    <img src="img/blog-3.jpg" alt="">
                                 </div>
                                 <div class="blog-text">
                                     <div class="blog-tag">
-                                        <a href="#"><h6><small data-i18n="blog3.tag">HOSTING</small></h6></a>
+                                        <h6><small data-i18n="blog3.tag">HOSTING</small></h6>
                                     </div>
                                     <div class="blog-title">
-                                        <a href="#"><h4 data-i18n="blog3.title">Hospedagem grátis que ainda parece profissional</h4></a>
+                                        <h4 data-i18n="blog3.title">Hospedagem grátis que ainda parece profissional</h4>
                                     </div>
                                     <div class="blog-meta">
                                         <p class="blog-date">01 Aug 2026</p>
                                     </div>
                                     <div class="blog-desc">
                                         <p data-i18n="blog3.desc">Pode começar com domínio e hospedagem grátis. Se quiser um domínio personalizado (ex: seunegocio.com), aí sim há um custo extra.</p>
-                                    </div>
-                                    <div class="blog-share-wrapper">
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-facebook-square"></i>
-                                        </a>
-                                        <a class="blog-share" href="google.com">
-                                            <i class="fab fa-twitter-square"></i>
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -906,7 +881,5 @@
 	})();
 	</script>
 
-	<!-- Floating WhatsApp Button -->
-	
 </body>
 </html>
