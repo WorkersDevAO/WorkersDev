@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Workers Dev — Sites profissionais para serviços e negócios em Angola. Planos simples, rápidos e sem complicações técnicas.">
+  <title>Workers Dev — Sites profissionais para o seu negócio</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo" aria-label="Workers Dev">
+        <img src="assets/logo.jpg" alt="Workers Dev" class="logo-img">
+      </a>
+
+      <nav class="nav" id="nav">
+        <a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a>
+        <a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a>
+        <a href="#planos" class="nav-link" data-i18n="nav.plans">Planos</a>
+        <a href="#como-funciona" class="nav-link" data-i18n="nav.how">Como funciona</a>
+        <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+          <span id="langLabel">EN</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+          <span class="menu-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero" id="inicio">
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-overlay" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Sites profissionais · Angola</p>
+        <h1 class="hero-title" data-i18n="hero.title">Presença online clara, rápida e sem dor de cabeça técnica</h1>
+        <p class="hero-subtitle" data-i18n="hero.subtitle">Construímos e alojamos sites profissionais para salões, lojas, freelancers, imobiliárias e serviços em Angola. Do simples ao sistema completo.</p>
+        <div class="hero-actions">
+          <a href="#planos" class="btn btn-primary" data-i18n="hero.ctaPrimary">Ver planos</a>
+          <a href="#contacto" class="btn btn-outline" data-i18n="hero.ctaSecondary">Falar connosco</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="sobre">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="about.eyebrow">Sobre nós</p>
+          <h2 class="section-title" data-i18n="about.title">Simples, profissional e focado no cliente</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p data-i18n="about.p1">A Workers Dev cria e gere sites profissionais para serviços e negócios em Angola. Sem jargão técnico, sem complicações — apenas uma presença online limpa, rápida e móvel que o seu cliente consegue usar e partilhar.</p>
+            <p data-i18n="about.p2">Trabalhamos com salões, lojas, freelancers, imobiliárias, ofícios e outros negócios que precisam de estar online de forma organizada e profissional.</p>
+          </div>
+          <div class="about-points">
+            <div class="point">
+              <span class="point-number">01</span>
+              <p data-i18n="about.point1">Sites rápidos e pensados para telemóvel</p>
+            </div>
+            <div class="point">
+              <span class="point-number">02</span>
+              <p data-i18n="about.point2">Contacto directo via WhatsApp</p>
+            </div>
+            <div class="point">
+              <span class="point-number">03</span>
+              <p data-i18n="about.point3">Actualizações e manutenção incluídas nos planos</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Plans -->
+    <section class="section section-alt" id="planos">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="plans.eyebrow">Planos</p>
+          <h2 class="section-title" data-i18n="plans.title">Escolha o plano certo para o seu negócio</h2>
+          <p class="section-desc" data-i18n="plans.desc">Todos os planos incluem site alojado, design profissional e suporte básico. O preço é em Kwanzas (Kz).</p>
+        </div>
+
+        <div class="plans-grid">
+          <!-- Bro -->
+          <article class="plan-card plan-card--bro">
+            <div class="plan-card-overlay"></div>
+            <div class="plan-card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Worker's Bro</h3>
+                <p class="plan-ideal" data-i18n="plans.bro.ideal">Ideal para pequenos negócios e serviços que precisam de presença online clara e organizada</p>
+              </div>
+              <div class="plan-price">
+                <span class="price-value">2.500</span>
+                <span class="price-currency">Kz</span>
+                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
+              </div>
+              <ul class="plan-features">
+                <li data-i18n="plans.bro.f1">Site alojado na Workers Dev</li>
+                <li data-i18n="plans.bro.f2">Actualizações básicas de texto e imagens</li>
+                <li data-i18n="plans.bro.f3">Botão / link WhatsApp</li>
+                <li data-i18n="plans.bro.f4">Manutenção técnica básica</li>
+              </ul>
+              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Bro" data-i18n="plans.cta">Quero este plano</a>
+            </div>
+          </article>
+
+          <!-- Family -->
+          <article class="plan-card plan-card--family plan-featured">
+            <div class="plan-card-overlay"></div>
+            <div class="plan-card-content">
+              <div class="plan-badge" data-i18n="plans.family.badge">Poupa 5.000 Kz</div>
+              <div class="plan-header">
+                <h3 class="plan-name">Worker's Family</h3>
+                <p class="plan-ideal" data-i18n="plans.family.ideal">O mesmo que o Bro, mas com pagamento anual — ideal se preferir pagar uma vez por ano</p>
+              </div>
+              <div class="plan-price">
+                <span class="price-value">25.000</span>
+                <span class="price-currency">Kz</span>
+                <span class="price-period" data-i18n="plans.perYear">/ano</span>
+              </div>
+              <ul class="plan-features">
+                <li data-i18n="plans.family.f1">Tudo o que está no Bro</li>
+                <li data-i18n="plans.family.f2">Pagamento único anual</li>
+                <li data-i18n="plans.family.f3">Poupa 5.000 Kz vs. 12 meses</li>
+                <li data-i18n="plans.family.f4">Sem renovações mensais</li>
+              </ul>
+              <a href="#contacto" class="btn btn-primary plan-cta" data-plan="Family" data-i18n="plans.cta">Quero este plano</a>
+            </div>
+          </article>
+
+          <!-- Pro -->
+          <article class="plan-card plan-card--pro">
+            <div class="plan-card-overlay"></div>
+            <div class="plan-card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Pro</h3>
+                <p class="plan-ideal" data-i18n="plans.pro.ideal">Para negócios em crescimento que precisam de sistemas reais (login, reservas, pedidos)</p>
+              </div>
+              <div class="plan-price">
+                <span class="price-value">35.000</span>
+                <span class="price-currency">Kz</span>
+                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
+              </div>
+              <ul class="plan-features">
+                <li data-i18n="plans.pro.f1">Tudo o que está no Bro</li>
+                <li data-i18n="plans.pro.f2">Registo e login de utilizadores</li>
+                <li data-i18n="plans.pro.f3">Área de cliente (dashboard)</li>
+                <li data-i18n="plans.pro.f4">Pedidos, formulários e reservas</li>
+                <li data-i18n="plans.pro.f5">Base de dados e actualizações prioritárias</li>
+              </ul>
+              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Pro" data-i18n="plans.cta">Quero este plano</a>
+            </div>
+          </article>
+
+          <!-- Empresa -->
+          <article class="plan-card plan-card--empresa">
+            <div class="plan-card-overlay"></div>
+            <div class="plan-card-content">
+              <div class="plan-header">
+                <h3 class="plan-name">Empresa</h3>
+                <p class="plan-ideal" data-i18n="plans.empresa.ideal">Para negócios maiores que precisam de funcionalidades personalizadas e suporte prioritário</p>
+              </div>
+              <div class="plan-price">
+                <span class="price-value">75–120k</span>
+                <span class="price-currency">Kz</span>
+                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
+              </div>
+              <ul class="plan-features">
+                <li data-i18n="plans.empresa.f1">Tudo o que está no Pro</li>
+                <li data-i18n="plans.empresa.f2">Funcionalidades à medida</li>
+                <li data-i18n="plans.empresa.f3">Mais utilizadores e capacidade</li>
+                <li data-i18n="plans.empresa.f4">Admin avançado e relatórios</li>
+                <li data-i18n="plans.empresa.f5">Integrações e suporte dedicado</li>
+              </ul>
+              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Empresa" data-i18n="plans.cta">Pedir orçamento</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="como-funciona">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="how.eyebrow">Processo</p>
+          <h2 class="section-title" data-i18n="how.title">Como funciona</h2>
+        </div>
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3 class="step-title" data-i18n="how.s1.title">Partilha a informação</h3>
+            <p class="step-desc" data-i18n="how.s1.desc">Envia-nos os dados do negócio, fotos, preços e como prefere ser contactado.</p>
+          </div>
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3 class="step-title" data-i18n="how.s2.title">Nós construímos</h3>
+            <p class="step-desc" data-i18n="how.s2.desc">Personalizamos o site com a sua marca, conteúdo e botões de contacto (WhatsApp).</p>
+          </div>
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3 class="step-title" data-i18n="how.s3.title">Site no ar</h3>
+            <p class="step-desc" data-i18n="how.s3.desc">O site fica online, rápido e pronto para telemóvel. Partilha o link nas redes sociais.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section section-alt" id="contacto">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+          <h2 class="section-title" data-i18n="contact.title">Fale connosco</h2>
+          <p class="section-desc" data-i18n="contact.desc">Resposta rápida. Preencha o formulário ou contacte-nos directamente por WhatsApp ou e-mail.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="contact-label" data-i18n="contact.whatsapp">WhatsApp</span>
+              <a href="https://wa.me/244943278361" class="contact-value" target="_blank" rel="noopener">+244 943 278 361</a>
+            </div>
+            <div class="contact-item">
+              <span class="contact-label" data-i18n="contact.email">E-mail</span>
+              <a href="mailto:workersdevao@gmail.com" class="contact-value">workersdevao@gmail.com</a>
+            </div>
+            <div class="plan-chips">
+              <span class="chip">Bro · 2.500 Kz/mês</span>
+              <span class="chip">Family · 25.000 Kz/ano</span>
+              <span class="chip">Pro · 35.000 Kz/mês</span>
+              <span class="chip">Empresa · 75–120k Kz/mês</span>
+            </div>
+          </div>
+
+          <form class="contact-form" id="contactForm">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="name" data-i18n="form.name">Nome</label>
+                <input type="text" id="name" name="name" required autocomplete="name">
+              </div>
+              <div class="form-group">
+                <label for="email" data-i18n="form.email">E-mail</label>
+                <input type="email" id="email" name="email" required autocomplete="email">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="phone" data-i18n="form.phone">Telefone</label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel">
+              </div>
+              <div class="form-group">
+                <label for="business" data-i18n="form.business">Tipo de negócio / serviço</label>
+                <input type="text" id="business" name="business" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="location" data-i18n="form.location">Localização</label>
+                <input type="text" id="location" name="location" required>
+              </div>
+              <div class="form-group">
+                <label for="plan" data-i18n="form.plan">Plano desejado</label>
+                <select id="plan" name="plan" required>
+                  <option value="" data-i18n="form.planPlaceholder">Seleccione…</option>
+                  <option value="Bro">Worker's Bro</option>
+                  <option value="Family">Worker's Family</option>
+                  <option value="Pro">Pro</option>
+                  <option value="Empresa">Empresa</option>
+                  <option value="Nao sei" data-i18n="form.notSure">Ainda não sei</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message" data-i18n="form.message">Mensagem</label>
+              <textarea id="message" name="message" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full" data-i18n="form.submit">Enviar mensagem</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a href="#inicio" class="logo">
+          <img src="assets/logo.jpg" alt="Workers Dev" class="logo-img logo-img--footer">
+        </a>
+        <p class="footer-tagline" data-i18n="footer.tagline">Sites profissionais para serviços e negócios em Angola.</p>
+      </div>
+      <div class="footer-meta">
+        <p>&copy; <span id="year"></span> Workers Dev</p>
+        <p><a href="mailto:workersdevao@gmail.com">workersdevao@gmail.com</a></p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
