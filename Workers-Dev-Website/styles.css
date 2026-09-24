@@ -96,20 +96,21 @@ textarea {
   display: flex;
   align-items: center;
   line-height: 0;
+  flex-shrink: 0;
 }
 
 .logo-img {
-  height: 48px;
+  height: 44px;
   width: auto;
-  max-width: 160px;
+  max-width: 200px;
   object-fit: contain;
   object-position: left center;
   display: block;
 }
 
 .logo-img--footer {
-  height: 52px;
-  max-width: 180px;
+  height: 48px;
+  max-width: 220px;
 }
 
 .nav {
