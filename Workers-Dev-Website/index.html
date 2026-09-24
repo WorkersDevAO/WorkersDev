@@ -6,18 +6,21 @@
   <meta name="google" content="notranslate">
   <meta name="description" content="Workers Dev — Sites profissionais para serviços e negócios em Angola. Planos simples, rápidos e sem complicações técnicas.">
   <title>Workers Dev — Sites profissionais para o seu negócio</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <a href="#inicio" class="logo" aria-label="Workers Dev">
-        <img src="assets/logo.png" alt="Workers Dev" class="logo-img">
+        <img src="assets/logo.jpg" alt="Workers Dev" class="logo-img">
       </a>
 
       <nav class="nav" id="nav">
@@ -76,7 +79,7 @@
             </div>
             <div class="point">
               <span class="point-number">02</span>
-              <p data-i18n="about.point2">Contacto directo via WhatsApp</p>
+              <p data-i18n="about.point2">WhatsApp and/or email contact on every plan</p>
             </div>
             <div class="point">
               <span class="point-number">03</span>
@@ -93,78 +96,65 @@
         <div class="section-header">
           <p class="section-eyebrow" data-i18n="plans.eyebrow">Planos</p>
           <h2 class="section-title" data-i18n="plans.title">Escolha o plano certo para o seu negócio</h2>
-          <p class="section-desc" data-i18n="plans.desc">Todos os planos incluem site alojado, design profissional e suporte básico. O preço é em Kwanzas (Kz).</p>
+          <p class="section-desc" data-i18n="plans.desc">One-time build + monthly maintenance. Prices in Angolan Kwanza (Kz). WhatsApp and/or email on every plan.</p>
         </div>
 
-        <div class="plans-grid">
-          <!-- Bro -->
+        <div class="plans-grid plans-grid--3">
+          <!-- Básico -->
           <article class="plan-card plan-card--bro">
             <div class="plan-card-overlay"></div>
             <div class="plan-card-content">
               <div class="plan-header">
-                <h3 class="plan-name">Worker's Bro</h3>
-                <p class="plan-ideal" data-i18n="plans.bro.ideal">Ideal para pequenos negócios e serviços que precisam de presença online clara e organizada</p>
+                <h3 class="plan-name">Básico</h3>
+                <p class="plan-ideal" data-i18n="plans.basico.ideal">Clear online presence with an enrolment or order form — no login, no database</p>
               </div>
-              <div class="plan-price">
-                <span class="price-value">2.500</span>
-                <span class="price-currency">Kz</span>
-                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
+              <div class="plan-price-block">
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.build">Build</span>
+                  <span class="price-line"><span class="price-value">20.000</span> <span class="price-currency">Kz</span></span>
+                </div>
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.maint">Maintenance</span>
+                  <span class="price-line"><span class="price-value price-value--sm">2.500</span> <span class="price-currency">Kz</span><span class="price-period" data-i18n="plans.perMonth">/mo</span></span>
+                </div>
               </div>
               <ul class="plan-features">
-                <li data-i18n="plans.bro.f1">Site alojado na Workers Dev</li>
-                <li data-i18n="plans.bro.f2">Actualizações básicas de texto e imagens</li>
-                <li data-i18n="plans.bro.f3">Botão / link WhatsApp</li>
-                <li data-i18n="plans.bro.f4">Manutenção técnica básica</li>
+                <li data-i18n="plans.basico.f1">Professional mobile-friendly site</li>
+                <li data-i18n="plans.basico.f2">Enrolment / order form</li>
+                <li data-i18n="plans.basico.f3">WhatsApp and/or email contact</li>
+                <li data-i18n="plans.basico.f4">Hosting + basic content updates</li>
               </ul>
-              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Bro" data-i18n="plans.cta">Quero este plano</a>
+              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Basico" data-i18n="plans.cta">I want this plan</a>
             </div>
           </article>
 
-          <!-- Family -->
-          <article class="plan-card plan-card--family plan-featured">
+          <!-- Profissional -->
+          <article class="plan-card plan-card--pro plan-featured">
             <div class="plan-card-overlay"></div>
             <div class="plan-card-content">
-              <div class="plan-badge" data-i18n="plans.family.badge">Poupa 5.000 Kz</div>
+              <div class="plan-badge" data-i18n="plans.pro.badge">Systems</div>
               <div class="plan-header">
-                <h3 class="plan-name">Worker's Family</h3>
-                <p class="plan-ideal" data-i18n="plans.family.ideal">O mesmo que o Bro, mas com pagamento anual — ideal se preferir pagar uma vez por ano</p>
+                <h3 class="plan-name">Profissional</h3>
+                <p class="plan-ideal" data-i18n="plans.pro.ideal">Registration, database, booking or orders, and a client area</p>
               </div>
-              <div class="plan-price">
-                <span class="price-value">25.000</span>
-                <span class="price-currency">Kz</span>
-                <span class="price-period" data-i18n="plans.perYear">/ano</span>
+              <div class="plan-price-block">
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.build">Build</span>
+                  <span class="price-line"><span class="price-value">60.000</span> <span class="price-currency">Kz</span></span>
+                </div>
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.maint">Maintenance</span>
+                  <span class="price-line"><span class="price-value price-value--sm">5.000</span> <span class="price-currency">Kz</span><span class="price-period" data-i18n="plans.perMonth">/mo</span></span>
+                </div>
               </div>
               <ul class="plan-features">
-                <li data-i18n="plans.family.f1">Tudo o que está no Bro</li>
-                <li data-i18n="plans.family.f2">Pagamento único anual</li>
-                <li data-i18n="plans.family.f3">Poupa 5.000 Kz vs. 12 meses</li>
-                <li data-i18n="plans.family.f4">Sem renovações mensais</li>
+                <li data-i18n="plans.pro.f1">Everything in Básico</li>
+                <li data-i18n="plans.pro.f2">User registration &amp; login</li>
+                <li data-i18n="plans.pro.f3">Client area (dashboard)</li>
+                <li data-i18n="plans.pro.f4">Booking / orders + database</li>
+                <li data-i18n="plans.pro.f5">Priority updates &amp; support</li>
               </ul>
-              <a href="#contacto" class="btn btn-primary plan-cta" data-plan="Family" data-i18n="plans.cta">Quero este plano</a>
-            </div>
-          </article>
-
-          <!-- Pro -->
-          <article class="plan-card plan-card--pro">
-            <div class="plan-card-overlay"></div>
-            <div class="plan-card-content">
-              <div class="plan-header">
-                <h3 class="plan-name">Pro</h3>
-                <p class="plan-ideal" data-i18n="plans.pro.ideal">Para negócios em crescimento que precisam de sistemas reais (login, reservas, pedidos)</p>
-              </div>
-              <div class="plan-price">
-                <span class="price-value">35.000</span>
-                <span class="price-currency">Kz</span>
-                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
-              </div>
-              <ul class="plan-features">
-                <li data-i18n="plans.pro.f1">Tudo o que está no Bro</li>
-                <li data-i18n="plans.pro.f2">Registo e login de utilizadores</li>
-                <li data-i18n="plans.pro.f3">Área de cliente (dashboard)</li>
-                <li data-i18n="plans.pro.f4">Pedidos, formulários e reservas</li>
-                <li data-i18n="plans.pro.f5">Base de dados e actualizações prioritárias</li>
-              </ul>
-              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Pro" data-i18n="plans.cta">Quero este plano</a>
+              <a href="#contacto" class="btn btn-primary plan-cta" data-plan="Profissional" data-i18n="plans.cta">I want this plan</a>
             </div>
           </article>
 
@@ -174,21 +164,26 @@
             <div class="plan-card-content">
               <div class="plan-header">
                 <h3 class="plan-name">Empresa</h3>
-                <p class="plan-ideal" data-i18n="plans.empresa.ideal">Para negócios maiores que precisam de funcionalidades personalizadas e suporte prioritário</p>
+                <p class="plan-ideal" data-i18n="plans.empresa.ideal">Larger businesses — more capacity, custom features, priority support</p>
               </div>
-              <div class="plan-price">
-                <span class="price-value">75–120k</span>
-                <span class="price-currency">Kz</span>
-                <span class="price-period" data-i18n="plans.perMonth">/mês</span>
+              <div class="plan-price-block">
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.build">Build</span>
+                  <span class="price-line"><span class="price-value">100.000</span> <span class="price-currency">Kz</span></span>
+                </div>
+                <div class="plan-price-row">
+                  <span class="price-label" data-i18n="plans.maint">Maintenance</span>
+                  <span class="price-line"><span class="price-value price-value--sm">7.500</span> <span class="price-currency">Kz</span><span class="price-period" data-i18n="plans.perMonth">/mo</span></span>
+                </div>
               </div>
               <ul class="plan-features">
-                <li data-i18n="plans.empresa.f1">Tudo o que está no Pro</li>
-                <li data-i18n="plans.empresa.f2">Funcionalidades à medida</li>
-                <li data-i18n="plans.empresa.f3">Mais utilizadores e capacidade</li>
-                <li data-i18n="plans.empresa.f4">Admin avançado e relatórios</li>
-                <li data-i18n="plans.empresa.f5">Integrações e suporte dedicado</li>
+                <li data-i18n="plans.empresa.f1">Everything in Profissional</li>
+                <li data-i18n="plans.empresa.f2">Custom features &amp; higher capacity</li>
+                <li data-i18n="plans.empresa.f3">Advanced admin &amp; reports</li>
+                <li data-i18n="plans.empresa.f4">Integrations when needed</li>
+                <li data-i18n="plans.empresa.f5">Dedicated priority support</li>
               </ul>
-              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Empresa" data-i18n="plans.cta">Pedir orçamento</a>
+              <a href="#contacto" class="btn btn-outline plan-cta" data-plan="Empresa" data-i18n="plans.ctaQuote">Request a quote</a>
             </div>
           </article>
         </div>
@@ -211,7 +206,7 @@
           <div class="step">
             <span class="step-number">2</span>
             <h3 class="step-title" data-i18n="how.s2.title">Nós construímos</h3>
-            <p class="step-desc" data-i18n="how.s2.desc">Personalizamos o site com a sua marca, conteúdo e botões de contacto (WhatsApp).</p>
+            <p class="step-desc" data-i18n="how.s2.desc">We customise the site with your brand, content, and WhatsApp and/or email contact.</p>
           </div>
           <div class="step">
             <span class="step-number">3</span>
@@ -242,10 +237,9 @@
               <a href="mailto:workersdevao@gmail.com" class="contact-value">workersdevao@gmail.com</a>
             </div>
             <div class="plan-chips">
-              <span class="chip">Bro · 2.500 Kz/mês</span>
-              <span class="chip">Family · 25.000 Kz/ano</span>
-              <span class="chip">Pro · 35.000 Kz/mês</span>
-              <span class="chip">Empresa · 75–120k Kz/mês</span>
+              <span class="chip">Básico · 20.000 + 2.500/mês</span>
+              <span class="chip">Profissional · 60.000 + 5.000/mês</span>
+              <span class="chip">Empresa · 100.000 + 7.500/mês</span>
             </div>
           </div>
 
@@ -278,12 +272,11 @@
               <div class="form-group">
                 <label for="plan" data-i18n="form.plan">Plano desejado</label>
                 <select id="plan" name="plan" required>
-                  <option value="" data-i18n="form.planPlaceholder">Seleccione…</option>
-                  <option value="Bro">Worker's Bro</option>
-                  <option value="Family">Worker's Family</option>
-                  <option value="Pro">Pro</option>
+                  <option value="" data-i18n="form.planPlaceholder">Select…</option>
+                  <option value="Basico">Básico</option>
+                  <option value="Profissional">Profissional</option>
                   <option value="Empresa">Empresa</option>
-                  <option value="Nao sei" data-i18n="form.notSure">Ainda não sei</option>
+                  <option value="Nao sei" data-i18n="form.notSure">Not sure yet</option>
                 </select>
               </div>
             </div>
@@ -303,7 +296,7 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a href="#inicio" class="logo">
-          <img src="assets/logo.png" alt="Workers Dev" class="logo-img logo-img--footer">
+          <img src="assets/logo.jpg" alt="Workers Dev" class="logo-img logo-img--footer">
         </a>
         <p class="footer-tagline" data-i18n="footer.tagline">Sites profissionais para serviços e negócios em Angola.</p>
       </div>
