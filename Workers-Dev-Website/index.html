@@ -17,48 +17,74 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header -->
-  <header class="header">
-    <div class="container header-inner">
-      <a href="#inicio" class="logo" aria-label="Workers Dev">
-        <img src="assets/logo.png" alt="Workers Dev" class="logo-img" width="160" height="48">
-      </a>
+  <!-- Announcement bar -->
+  <a href="#planos" class="announce-bar" id="announceBar">
+    <span data-i18n="announce.before">Planos a partir de</span>
+    <span class="announce-accent">20.000 Kz</span>
+    <span data-i18n="announce.after">· Construção + manutenção</span>
+  </a>
 
-      <nav class="nav" id="nav">
-        <a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a>
-        <a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a>
-        <a href="#planos" class="nav-link" data-i18n="nav.plans">Planos</a>
-        <a href="#como-funciona" class="nav-link" data-i18n="nav.how">Como funciona</a>
-        <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
-      </nav>
+  <!-- Header -->
+  <header class="header" id="siteHeader">
+    <div class="header-bar">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+
+      <a href="#inicio" class="brand" aria-label="Workers Dev">
+        <span class="brand-name">Workers Dev</span>
+        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
+      </a>
 
       <div class="header-actions">
         <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
           <span id="langLabel">EN</span>
         </button>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-          <span class="menu-line"></span>
-          <span class="menu-line"></span>
-          <span class="menu-line"></span>
-        </button>
       </div>
     </div>
+
+    <nav class="nav-desktop" aria-label="Main">
+      <a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a>
+      <a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a>
+      <a href="#planos" class="nav-link" data-i18n="nav.plans">Planos</a>
+      <a href="#como-funciona" class="nav-link" data-i18n="nav.how">Como funciona</a>
+      <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
+    </nav>
   </header>
+
+  <!-- Mobile drawer -->
+  <div class="nav-overlay" id="navOverlay" hidden></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true">
+    <div class="drawer-head">
+      <a href="#inicio" class="brand brand--drawer">
+        <span class="brand-name">Workers Dev</span>
+        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Close menu">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="#inicio" class="drawer-link" data-i18n="nav.home">Início</a>
+      <a href="#sobre" class="drawer-link" data-i18n="nav.about">Sobre</a>
+      <a href="#planos" class="drawer-link" data-i18n="nav.plans">Planos</a>
+      <a href="#como-funciona" class="drawer-link" data-i18n="nav.how">Como funciona</a>
+      <a href="#contacto" class="drawer-link" data-i18n="nav.contact">Contacto</a>
+    </nav>
+    <div class="drawer-foot">
+      <a href="https://wa.me/244943278361" class="drawer-cta" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="mailto:workersdevao@gmail.com" class="drawer-cta drawer-cta--ghost">E-mail</a>
+    </div>
+  </aside>
 
   <main>
     <!-- Hero -->
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" aria-label="Workers Dev">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
-      <div class="container hero-inner">
-        <p class="hero-eyebrow" data-i18n="hero.eyebrow">Sites profissionais · Angola</p>
-        <h1 class="hero-title" data-i18n="hero.title">Presença online clara, rápida e sem dor de cabeça técnica</h1>
-        <p class="hero-subtitle" data-i18n="hero.subtitle">Construímos e alojamos sites profissionais para salões, lojas, freelancers, imobiliárias e serviços em Angola. Do simples ao sistema completo.</p>
-        <div class="hero-actions">
-          <a href="#planos" class="btn btn-primary" data-i18n="hero.ctaPrimary">Ver planos</a>
-          <a href="#contacto" class="btn btn-outline" data-i18n="hero.ctaSecondary">Falar connosco</a>
-        </div>
-      </div>
     </section>
 
     <!-- About -->
@@ -296,8 +322,9 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-brand">
-        <a href="#inicio" class="logo">
-          <img src="assets/logo.png" alt="Workers Dev" class="logo-img logo-img--footer" width="180" height="54">
+        <a href="#inicio" class="brand brand--footer">
+          <span class="brand-name">Workers Dev</span>
+          <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
         </a>
         <p class="footer-tagline" data-i18n="footer.tagline">Sites profissionais para serviços e negócios em Angola.</p>
       </div>

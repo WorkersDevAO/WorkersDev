@@ -21,6 +21,9 @@
       'nav.plans': 'Planos',
       'nav.how': 'Como funciona',
       'nav.contact': 'Contacto',
+      'brand.tag': 'Sites profissionais',
+      'announce.before': 'Planos a partir de',
+      'announce.after': '· Construção + manutenção',
       'hero.eyebrow': 'Sites profissionais · Angola',
       'hero.title': 'Presença online clara, rápida e sem dor de cabeça técnica',
       'hero.subtitle': 'Construímos e alojamos sites profissionais para salões, lojas, freelancers, imobiliárias e serviços em Angola. Do simples ao sistema completo.',
@@ -90,6 +93,9 @@
       'nav.plans': 'Plans',
       'nav.how': 'How it works',
       'nav.contact': 'Contact',
+      'brand.tag': 'Professional sites',
+      'announce.before': 'Plans from',
+      'announce.after': '· Build + maintenance',
       'hero.eyebrow': 'Professional websites · Angola',
       'hero.title': 'Clear, fast online presence — no technical headache',
       'hero.subtitle': 'We build and host professional websites for salons, shops, freelancers, real estate and services in Angola. From a simple presence to full systems.',
@@ -181,23 +187,109 @@
     if (label) label.textContent = lang === 'pt' ? 'EN' : 'PT';
   }
 
-  /* ---------- Menu ---------- */
+  /* ---------- Header scroll: announce hide + solid header ---------- */
+  const header = document.getElementById('siteHeader');
+  const announceBar = document.getElementById('announceBar');
+  let lastScrollY = 0;
+  let ticking = false;
+
+  function updateHeader() {
+    const y = window.scrollY || window.pageYOffset;
+    if (!header) return;
+
+    if (y > 12) {
+      header.classList.add('is-scrolled');
+    } else {
+      header.classList.remove('is-scrolled');
+    }
+
+    if (announceBar) {
+      if (y > 48 && y > lastScrollY) {
+        announceBar.classList.add('is-hidden');
+        header.classList.add('announce-hidden');
+      } else if (y < 24) {
+        announceBar.classList.remove('is-hidden');
+        header.classList.remove('announce-hidden');
+      } else if (y < lastScrollY) {
+        /* keep hidden while scrolling up mid-page; only return near top */
+      }
+    }
+
+    lastScrollY = y;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', function () {
+    if (!ticking) {
+      window.requestAnimationFrame(updateHeader);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateHeader();
+
+  /* ---------- Mobile drawer ---------- */
   const menuToggle = document.getElementById('menuToggle');
-  const nav = document.getElementById('nav');
+  const navDrawer = document.getElementById('navDrawer');
+  const navOverlay = document.getElementById('navOverlay');
+  const drawerClose = document.getElementById('drawerClose');
 
-  if (menuToggle && nav) {
+  function openDrawer() {
+    if (menuToggle) {
+      menuToggle.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+    if (navDrawer) {
+      navDrawer.classList.add('is-open');
+      navDrawer.setAttribute('aria-hidden', 'false');
+    }
+    if (navOverlay) {
+      navOverlay.hidden = false;
+      navOverlay.classList.add('is-open');
+    }
+    document.body.classList.add('drawer-open');
+  }
+
+  function closeDrawer() {
+    if (menuToggle) {
+      menuToggle.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+    if (navDrawer) {
+      navDrawer.classList.remove('is-open');
+      navDrawer.setAttribute('aria-hidden', 'true');
+    }
+    if (navOverlay) {
+      navOverlay.classList.remove('is-open');
+      window.setTimeout(function () {
+        if (navOverlay && !navOverlay.classList.contains('is-open')) {
+          navOverlay.hidden = true;
+        }
+      }, 300);
+    }
+    document.body.classList.remove('drawer-open');
+  }
+
+  if (menuToggle) {
     menuToggle.addEventListener('click', function () {
-      menuToggle.classList.toggle('active');
-      nav.classList.toggle('open');
-    });
-
-    nav.querySelectorAll('.nav-link').forEach(function (link) {
-      link.addEventListener('click', function () {
-        menuToggle.classList.remove('active');
-        nav.classList.remove('open');
-      });
+      if (navDrawer && navDrawer.classList.contains('is-open')) {
+        closeDrawer();
+      } else {
+        openDrawer();
+      }
     });
   }
+
+  if (drawerClose) drawerClose.addEventListener('click', closeDrawer);
+  if (navOverlay) navOverlay.addEventListener('click', closeDrawer);
+
+  document.querySelectorAll('.drawer-link, .brand--drawer').forEach(function (link) {
+    link.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
 
   /* ---------- Language toggle ---------- */
   const langToggle = document.getElementById('langToggle');
