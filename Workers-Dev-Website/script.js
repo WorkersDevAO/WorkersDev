@@ -17,6 +17,7 @@
   const translations = {
     pt: {
       'nav.home': 'Início',
+      'nav.clients': 'Clientes',
       'nav.about': 'Sobre',
       'nav.plans': 'Planos',
       'nav.how': 'Como funciona',
@@ -24,11 +25,20 @@
       'brand.tag': 'Sites profissionais',
       'announce.before': 'Planos a partir de',
       'announce.after': '· Construção + manutenção',
-      'hero.eyebrow': 'Sites profissionais · Angola',
-      'hero.title': 'Presença online clara, rápida e sem dor de cabeça técnica',
-      'hero.subtitle': 'Construímos e alojamos sites profissionais para salões, lojas, freelancers, imobiliárias e serviços em Angola. Do simples ao sistema completo.',
-      'hero.ctaPrimary': 'Ver planos',
-      'hero.ctaSecondary': 'Falar connosco',
+      'clients.eyebrow': 'Clientes',
+      'clients.title': 'Sites que construímos',
+      'clients.desc': 'Alguns dos projectos online — clique para visitar.',
+      'clients.wakanda.type': 'Ginásio',
+      'clients.decifer.type': 'Resort desportivo',
+      'clients.semente.type': 'Escola de inglês',
+      'clients.lapidar.type': 'Colégio',
+      'clients.artfit.type': 'Suplementos fitness',
+      'clients.bello.type': 'Estúdio de tatuagem',
+      'clients.brisa.type': 'Iates e jet skis',
+      'clients.eldo.type': 'Barbearia',
+      'clients.mari.type': 'Salão de beleza',
+      'clients.bakana.type': 'Imobiliária',
+      'clients.ango.type': 'Desinfestação',
       'about.eyebrow': 'Sobre nós',
       'about.title': 'Simples, profissional e focado no cliente',
       'about.p1': 'A Workers Dev cria e gere sites profissionais para serviços e negócios em Angola. Sem jargão técnico, sem complicações — apenas uma presença online limpa, rápida e móvel que o seu cliente consegue usar e partilhar.',
@@ -89,6 +99,7 @@
     },
     en: {
       'nav.home': 'Home',
+      'nav.clients': 'Clients',
       'nav.about': 'About',
       'nav.plans': 'Plans',
       'nav.how': 'How it works',
@@ -96,11 +107,20 @@
       'brand.tag': 'Professional sites',
       'announce.before': 'Plans from',
       'announce.after': '· Build + maintenance',
-      'hero.eyebrow': 'Professional websites · Angola',
-      'hero.title': 'Clear, fast online presence — no technical headache',
-      'hero.subtitle': 'We build and host professional websites for salons, shops, freelancers, real estate and services in Angola. From a simple presence to full systems.',
-      'hero.ctaPrimary': 'View plans',
-      'hero.ctaSecondary': 'Get in touch',
+      'clients.eyebrow': 'Clients',
+      'clients.title': 'Sites we built',
+      'clients.desc': 'A selection of live projects — click to visit.',
+      'clients.wakanda.type': 'Gym',
+      'clients.decifer.type': 'Sports resort',
+      'clients.semente.type': 'English school',
+      'clients.lapidar.type': 'School',
+      'clients.artfit.type': 'Fitness supplements',
+      'clients.bello.type': 'Tattoo studio',
+      'clients.brisa.type': 'Yachts & jet skis',
+      'clients.eldo.type': 'Barbershop',
+      'clients.mari.type': 'Beauty salon',
+      'clients.bakana.type': 'Real estate',
+      'clients.ango.type': 'Pest control',
       'about.eyebrow': 'About us',
       'about.title': 'Simple, professional and client-focused',
       'about.p1': 'Workers Dev builds and manages professional websites for services and businesses in Angola. No technical jargon, no complications — just a clean, fast, mobile-ready online presence your clients can use and share.',
@@ -348,6 +368,93 @@
   /* ---------- Year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Clients carousel ---------- */
+  (function initClientsCarousel() {
+    const track = document.getElementById('clientsTrack');
+    const prev = document.getElementById('clientsPrev');
+    const next = document.getElementById('clientsNext');
+    const dotsWrap = document.getElementById('clientsDots');
+    if (!track) return;
+
+    const cards = Array.prototype.slice.call(track.querySelectorAll('.client-card'));
+    if (!cards.length) return;
+
+    let index = 0;
+
+    function perView() {
+      const w = window.innerWidth;
+      if (w >= 960) return 3;
+      if (w >= 640) return 2;
+      return 1;
+    }
+
+    function maxIndex() {
+      return Math.max(0, cards.length - perView());
+    }
+
+    function goTo(i) {
+      index = Math.max(0, Math.min(i, maxIndex()));
+      const card = cards[0];
+      const gap = 20;
+      const step = card.getBoundingClientRect().width + gap;
+      track.style.transform = 'translateX(' + (-index * step) + 'px)';
+      if (dotsWrap) {
+        const dots = dotsWrap.querySelectorAll('.carousel-dot');
+        dots.forEach(function (d, di) {
+          d.classList.toggle('is-active', di === index);
+        });
+      }
+    }
+
+    function buildDots() {
+      if (!dotsWrap) return;
+      dotsWrap.innerHTML = '';
+      const count = maxIndex() + 1;
+      for (var i = 0; i < count; i++) {
+        (function (di) {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'carousel-dot' + (di === index ? ' is-active' : '');
+          b.setAttribute('aria-label', 'Slide ' + (di + 1));
+          b.addEventListener('click', function () { goTo(di); });
+          dotsWrap.appendChild(b);
+        })(i);
+      }
+    }
+
+    if (prev) prev.addEventListener('click', function () { goTo(index - 1); });
+    if (next) next.addEventListener('click', function () { goTo(index + 1); });
+
+    let resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        buildDots();
+        goTo(Math.min(index, maxIndex()));
+      }, 120);
+    });
+
+    /* touch swipe */
+    let startX = 0;
+    let deltaX = 0;
+    track.addEventListener('touchstart', function (e) {
+      startX = e.touches[0].clientX;
+      deltaX = 0;
+    }, { passive: true });
+    track.addEventListener('touchmove', function (e) {
+      deltaX = e.touches[0].clientX - startX;
+    }, { passive: true });
+    track.addEventListener('touchend', function () {
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX < 0) goTo(index + 1);
+        else goTo(index - 1);
+      }
+    });
+
+    buildDots();
+    goTo(0);
+  })();
 
   /* Init */
   setLanguage('pt');

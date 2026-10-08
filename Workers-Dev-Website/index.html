@@ -47,6 +47,7 @@
 
     <nav class="nav-desktop" aria-label="Main">
       <a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a>
+      <a href="#clientes" class="nav-link" data-i18n="nav.clients">Clientes</a>
       <a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a>
       <a href="#planos" class="nav-link" data-i18n="nav.plans">Planos</a>
       <a href="#como-funciona" class="nav-link" data-i18n="nav.how">Como funciona</a>
@@ -69,6 +70,7 @@
     </div>
     <nav class="drawer-nav">
       <a href="#inicio" class="drawer-link" data-i18n="nav.home">Início</a>
+      <a href="#clientes" class="drawer-link" data-i18n="nav.clients">Clientes</a>
       <a href="#sobre" class="drawer-link" data-i18n="nav.about">Sobre</a>
       <a href="#planos" class="drawer-link" data-i18n="nav.plans">Planos</a>
       <a href="#como-funciona" class="drawer-link" data-i18n="nav.how">Como funciona</a>
@@ -85,6 +87,133 @@
     <section class="hero" id="inicio" aria-label="Workers Dev">
       <div class="hero-bg" aria-hidden="true"></div>
       <div class="hero-overlay" aria-hidden="true"></div>
+    </section>
+
+    <!-- Clients -->
+    <section class="section clients-section" id="clientes">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-eyebrow" data-i18n="clients.eyebrow">Clientes</p>
+          <h2 class="section-title" data-i18n="clients.title">Sites que construímos</h2>
+          <p class="section-desc" data-i18n="clients.desc">Alguns dos projectos online — clique para visitar.</p>
+        </div>
+      </div>
+
+      <div class="clients-carousel" id="clientsCarousel">
+        <button class="carousel-btn carousel-btn--prev" id="clientsPrev" aria-label="Anterior" type="button">
+          <span aria-hidden="true">‹</span>
+        </button>
+
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="clientsTrack">
+            <a class="client-card" href="https://www.wakandatraining.com" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/wakanda.jpg" alt="Wakanda Training" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.wakanda.type">Ginásio</span>
+                <span class="client-name">Wakanda Training</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/decifer.jpg" alt="Decifer Sport Resort" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.decifer.type">Resort desportivo</span>
+                <span class="client-name">Decifer</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://academiasemente.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/academiasemente.jpg" alt="Academia Semente" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.semente.type">Escola de inglês</span>
+                <span class="client-name">Academia Semente</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://colegiolapidar.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/colegiolapidar.jpg" alt="Colégio Lapidar" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.lapidar.type">Colégio</span>
+                <span class="client-name">Colégio Lapidar</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://artfit-nutrition.workersdevao.workers.dev/" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/artfit.jpg" alt="ArtFit Nutrition" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.artfit.type">Suplementos fitness</span>
+                <span class="client-name">ArtFit Nutrition</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://bello-tattoo.workersdevao.workers.dev/" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/bellotattoo.jpg" alt="Bello Tattoo" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.bello.type">Estúdio de tatuagem</span>
+                <span class="client-name">Bello Tattoo</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://brisadomar.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/brisadomar.jpg" alt="Brisa do Mar" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.brisa.type">Iates e jet skis</span>
+                <span class="client-name">Brisa do Mar</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://eldocarmobarbershop.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/eldocarmo.jpg" alt="El do Carmo Barbershop" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.eldo.type">Barbearia</span>
+                <span class="client-name">El do Carmo</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://marimaraspaz.workersdevao.workers.dev/" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/marimaraspaz.jpg" alt="Marimara Spaz" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.mari.type">Salão de beleza</span>
+                <span class="client-name">Marimara Spaz</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://bakana-empire.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/bakana.jpg" alt="Bakana Empire" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.bakana.type">Imobiliária</span>
+                <span class="client-name">Bakana Empire</span>
+              </div>
+            </a>
+            <a class="client-card" href="https://angopragas.workersdevao.workers.dev" target="_blank" rel="noopener">
+              <div class="client-card-media">
+                <img src="assets/clients/angopragas.jpg" alt="AngoPragas" loading="lazy" width="800" height="496">
+              </div>
+              <div class="client-card-body">
+                <span class="client-type" data-i18n="clients.ango.type">Desinfestação</span>
+                <span class="client-name">AngoPragas</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <button class="carousel-btn carousel-btn--next" id="clientsNext" aria-label="Seguinte" type="button">
+          <span aria-hidden="true">›</span>
+        </button>
+      </div>
+
+      <div class="carousel-dots" id="clientsDots" aria-hidden="true"></div>
     </section>
 
     <!-- About -->
