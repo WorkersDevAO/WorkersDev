@@ -330,12 +330,14 @@
     });
   });
 
-  /* ---------- Contact form → WhatsApp ---------- */
+  /* ---------- Contact form → Cloudflare Worker (Resend → Gmail) ---------- */
+  const CONTACT_API = 'https://old-lab-e4bacontact-form.workersdevao.workers.dev/';
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 
+      const submitBtn = form.querySelector('[type="submit"]');
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const phone = document.getElementById('phone').value.trim();
@@ -343,25 +345,53 @@
       const location = document.getElementById('location').value.trim();
       const plan = document.getElementById('plan').value;
       const message = document.getElementById('message').value.trim();
+      const subject = plan
+        ? 'Workers Dev — contacto (' + plan + ')'
+        : 'Workers Dev — contacto do site';
 
-      const text = [
-        'Olá Workers Dev,',
-        '',
-        'Gostaria de saber mais sobre os vossos serviços.',
-        '',
-        'Nome: ' + name,
-        'E-mail: ' + email,
-        'Telefone: ' + phone,
-        'Negócio/Serviço: ' + business,
-        'Localização: ' + location,
-        'Plano: ' + plan,
-        '',
-        'Mensagem:',
-        message
-      ].join('\n');
+      const payload = {
+        name: name,
+        email: email,
+        phone: phone,
+        business: business,
+        location: location,
+        plan: plan,
+        subject: subject,
+        message: message
+      };
 
-      const url = 'https://wa.me/244943278361?text=' + encodeURIComponent(text);
-      window.open(url, '_blank', 'noopener');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.setAttribute('data-label', submitBtn.textContent);
+        submitBtn.textContent = currentLang === 'en' ? 'Sending…' : 'A enviar…';
+      }
+
+      fetch(CONTACT_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+        .then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json().catch(function () { return {}; });
+        })
+        .then(function () {
+          form.reset();
+          alert(currentLang === 'en'
+            ? 'Message sent. We will reply soon.'
+            : 'Mensagem enviada. Responderemos em breve.');
+        })
+        .catch(function () {
+          alert(currentLang === 'en'
+            ? 'Could not send. Please try WhatsApp or email.'
+            : 'Não foi possível enviar. Tente WhatsApp ou e-mail.');
+        })
+        .finally(function () {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = submitBtn.getAttribute('data-label') || submitBtn.textContent;
+          }
+        });
     });
   }
 
