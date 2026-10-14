@@ -439,14 +439,14 @@
           b.type = 'button';
           b.className = 'carousel-dot' + (di === index ? ' is-active' : '');
           b.setAttribute('aria-label', 'Slide ' + (di + 1));
-          b.addEventListener('click', function () { goTo(di); });
+          b.addEventListener('click', function () { stopAuto(); goTo(di); startAuto(); });
           dotsWrap.appendChild(b);
         })(i);
       }
     }
 
-    if (prev) prev.addEventListener('click', function () { goTo(index - 1); });
-    if (next) next.addEventListener('click', function () { goTo(index + 1); });
+    if (prev) prev.addEventListener('click', function () { stopAuto(); goTo(index - 1); startAuto(); });
+    if (next) next.addEventListener('click', function () { stopAuto(); goTo(index + 1); startAuto(); });
 
     let resizeTimer;
     window.addEventListener('resize', function () {
@@ -463,6 +463,7 @@
     track.addEventListener('touchstart', function (e) {
       startX = e.touches[0].clientX;
       deltaX = 0;
+      stopAuto();
     }, { passive: true });
     track.addEventListener('touchmove', function (e) {
       deltaX = e.touches[0].clientX - startX;
@@ -472,10 +473,34 @@
         if (deltaX < 0) goTo(index + 1);
         else goTo(index - 1);
       }
+      startAuto();
     });
+
+    /* auto-scroll every 4s — pause on hover */
+    let autoTimer = null;
+    function startAuto() {
+      stopAuto();
+      autoTimer = setInterval(function () {
+        if (index >= maxIndex()) goTo(0);
+        else goTo(index + 1);
+      }, 4000);
+    }
+    function stopAuto() {
+      if (autoTimer) {
+        clearInterval(autoTimer);
+        autoTimer = null;
+      }
+    }
+
+    const carousel = document.getElementById('clientsCarousel');
+    if (carousel) {
+      carousel.addEventListener('mouseenter', stopAuto);
+      carousel.addEventListener('mouseleave', startAuto);
+    }
 
     buildDots();
     goTo(0);
+    startAuto();
   })();
 
   /* Init */
