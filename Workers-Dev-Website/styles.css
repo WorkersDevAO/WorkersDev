@@ -633,6 +633,35 @@ body.drawer-open {
   overflow: hidden;
 }
 
+/* ---------- Promo CTA (full-bleed) ---------- */
+.promo-cta {
+  padding: 0;
+  margin: 0;
+  background: #f9f8f6;
+  line-height: 0;
+}
+
+.promo-cta-link {
+  display: block;
+  transition: opacity 0.25s ease;
+}
+
+.promo-cta-link:hover {
+  opacity: 0.94;
+}
+
+.promo-cta-link:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.promo-cta img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: middle;
+}
+
 .clients-carousel {
   position: relative;
   max-width: 1200px;
