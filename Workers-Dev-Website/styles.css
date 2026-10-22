@@ -927,17 +927,16 @@ body.drawer-open {
 /* ---------- Site próprio ---------- */
 /* Horizontal scroll on small screens: real table layout */
 .own-compare {
-  border: 1px solid var(--card-border-brand);
-  border-top: 3px solid var(--brand);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  background: var(--white);
-  color: var(--card-text);
+  background: #14348a;
+  color: #fff;
   margin-bottom: 2rem;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-x: contain;
   scrollbar-width: thin;
-  box-shadow: 0 12px 32px rgba(12, 36, 97, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
 .own-compare-head,
@@ -948,7 +947,7 @@ body.drawer-open {
 }
 
 .own-compare-head {
-  background: var(--brand);
+  background: #0c2461;
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   position: sticky;
   top: 0;
@@ -960,9 +959,9 @@ body.drawer-open {
   padding: 0.85rem 1.1rem;
   font-size: 0.88rem;
   font-weight: 400;
-  color: var(--card-text);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.45;
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .own-compare-row--last .own-compare-cell {
@@ -972,17 +971,17 @@ body.drawer-open {
 .own-compare-label {
   font-weight: 500;
   font-size: 0.8rem;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.65);
   letter-spacing: 0.02em;
   position: sticky;
   left: 0;
   z-index: 1;
-  background: var(--white);
-  box-shadow: 4px 0 8px -4px rgba(12, 36, 97, 0.1);
+  background: #14348a;
+  box-shadow: 4px 0 8px -4px rgba(0, 0, 0, 0.25);
 }
 
 .own-compare-head .own-compare-label {
-  background: var(--brand);
+  background: #0c2461;
   color: rgba(255, 255, 255, 0.85);
   z-index: 3;
   box-shadow: none;
@@ -1005,17 +1004,17 @@ body.drawer-open {
 }
 
 .own-compare-col--own .own-compare-col-title {
-  color: #fff;
+  color: var(--accent);
 }
 
 .own-compare-cell--own {
-  background: rgba(12, 36, 97, 0.06);
+  background: rgba(107, 155, 255, 0.1);
   font-weight: 400;
 }
 
 .own-compare-head .own-compare-col--own,
 .own-compare-cell--own {
-  border-left: 1px solid rgba(12, 36, 97, 0.12);
+  border-left: 1px solid rgba(107, 155, 255, 0.2);
 }
 
 @media (max-width: 719px) {
@@ -1032,14 +1031,13 @@ body.drawer-open {
 .own-box {
   display: grid;
   gap: 1.75rem;
-  border: 1px solid var(--card-border-brand);
-  border-top: 3px solid var(--brand);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
-  background: var(--white);
-  color: var(--card-text);
+  background: #14348a;
+  color: #fff;
   padding: 1.75rem 1.5rem;
   margin-bottom: 3rem;
-  box-shadow: 0 12px 32px rgba(12, 36, 97, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
 @media (min-width: 800px) {
@@ -1057,8 +1055,8 @@ body.drawer-open {
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--brand);
-  background: rgba(12, 36, 97, 0.08);
+  color: #0c2461;
+  background: var(--accent);
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius);
   margin-bottom: 1rem;
@@ -1068,14 +1066,14 @@ body.drawer-open {
   font-size: clamp(1.25rem, 2.5vw, 1.55rem);
   font-weight: 600;
   letter-spacing: -0.02em;
-  color: var(--card-text);
+  color: #fff;
   margin-bottom: 0.65rem;
 }
 
 .own-lead {
   font-size: 0.95rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.65;
   margin-bottom: 1.35rem;
 }
@@ -1094,7 +1092,7 @@ body.drawer-open {
   padding-left: 1.35rem;
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--card-text);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.5;
 }
 
@@ -1106,7 +1104,7 @@ body.drawer-open {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--brand);
+  background: var(--accent);
 }
 
 .own-prices {
@@ -1118,9 +1116,9 @@ body.drawer-open {
 .own-price-chip {
   font-size: 0.78rem;
   font-weight: 400;
-  color: var(--card-muted);
-  border: 1px solid var(--card-border);
-  background: #f3f1ed;
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(12, 36, 97, 0.45);
   padding: 0.35rem 0.7rem;
   border-radius: var(--radius);
 }
@@ -1186,6 +1184,18 @@ body.drawer-open {
   width: 100%;
   text-align: center;
   justify-content: center;
+}
+
+.own-box .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c2461;
+}
+
+.own-box .btn-primary:hover {
+  background: #8fb0ff;
+  border-color: #8fb0ff;
+  color: #0c2461;
 }
 
 .own-rules-title {
@@ -1283,51 +1293,50 @@ body.drawer-open {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--white);
-  color: var(--card-text);
-  border: 1px solid var(--card-border-brand);
-  border-top: 3px solid var(--brand);
+  background: #14348a;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 1.85rem 1.6rem 1.7rem;
   box-shadow:
-    0 1px 2px rgba(12, 36, 97, 0.06),
-    0 12px 32px rgba(12, 36, 97, 0.14),
-    0 28px 56px rgba(12, 36, 97, 0.1);
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 12px 32px rgba(0, 0, 0, 0.28),
+    0 28px 56px rgba(0, 0, 0, 0.18);
   transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .x-plan-card:hover {
-  border-color: rgba(12, 36, 97, 0.22);
+  border-color: rgba(255, 255, 255, 0.22);
   box-shadow:
-    0 2px 4px rgba(12, 36, 97, 0.08),
-    0 12px 32px rgba(12, 36, 97, 0.16),
-    0 32px 64px rgba(12, 36, 97, 0.12);
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 12px 32px rgba(0, 0, 0, 0.32),
+    0 32px 64px rgba(0, 0, 0, 0.2);
   transform: translateY(-4px);
 }
 
 .x-plan-card--featured {
-  border-color: rgba(12, 36, 97, 0.35);
-  border-top-color: var(--brand);
+  background: #1a3f9e;
+  border-color: rgba(107, 155, 255, 0.45);
   box-shadow:
-    0 1px 2px rgba(12, 36, 97, 0.1),
-    0 14px 36px rgba(12, 36, 97, 0.22),
-    0 32px 64px rgba(12, 36, 97, 0.14);
+    0 1px 2px rgba(0, 0, 0, 0.25),
+    0 14px 36px rgba(26, 86, 219, 0.35),
+    0 32px 64px rgba(0, 0, 0, 0.22);
 }
 
 .x-plan-card--featured:hover {
-  border-color: rgba(12, 36, 97, 0.5);
+  border-color: rgba(107, 155, 255, 0.65);
   box-shadow:
-    0 2px 4px rgba(12, 36, 97, 0.12),
-    0 18px 44px rgba(12, 36, 97, 0.28),
-    0 40px 80px rgba(12, 36, 97, 0.16);
+    0 2px 4px rgba(0, 0, 0, 0.28),
+    0 18px 44px rgba(26, 86, 219, 0.4),
+    0 40px 80px rgba(0, 0, 0, 0.25);
 }
 
 .x-plan-popular {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: var(--brand);
-  color: #fff;
+  background: var(--accent);
+  color: #0c2461;
   font-size: 0.7rem;
   font-weight: 600;
   letter-spacing: 0.02em;
@@ -1342,7 +1351,7 @@ body.drawer-open {
 .x-plan-name {
   font-size: 1.2rem;
   font-weight: 600;
-  color: var(--card-text);
+  color: #fff;
   letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
 }
@@ -1358,32 +1367,32 @@ body.drawer-open {
   font-size: clamp(2rem, 3.2vw, 2.4rem);
   font-weight: 700;
   letter-spacing: -0.045em;
-  color: var(--card-text);
+  color: #fff;
   line-height: 1;
 }
 
 .x-plan-unit {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .x-plan-billing {
   font-size: 0.82rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.65);
   margin-bottom: 0.2rem;
 }
 
 .x-plan-maint {
   font-size: 0.84rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 .x-plan-maint strong {
   font-weight: 600;
-  color: var(--card-text);
+  color: #fff;
 }
 
 .x-plan-btn {
@@ -1396,14 +1405,36 @@ body.drawer-open {
   padding-bottom: 0.75rem;
 }
 
+.x-plan-card .btn-outline {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.x-plan-card .btn-outline:hover {
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.x-plan-card .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c2461;
+}
+
+.x-plan-card .btn-primary:hover {
+  background: #8fb0ff;
+  border-color: #8fb0ff;
+  color: #0c2461;
+}
+
 .x-plan-ideal {
   font-size: 0.84rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid var(--card-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .x-plan-features {
@@ -1421,7 +1452,7 @@ body.drawer-open {
   padding-left: 1.35rem;
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--card-text);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.45;
 }
 
@@ -1430,7 +1461,7 @@ body.drawer-open {
   position: absolute;
   left: 0;
   top: 0;
-  color: var(--brand);
+  color: var(--accent);
   font-size: 0.85rem;
   font-weight: 500;
 }
@@ -1465,23 +1496,22 @@ body.drawer-open {
 }
 
 .x-feat-card {
-  background: var(--white);
-  color: var(--card-text);
-  border: 1px solid var(--card-border-brand);
-  border-top: 3px solid var(--brand);
+  background: #14348a;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 16px;
   padding: 1.5rem 1.35rem;
   box-shadow:
-    0 1px 2px rgba(12, 36, 97, 0.06),
-    0 10px 28px rgba(12, 36, 97, 0.12);
+    0 1px 2px rgba(0, 0, 0, 0.2),
+    0 10px 28px rgba(0, 0, 0, 0.25);
   transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
 }
 
 .x-feat-card:hover {
-  border-color: rgba(12, 36, 97, 0.22);
+  border-color: rgba(255, 255, 255, 0.22);
   box-shadow:
-    0 2px 4px rgba(12, 36, 97, 0.08),
-    0 12px 28px rgba(12, 36, 97, 0.14);
+    0 2px 4px rgba(0, 0, 0, 0.25),
+    0 12px 28px rgba(0, 0, 0, 0.3);
   transform: translateY(-2px);
 }
 
@@ -1494,7 +1524,7 @@ body.drawer-open {
 .x-feat-card h4 {
   font-size: 1.02rem;
   font-weight: 600;
-  color: var(--card-text);
+  color: #fff;
   margin-bottom: 0.4rem;
   letter-spacing: -0.02em;
 }
@@ -1502,7 +1532,7 @@ body.drawer-open {
 .x-feat-card p {
   font-size: 0.9rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.55;
 }
 
@@ -1808,13 +1838,12 @@ body.drawer-open {
 
 /* Form */
 .contact-form {
-  background: var(--white);
-  color: var(--card-text);
-  border: 1px solid var(--card-border-brand);
-  border-top: 3px solid var(--brand);
+  background: #14348a;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
   padding: 1.75rem 1.5rem;
-  box-shadow: 0 12px 32px rgba(12, 36, 97, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
 }
 
 .form-row {
@@ -1832,27 +1861,33 @@ body.drawer-open {
 .form-group label {
   font-size: 0.8rem;
   font-weight: 400;
-  color: var(--card-muted);
+  color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.02em;
 }
 
 .form-group input,
 .form-group select,
 .form-group textarea {
-  border: 1px solid var(--card-border);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: var(--radius);
   padding: 0.65rem 0.85rem;
-  background: #f9f8f6;
-  color: var(--card-text);
+  background: rgba(12, 36, 97, 0.55);
+  color: #fff;
   font-weight: 400;
-  transition: border-color 0.2s;
+  transition: border-color 0.2s, background 0.2s;
   outline: none;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
   border-color: var(--accent);
+  background: rgba(12, 36, 97, 0.75);
 }
 
 .form-group textarea {
@@ -1862,10 +1897,27 @@ body.drawer-open {
 
 .form-group select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b6b6b' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b8c9f0' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.85rem center;
   padding-right: 2rem;
+}
+
+.form-group select option {
+  background: #14348a;
+  color: #fff;
+}
+
+.contact-form .btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #0c2461;
+}
+
+.contact-form .btn-primary:hover {
+  background: #8fb0ff;
+  border-color: #8fb0ff;
+  color: #0c2461;
 }
 
 /* ---------- Footer ---------- */
