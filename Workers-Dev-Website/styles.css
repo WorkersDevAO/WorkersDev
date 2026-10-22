@@ -1398,7 +1398,7 @@ body.drawer-open {
 .plans-x-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 2.75rem;
+  margin: 0 auto 2.25rem;
 }
 
 .plans-x-title {
@@ -1415,6 +1415,32 @@ body.drawer-open {
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.6;
+}
+
+.plans-x-dashboard {
+  max-width: 920px;
+  margin: 0 auto 3.25rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow:
+    0 0 0 1px rgba(107, 155, 255, 0.06),
+    0 24px 64px rgba(0, 0, 0, 0.45),
+    0 8px 24px rgba(12, 36, 97, 0.35);
+  background: #0a0f1a;
+}
+
+.plans-x-dashboard img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@media (min-width: 720px) {
+  .plans-x-dashboard {
+    border-radius: 20px;
+    margin-bottom: 3.75rem;
+  }
 }
 
 .plans-x-grid {
