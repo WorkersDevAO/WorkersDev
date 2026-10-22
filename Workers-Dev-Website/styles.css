@@ -1233,19 +1233,19 @@ body.drawer-open {
 }
 
 .plans-x-title {
-  font-size: clamp(1.75rem, 4.5vw, 2.55rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-size: clamp(1.9rem, 5vw, 2.85rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
   color: var(--navy);
-  line-height: 1.2;
-  margin-bottom: 0.85rem;
+  line-height: 1.12;
+  margin-bottom: 0.9rem;
 }
 
 .plans-x-sub {
-  font-size: 0.98rem;
-  font-weight: 300;
+  font-size: 1rem;
+  font-weight: 400;
   color: var(--text-muted);
-  line-height: 1.65;
+  line-height: 1.6;
 }
 
 .plans-x-grid {
@@ -1307,10 +1307,10 @@ body.drawer-open {
   right: 1rem;
   background: var(--accent);
   color: #fff;
-  font-size: 0.68rem;
-  font-weight: 500;
-  letter-spacing: 0.04em;
-  padding: 0.28rem 0.65rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  padding: 0.3rem 0.7rem;
   border-radius: 999px;
 }
 
@@ -1319,10 +1319,10 @@ body.drawer-open {
 }
 
 .x-plan-name {
-  font-size: 1.15rem;
-  font-weight: 500;
+  font-size: 1.2rem;
+  font-weight: 600;
   color: var(--navy);
-  letter-spacing: -0.015em;
+  letter-spacing: -0.025em;
   margin-bottom: 0.75rem;
 }
 
@@ -1334,34 +1334,34 @@ body.drawer-open {
 }
 
 .x-plan-amount {
-  font-size: clamp(1.85rem, 3vw, 2.15rem);
-  font-weight: 500;
-  letter-spacing: -0.03em;
+  font-size: clamp(2rem, 3.2vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.045em;
   color: var(--navy);
   line-height: 1;
 }
 
 .x-plan-unit {
-  font-size: 0.95rem;
-  font-weight: 400;
+  font-size: 1rem;
+  font-weight: 500;
   color: var(--text-muted);
 }
 
 .x-plan-billing {
-  font-size: 0.8rem;
-  font-weight: 300;
+  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--text-muted);
   margin-bottom: 0.2rem;
 }
 
 .x-plan-maint {
-  font-size: 0.82rem;
-  font-weight: 300;
+  font-size: 0.84rem;
+  font-weight: 400;
   color: var(--text-muted);
 }
 
 .x-plan-maint strong {
-  font-weight: 500;
+  font-weight: 600;
   color: var(--text);
 }
 
@@ -1376,8 +1376,8 @@ body.drawer-open {
 }
 
 .x-plan-ideal {
-  font-size: 0.82rem;
-  font-weight: 300;
+  font-size: 0.84rem;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.5;
   margin-bottom: 1rem;
@@ -1398,8 +1398,8 @@ body.drawer-open {
 .x-plan-features li {
   position: relative;
   padding-left: 1.35rem;
-  font-size: 0.88rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--text);
   line-height: 1.45;
 }
@@ -1416,18 +1416,18 @@ body.drawer-open {
 
 .plans-x-trust {
   text-align: center;
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.04em;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
   color: var(--text-muted);
   margin: 2.75rem 0 2.5rem;
 }
 
 .plans-x-features-title {
   text-align: center;
-  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-  font-weight: 500;
-  letter-spacing: -0.02em;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
   color: var(--navy);
   margin-bottom: 1.75rem;
 }
@@ -1469,16 +1469,16 @@ body.drawer-open {
 }
 
 .x-feat-card h4 {
-  font-size: 0.98rem;
-  font-weight: 500;
+  font-size: 1.02rem;
+  font-weight: 600;
   color: var(--navy);
   margin-bottom: 0.4rem;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
 }
 
 .x-feat-card p {
-  font-size: 0.88rem;
-  font-weight: 300;
+  font-size: 0.9rem;
+  font-weight: 400;
   color: var(--text-muted);
   line-height: 1.55;
 }
