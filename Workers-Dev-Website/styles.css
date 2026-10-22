@@ -704,6 +704,13 @@ body.drawer-open {
   background: var(--bg);
 }
 
+/* Quote nested inside tools / features block */
+.plans-x-quote.testimonial {
+  padding: 4rem 0 0;
+  margin-top: 3.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
 .testimonial-inner {
   max-width: 720px;
   margin: 0 auto;
@@ -777,6 +784,11 @@ body.drawer-open {
 @media (min-width: 720px) {
   .testimonial {
     padding: 7.5rem 0 8rem;
+  }
+
+  .plans-x-quote.testimonial {
+    padding: 5rem 0 0;
+    margin-top: 4.5rem;
   }
 }
 
@@ -1933,6 +1945,114 @@ body.drawer-open {
     font-size: 0.95rem;
     line-height: 1.55;
   }
+}
+
+/* ---------- Expanded feature blocks (X Premium Business style) ---------- */
+.expand-blocks {
+  margin-top: 4rem;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 720px) {
+  .expand-blocks {
+    margin-top: 5.5rem;
+  }
+}
+
+.expand-block {
+  margin-bottom: 5rem;
+}
+
+@media (min-width: 720px) {
+  .expand-block {
+    margin-bottom: 6.5rem;
+  }
+}
+
+.expand-block-title {
+  font-size: clamp(1.75rem, 4vw, 2.35rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 2.5rem;
+}
+
+.expand-feature {
+  margin-bottom: 1.5rem;
+}
+
+.expand-feature-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  margin-bottom: 0.85rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.expand-feature-icon svg {
+  display: block;
+}
+
+.expand-feature h4 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.45rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 720px) {
+  .expand-feature h4 {
+    font-size: 1.25rem;
+  }
+}
+
+.expand-feature p {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.55;
+  max-width: 36rem;
+}
+
+.expand-mockup {
+  margin: 1.75rem 0 3rem;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #0a0f1a;
+  box-shadow:
+    0 0 0 1px rgba(107, 155, 255, 0.04),
+    0 20px 48px rgba(0, 0, 0, 0.4);
+}
+
+@media (min-width: 720px) {
+  .expand-mockup {
+    margin: 2rem 0 3.5rem;
+    border-radius: 18px;
+  }
+}
+
+.expand-mockup img {
+  display: block;
+  width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+.expand-more {
+  text-align: center;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #fff;
+  margin: 1rem 0 0;
 }
 
 /* ---------- Plans (legacy photo cards, kept if referenced) ---------- */
