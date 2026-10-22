@@ -17,85 +17,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Announcement bar -->
-  <a href="#planos" class="announce-bar" id="announceBar">
-    <span data-i18n="announce.before">Planos a partir de</span>
-    <span class="announce-accent">20.000 Kz</span>
-    <span data-i18n="announce.after">· Construção + manutenção</span>
-  </a>
-
-  <!-- Header -->
-  <header class="header" id="siteHeader">
-    <div class="header-bar">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
-
-      <a href="#inicio" class="brand" aria-label="Workers Dev">
-        <span class="brand-name">Workers Dev</span>
-        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
-      </a>
-
-      <div class="header-actions">
-        <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
-          <span id="langLabel">EN</span>
-        </button>
+  <!-- Minimal top brand (X Premium Business style) -->
+  <header class="top-brand" id="inicio">
+    <div class="container top-brand-inner">
+      <div class="top-brand-mark">
+        <img class="top-brand-logo" src="assets/favicon-48.png" alt="" width="28" height="28">
+        <span class="top-brand-phrase" data-i18n="brand.phrase">True greatness is serving others</span>
       </div>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span id="langLabel">EN</span>
+      </button>
     </div>
-
-    <nav class="nav-desktop" aria-label="Main">
-      <a href="#inicio" class="nav-link" data-i18n="nav.home">Início</a>
-      <a href="#clientes" class="nav-link" data-i18n="nav.clients">Clientes</a>
-      <a href="#sobre" class="nav-link" data-i18n="nav.about">Sobre</a>
-      <a href="#como-funciona" class="nav-link" data-i18n="nav.how">Como funciona</a>
-      <a href="#planos" class="nav-link" data-i18n="nav.plans">Planos</a>
-      <a href="#site-proprio" class="nav-link" data-i18n="nav.own">Site próprio</a>
-      <a href="#contacto" class="nav-link" data-i18n="nav.contact">Contacto</a>
-    </nav>
   </header>
 
-  <!-- Mobile drawer -->
-  <div class="nav-overlay" id="navOverlay" hidden></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true">
-    <div class="drawer-head">
-      <a href="#inicio" class="brand brand--drawer">
-        <span class="brand-name">Workers Dev</span>
-        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
-      </a>
-      <button class="drawer-close" id="drawerClose" aria-label="Close menu">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="#inicio" class="drawer-link" data-i18n="nav.home">Início</a>
-      <a href="#clientes" class="drawer-link" data-i18n="nav.clients">Clientes</a>
-      <a href="#sobre" class="drawer-link" data-i18n="nav.about">Sobre</a>
-      <a href="#como-funciona" class="drawer-link" data-i18n="nav.how">Como funciona</a>
-      <a href="#planos" class="drawer-link" data-i18n="nav.plans">Planos</a>
-      <a href="#site-proprio" class="drawer-link" data-i18n="nav.own">Site próprio</a>
-      <a href="#contacto" class="drawer-link" data-i18n="nav.contact">Contacto</a>
-    </nav>
-    <div class="drawer-foot">
-      <a href="https://wa.me/244943278361" class="drawer-cta" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="mailto:workersdevao@gmail.com" class="drawer-cta drawer-cta--ghost">E-mail</a>
-    </div>
-  </aside>
-
   <main>
-    <!-- Hero -->
-    <section class="hero" id="inicio" aria-label="Workers Dev">
-      <div class="hero-bg" aria-hidden="true"></div>
-      <div class="hero-overlay" aria-hidden="true"></div>
-    </section>
-
     <!-- Plans (X-style block) -->
     <section class="section plans-x" id="planos">
       <div class="container">
         <div class="plans-x-header">
-          <h2 class="plans-x-title" data-i18n="plans.x.title">O caminho mais rápido para o seu negócio online</h2>
+          <h1 class="plans-x-title" data-i18n="plans.x.title">O caminho mais rápido para o seu negócio online</h1>
           <p class="plans-x-sub" data-i18n="plans.x.sub">Construção (pagamento único) + manutenção mensal. Preços em Kwanzas (Kz). WhatsApp e/ou e-mail em todos os planos.</p>
         </div>
 
@@ -167,142 +107,120 @@
           </article>
         </div>
 
-        <p class="plans-x-trust" data-i18n="plans.x.trust">+100 sites online · confiável para negócios em Angola</p>
+        <!-- Trusted by · continuous scroll (images only) -->
+        <div class="trusted-block" id="clientes">
+          <p class="trusted-heading" data-i18n="plans.x.trust">Confiável para dezenas de negócios</p>
+          <div class="trusted-marquee" aria-label="Sites de clientes">
+            <div class="trusted-track">
+              <a class="trusted-item" href="https://www.wakandatraining.com" target="_blank" rel="noopener">
+                <img src="assets/clients/wakanda.jpg" alt="Wakanda Training" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/decifer.jpg" alt="Decifer" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://naravazzdiversos.storengola.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/naravazz.jpg" alt="Nara Vazz" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://academiasemente.pages.dev/" target="_blank" rel="noopener">
+                <img src="assets/clients/academiasemente.jpg" alt="Academia Semente" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://colegiolapidar.educationgola.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/colegiolapidar.jpg" alt="Colégio Lapidar" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eliangocosmetico.beautyaoa.workers.dev/" target="_blank" rel="noopener">
+                <img src="assets/clients/eliango.jpg" alt="Eliango Cosmético" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://marimaraspaz.beautyaoa.workers.dev/" target="_blank" rel="noopener">
+                <img src="assets/clients/marimaraspaz.jpg" alt="Marimaras Paz" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://www.attituderunclub.com" target="_blank" rel="noopener">
+                <img src="assets/clients/attituderunclub.jpg" alt="Attitude Run Club" loading="lazy" width="400" height="248">
+              </a>
+              <!-- duplicate set for seamless loop -->
+              <a class="trusted-item" href="https://www.wakandatraining.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/wakanda.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/decifer.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://naravazzdiversos.storengola.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/naravazz.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://academiasemente.pages.dev/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/academiasemente.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://colegiolapidar.educationgola.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/colegiolapidar.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eliangocosmetico.beautyaoa.workers.dev/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/eliango.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://marimaraspaz.beautyaoa.workers.dev/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/marimaraspaz.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://www.attituderunclub.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/attituderunclub.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+            </div>
+          </div>
+        </div>
 
         <div class="plans-x-features">
           <h3 class="plans-x-features-title" data-i18n="plans.x.featTitle">Ferramentas pensadas para o seu crescimento</h3>
           <div class="plans-x-feat-grid">
             <article class="x-feat-card">
-              <div class="x-feat-icon" aria-hidden="true">📱</div>
-              <h4 data-i18n="plans.x.feat1.title">Mobile first</h4>
-              <p data-i18n="plans.x.feat1.desc">Sites rápidos e pensados para telemóvel, onde os seus clientes estão.</p>
+              <div class="x-feat-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="7" height="9" rx="1"/>
+                  <rect x="14" y="3" width="7" height="5" rx="1"/>
+                  <rect x="14" y="12" width="7" height="9" rx="1"/>
+                  <rect x="3" y="16" width="7" height="5" rx="1"/>
+                </svg>
+              </div>
+              <h4 data-i18n="plans.x.feat1.title">Dashboard para clientes</h4>
+              <p data-i18n="plans.x.feat1.desc">Área de cliente onde os seus clientes acompanham pedidos, reservas ou progresso — sem telefonemas desnecessários.</p>
             </article>
             <article class="x-feat-card">
-              <div class="x-feat-icon" aria-hidden="true">💬</div>
-              <h4 data-i18n="plans.x.feat2.title">WhatsApp e e-mail</h4>
-              <p data-i18n="plans.x.feat2.desc">Contacto directo em todos os planos. O cliente fala consigo sem fricção.</p>
+              <div class="x-feat-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                  <path d="M9 12l2 2 4-4"/>
+                </svg>
+              </div>
+              <h4 data-i18n="plans.x.feat2.title">Painel de administração</h4>
+              <p data-i18n="plans.x.feat2.desc">Gerir produtos, clientes e recursos do site (imagens e textos) num só lugar, pensado para o dono do negócio.</p>
             </article>
             <article class="x-feat-card">
-              <div class="x-feat-icon" aria-hidden="true">⚡</div>
-              <h4 data-i18n="plans.x.feat3.title">Construção + manutenção</h4>
-              <p data-i18n="plans.x.feat3.desc">Pagamento único de construção e gestão mensal incluída. Sem surpresas.</p>
+              <div class="x-feat-icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7"/>
+                  <path d="M21 21l-4.3-4.3"/>
+                  <path d="M11 8v6M8 11h6"/>
+                </svg>
+              </div>
+              <h4 data-i18n="plans.x.feat3.title">Optimização SEO</h4>
+              <p data-i18n="plans.x.feat3.desc">Estrutura e conteúdos preparados para o site aparecer mais facilmente nos motores de busca.</p>
             </article>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Clients -->
-    <section class="section clients-section" id="clientes">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow" data-i18n="clients.eyebrow">Clientes</p>
-          <h2 class="section-title" data-i18n="clients.title">Sites que construímos</h2>
-          <p class="section-desc" data-i18n="clients.desc">Alguns dos projectos online, clique para visitar.</p>
-        </div>
-      </div>
-
-      <div class="clients-carousel" id="clientsCarousel">
-        <button class="carousel-btn carousel-btn--prev" id="clientsPrev" aria-label="Anterior" type="button">
-          <span aria-hidden="true">‹</span>
-        </button>
-
-        <div class="carousel-viewport">
-          <div class="carousel-track" id="clientsTrack">
-            <a class="client-card" href="https://www.wakandatraining.com" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/wakanda.jpg" alt="Wakanda Training" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.wakanda.type">Ginásio</span>
-                <span class="client-name">Wakanda Training</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/decifer.jpg" alt="Decifer Sport Resort" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.decifer.type">Resort desportivo</span>
-                <span class="client-name">Decifer</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://naravazzdiversos.storengola.workers.dev" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/naravazz.jpg" alt="Nara Vazz" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.naravazz.type">Cosméticos</span>
-                <span class="client-name">Nara Vazz</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://academiasemente.pages.dev/" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/academiasemente.jpg" alt="Academia Semente" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.semente.type">Escola de inglês</span>
-                <span class="client-name">Academia Semente</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://colegiolapidar.educationgola.workers.dev" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/colegiolapidar.jpg" alt="Colégio Lapidar" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.lapidar.type">Colégio</span>
-                <span class="client-name">Colégio Lapidar</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://eliangocosmetico.beautyaoa.workers.dev/" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/eliango.jpg" alt="Eliango Cosmético" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.eliango.type">Salão de beleza</span>
-                <span class="client-name">Eliango Cosmético</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://marimaraspaz.beautyaoa.workers.dev/" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/marimaraspaz.jpg" alt="Marimaras Paz" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.mari.type">Salão de beleza</span>
-                <span class="client-name">Marimaras Paz</span>
-              </div>
-            </a>
-            <a class="client-card" href="https://www.attituderunclub.com" target="_blank" rel="noopener">
-              <div class="client-card-media">
-                <img src="assets/clients/attituderunclub.jpg" alt="Attitude Run Club" loading="lazy" width="800" height="496">
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.attitude.type">Clube de corrida</span>
-                <span class="client-name">Attitude Run Club</span>
-              </div>
-            </a>
-            <div class="client-card client-card--more" role="group" aria-label="+100 sites online">
-              <div class="client-card-media client-card-media--more">
-                <div class="client-more-inner">
-                  <span class="client-more-stat">+100</span>
-                  <span class="client-more-label" data-i18n="clients.more.label">sites online</span>
-                  <span class="client-more-sub" data-i18n="clients.more.sub">e a contar</span>
-                </div>
-              </div>
-              <div class="client-card-body">
-                <span class="client-type" data-i18n="clients.more.type">Comunidade</span>
-                <span class="client-name" data-i18n="clients.more.name">Muitos mais projectos</span>
-              </div>
-            </div>
+    <!-- Client testimonial (X Premium Business style) -->
+    <section class="testimonial" id="testemunho" aria-label="Testemunho de cliente">
+      <div class="container testimonial-inner">
+        <span class="testimonial-mark" aria-hidden="true">“</span>
+        <blockquote class="testimonial-quote">
+          <p data-i18n="testimonial.quote" data-i18n-html>Antes de mais, quero agradecer-te pelo website que desenvolveste. Está <em>muito bonito, elegante</em> e <em>superou as minhas expectativas</em>! Há apenas alguns aspectos que precisaremos de melhorar, mas, no geral, está mesmo muito, mas muito lindo. Muito obrigada pelo excelente trabalho!</p>
+        </blockquote>
+        <div class="testimonial-author">
+          <img class="testimonial-avatar" src="assets/clients/naravazz-logo.jpg" alt="Nara Vazz" width="48" height="48">
+          <div class="testimonial-meta">
+            <span class="testimonial-name">Nara Vazz</span>
+            <span class="testimonial-role" data-i18n="testimonial.role">Cliente · Cosméticos</span>
           </div>
         </div>
-
-        <button class="carousel-btn carousel-btn--next" id="clientsNext" aria-label="Seguinte" type="button">
-          <span aria-hidden="true">›</span>
-        </button>
       </div>
-
-      <div class="carousel-dots" id="clientsDots" aria-hidden="true"></div>
     </section>
 
     <!-- Promo CTA, full-bleed -->

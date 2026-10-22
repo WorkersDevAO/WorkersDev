@@ -24,23 +24,10 @@
       'nav.own': 'Site próprio',
       'nav.contact': 'Contacto',
       'brand.tag': 'Sites profissionais',
+      'brand.phrase': 'True greatness is serving others',
       'announce.before': 'Planos a partir de',
       'announce.after': '· Construção + manutenção',
-      'clients.eyebrow': 'Clientes',
-      'clients.title': 'Sites que construímos',
-      'clients.desc': 'Alguns dos projectos online, clique para visitar.',
-      'clients.wakanda.type': 'Ginásio',
-      'clients.decifer.type': 'Resort desportivo',
-      'clients.naravazz.type': 'Cosméticos',
-      'clients.semente.type': 'Escola de inglês',
-      'clients.lapidar.type': 'Colégio',
-      'clients.eliango.type': 'Salão de beleza',
-      'clients.mari.type': 'Salão de beleza',
-      'clients.attitude.type': 'Clube de corrida',
-      'clients.more.label': 'sites online',
-      'clients.more.sub': 'e a contar',
-      'clients.more.type': 'Comunidade',
-      'clients.more.name': 'Muitos mais projectos',
+
       'about.eyebrow': 'Sobre nós',
       'about.title': 'Simples, profissional e focado no cliente',
       'about.p1': 'A Workers Dev cria e gere sites profissionais para serviços e negócios em Angola. Sem jargão técnico, sem complicações, apenas uma presença online limpa, rápida e móvel que o seu cliente consegue usar e partilhar.',
@@ -53,14 +40,16 @@
       'plans.desc': 'Construção (pagamento único) + manutenção mensal. Preços em Kwanzas (Kz). WhatsApp e/ou e-mail em todos os planos.',
       'plans.x.title': 'O caminho mais rápido para o seu negócio online',
       'plans.x.sub': 'Construção (pagamento único) + manutenção mensal. Preços em Kwanzas (Kz). WhatsApp e/ou e-mail em todos os planos.',
-      'plans.x.trust': '+100 sites online · confiável para negócios em Angola',
+      'plans.x.trust': 'Confiável para dezenas de negócios',
       'plans.x.featTitle': 'Ferramentas pensadas para o seu crescimento',
-      'plans.x.feat1.title': 'Mobile first',
-      'plans.x.feat1.desc': 'Sites rápidos e pensados para telemóvel, onde os seus clientes estão.',
-      'plans.x.feat2.title': 'WhatsApp e e-mail',
-      'plans.x.feat2.desc': 'Contacto directo em todos os planos. O cliente fala consigo sem fricção.',
-      'plans.x.feat3.title': 'Construção + manutenção',
-      'plans.x.feat3.desc': 'Pagamento único de construção e gestão mensal incluída. Sem surpresas.',
+      'plans.x.feat1.title': 'Dashboard para clientes',
+      'plans.x.feat1.desc': 'Área de cliente onde os seus clientes acompanham pedidos, reservas ou progresso — sem telefonemas desnecessários.',
+      'plans.x.feat2.title': 'Painel de administração',
+      'plans.x.feat2.desc': 'Gerir produtos, clientes e recursos do site (imagens e textos) num só lugar, pensado para o dono do negócio.',
+      'plans.x.feat3.title': 'Optimização SEO',
+      'plans.x.feat3.desc': 'Estrutura e conteúdos preparados para o site aparecer mais facilmente nos motores de busca.',
+      'testimonial.quote': 'Antes de mais, quero agradecer-te pelo website que desenvolveste. Está <em>muito bonito, elegante</em> e <em>superou as minhas expectativas</em>! Há apenas alguns aspectos que precisaremos de melhorar, mas, no geral, está mesmo muito, mas muito lindo. Muito obrigada pelo excelente trabalho!',
+      'testimonial.role': 'Cliente · Cosméticos',
       'plans.build': 'Construção',
       'plans.maint': 'Manutenção',
       'plans.perMonth': '/mês',
@@ -168,23 +157,9 @@
       'nav.own': 'Own the site',
       'nav.contact': 'Contact',
       'brand.tag': 'Professional sites',
+      'brand.phrase': 'True greatness is serving others',
       'announce.before': 'Plans from',
       'announce.after': '· Build + maintenance',
-      'clients.eyebrow': 'Clients',
-      'clients.title': 'Sites we built',
-      'clients.desc': 'A selection of live projects, click to visit.',
-      'clients.wakanda.type': 'Gym',
-      'clients.decifer.type': 'Sports resort',
-      'clients.naravazz.type': 'Cosmetics',
-      'clients.semente.type': 'English school',
-      'clients.lapidar.type': 'School',
-      'clients.eliango.type': 'Beauty salon',
-      'clients.mari.type': 'Beauty salon',
-      'clients.attitude.type': 'Run club',
-      'clients.more.label': 'websites online',
-      'clients.more.sub': 'and counting',
-      'clients.more.type': 'Community',
-      'clients.more.name': 'Many more projects',
       'about.eyebrow': 'About us',
       'about.title': 'Simple, professional and client-focused',
       'about.p1': 'Workers Dev builds and manages professional websites for services and businesses in Angola. No technical jargon, no complications, just a clean, fast, mobile-ready online presence your clients can use and share.',
@@ -197,14 +172,16 @@
       'plans.desc': 'One-time build + monthly maintenance. Prices in Angolan Kwanza (Kz). WhatsApp and/or email on every plan.',
       'plans.x.title': 'The fastest way to get your business online',
       'plans.x.sub': 'One-time build + monthly maintenance. Prices in Angolan Kwanza (Kz). WhatsApp and/or email on every plan.',
-      'plans.x.trust': '+100 websites online · trusted by businesses in Angola',
+      'plans.x.trust': 'Trusted by dozens of businesses',
       'plans.x.featTitle': 'Tools designed to help you grow',
-      'plans.x.feat1.title': 'Mobile first',
-      'plans.x.feat1.desc': 'Fast sites built for phones, where your customers already are.',
-      'plans.x.feat2.title': 'WhatsApp and email',
-      'plans.x.feat2.desc': 'Direct contact on every plan. Customers reach you without friction.',
-      'plans.x.feat3.title': 'Build + maintenance',
-      'plans.x.feat3.desc': 'One-time build fee and monthly management included. No surprises.',
+      'plans.x.feat1.title': 'Client dashboard',
+      'plans.x.feat1.desc': 'A client area where your customers track orders, bookings or progress — without unnecessary phone calls.',
+      'plans.x.feat2.title': 'Admin panel',
+      'plans.x.feat2.desc': 'Manage products, clients and site resources (images and text) in one place, built for the business owner.',
+      'plans.x.feat3.title': 'SEO optimisation',
+      'plans.x.feat3.desc': 'Structure and content prepared so the site is easier to find on search engines.',
+      'testimonial.quote': 'First of all, I want to thank you for the website you built. It is <em>very beautiful, elegant</em> and <em>exceeded my expectations</em>! There are just a few details we still need to improve, but overall it is truly very, very lovely. Thank you so much for the excellent work!',
+      'testimonial.role': 'Client · Cosmetics',
       'plans.build': 'Build',
       'plans.maint': 'Maintenance',
       'plans.perMonth': '/mo',
@@ -321,6 +298,8 @@
           el.placeholder = dict[key];
         } else if (el.tagName === 'OPTION') {
           el.textContent = dict[key];
+        } else if (el.hasAttribute('data-i18n-html')) {
+          el.innerHTML = dict[key];
         } else {
           el.textContent = dict[key];
         }
@@ -522,118 +501,6 @@
   /* ---------- Year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  /* ---------- Clients carousel ---------- */
-  (function initClientsCarousel() {
-    const track = document.getElementById('clientsTrack');
-    const prev = document.getElementById('clientsPrev');
-    const next = document.getElementById('clientsNext');
-    const dotsWrap = document.getElementById('clientsDots');
-    if (!track) return;
-
-    const cards = Array.prototype.slice.call(track.querySelectorAll('.client-card'));
-    if (!cards.length) return;
-
-    let index = 0;
-
-    function perView() {
-      const w = window.innerWidth;
-      if (w >= 960) return 3;
-      if (w >= 640) return 2;
-      return 1;
-    }
-
-    function maxIndex() {
-      return Math.max(0, cards.length - perView());
-    }
-
-    function goTo(i) {
-      index = Math.max(0, Math.min(i, maxIndex()));
-      const card = cards[0];
-      const gap = 20;
-      const step = card.getBoundingClientRect().width + gap;
-      track.style.transform = 'translateX(' + (-index * step) + 'px)';
-      if (dotsWrap) {
-        const dots = dotsWrap.querySelectorAll('.carousel-dot');
-        dots.forEach(function (d, di) {
-          d.classList.toggle('is-active', di === index);
-        });
-      }
-    }
-
-    function buildDots() {
-      if (!dotsWrap) return;
-      dotsWrap.innerHTML = '';
-      const count = maxIndex() + 1;
-      for (var i = 0; i < count; i++) {
-        (function (di) {
-          const b = document.createElement('button');
-          b.type = 'button';
-          b.className = 'carousel-dot' + (di === index ? ' is-active' : '');
-          b.setAttribute('aria-label', 'Slide ' + (di + 1));
-          b.addEventListener('click', function () { stopAuto(); goTo(di); startAuto(); });
-          dotsWrap.appendChild(b);
-        })(i);
-      }
-    }
-
-    if (prev) prev.addEventListener('click', function () { stopAuto(); goTo(index - 1); startAuto(); });
-    if (next) next.addEventListener('click', function () { stopAuto(); goTo(index + 1); startAuto(); });
-
-    let resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        buildDots();
-        goTo(Math.min(index, maxIndex()));
-      }, 120);
-    });
-
-    /* touch swipe */
-    let startX = 0;
-    let deltaX = 0;
-    track.addEventListener('touchstart', function (e) {
-      startX = e.touches[0].clientX;
-      deltaX = 0;
-      stopAuto();
-    }, { passive: true });
-    track.addEventListener('touchmove', function (e) {
-      deltaX = e.touches[0].clientX - startX;
-    }, { passive: true });
-    track.addEventListener('touchend', function () {
-      if (Math.abs(deltaX) > 50) {
-        if (deltaX < 0) goTo(index + 1);
-        else goTo(index - 1);
-      }
-      startAuto();
-    });
-
-    /* auto-scroll every 4s, pause on hover */
-    let autoTimer = null;
-    function startAuto() {
-      stopAuto();
-      autoTimer = setInterval(function () {
-        if (index >= maxIndex()) goTo(0);
-        else goTo(index + 1);
-      }, 4000);
-    }
-    function stopAuto() {
-      if (autoTimer) {
-        clearInterval(autoTimer);
-        autoTimer = null;
-      }
-    }
-
-    const carousel = document.getElementById('clientsCarousel');
-    if (carousel) {
-      carousel.addEventListener('mouseenter', stopAuto);
-      carousel.addEventListener('mouseleave', startAuto);
-    }
-
-    buildDots();
-    goTo(0);
-    startAuto();
-  })();
 
   /* Init */
   setLanguage('pt');
