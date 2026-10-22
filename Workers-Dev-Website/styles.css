@@ -1400,6 +1400,286 @@ body.drawer-open {
   line-height: 1.55;
 }
 
+/* ---------- Site próprio · X-style layout ---------- */
+.own-section {
+  background: var(--bg);
+}
+
+.own-x {
+  max-width: 720px;
+}
+
+.own-x-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.own-x-title {
+  font-size: clamp(1.75rem, 4.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.own-x-sub {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.55;
+  max-width: 34rem;
+  margin: 0 auto;
+}
+
+.own-x-options {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+}
+
+@media (min-width: 720px) {
+  .own-x-options {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+}
+
+.own-x-option {
+  background: #0f2a6e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+}
+
+.own-x-option--highlight {
+  border-color: rgba(107, 155, 255, 0.35);
+  box-shadow: 0 0 0 1px rgba(107, 155, 255, 0.08);
+}
+
+.own-x-option h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
+}
+
+.own-x-option-sub {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 1.25rem;
+}
+
+.own-x-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.own-x-list li {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.4;
+  padding-left: 1.35rem;
+  position: relative;
+}
+
+.own-x-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.45em;
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: rgba(107, 155, 255, 0.7);
+}
+
+.own-x-buy {
+  margin-bottom: 2.5rem;
+}
+
+.own-x-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.own-x-buy-title {
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.own-x-buy-lead {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  max-width: 36rem;
+}
+
+.own-x-checks {
+  list-style: none;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.own-x-checks li {
+  font-size: 0.92rem;
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.45;
+  padding-left: 1.75rem;
+  position: relative;
+}
+
+.own-x-checks li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #6b9bff;
+  font-weight: 600;
+}
+
+.own-x-prices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.own-x-chip {
+  display: inline-block;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.own-x-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 4rem;
+  align-items: stretch;
+}
+
+@media (min-width: 600px) {
+  .own-x-cta-row {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.own-x-fee {
+  background: #0f2a6e;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  flex: 1;
+}
+
+.own-x-fee-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 0.35rem;
+}
+
+.own-x-fee-price {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.35rem;
+}
+
+.own-x-fee-price span {
+  color: #fff;
+}
+
+.own-x-fee-note {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  margin-bottom: 0.4rem;
+}
+
+.own-x-fee-free {
+  font-size: 0.8rem;
+  color: rgba(107, 155, 255, 0.9);
+  line-height: 1.4;
+}
+
+.own-x-btn {
+  flex-shrink: 0;
+  white-space: nowrap;
+  border-radius: 999px;
+  padding: 0.85rem 1.75rem;
+}
+
+.own-x-rules-title {
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  margin-bottom: 1.75rem;
+}
+
+.own-x-rules-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.own-x-rule {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.own-x-rule-num {
+  flex-shrink: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.04em;
+  padding-top: 0.15rem;
+}
+
+.own-x-rule h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.015em;
+}
+
+.own-x-rule p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.58);
+  line-height: 1.5;
+}
+
 /* ---------- Plans (X-style, light) ---------- */
 .plans-x {
   background: var(--bg);
@@ -2115,6 +2395,35 @@ body.drawer-open {
   line-height: 1.5;
   max-width: 22rem;
   margin: 0 auto;
+}
+
+/* Bottom join CTA + repeated plans */
+.plans-join {
+  margin-top: 5rem;
+  padding-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (min-width: 720px) {
+  .plans-join {
+    margin-top: 6.5rem;
+    padding-top: 5rem;
+  }
+}
+
+.plans-join-title {
+  text-align: center;
+  font-size: clamp(1.65rem, 4vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: #fff;
+  line-height: 1.15;
+  max-width: 28rem;
+  margin: 0 auto 2rem;
+}
+
+.plans-billing--join {
+  margin-bottom: 2.5rem;
 }
 
 /* ---------- Plans (legacy photo cards, kept if referenced) ---------- */

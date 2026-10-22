@@ -73,6 +73,7 @@
       'expand.more.f2.desc': 'Gerir produtos, clientes e recursos do site (imagens e textos) num só lugar, pensado para o dono do negócio.',
       'expand.more.f3.title': 'Optimização SEO',
       'expand.more.f3.desc': 'Estrutura e conteúdos preparados para o site aparecer mais facilmente nos motores de busca.',
+      'plans.join.title': 'Junte-se aos sites que mais crescem na internet',
       'plans.build': 'Construção',
       'plans.maint': 'Manutenção',
       'plans.perMonth': '/mês',
@@ -233,6 +234,7 @@
       'expand.more.f2.desc': 'Manage products, clients and site resources (images and text) in one place, built for the business owner.',
       'expand.more.f3.title': 'SEO optimisation',
       'expand.more.f3.desc': 'Structure and content prepared so the site is easier to find on search engines.',
+      'plans.join.title': 'Join the fastest growing sites on the internet',
       'plans.build': 'Build',
       'plans.maint': 'Maintenance',
       'plans.perMonth': '/mo',
@@ -558,12 +560,12 @@
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* ---------- Billing toggle (annual / monthly, 16% off annual) ---------- */
+  /* ---------- Billing toggle (annual / monthly, 16% off annual) — supports multiple toggles ---------- */
   (function initBillingToggle() {
-    const annualBtn = document.getElementById('billingAnnual');
-    const monthlyBtn = document.getElementById('billingMonthly');
+    const annualBtns = document.querySelectorAll('.billing-opt[data-billing="annual"]');
+    const monthlyBtns = document.querySelectorAll('.billing-opt[data-billing="monthly"]');
     const cards = document.querySelectorAll('.x-plan-card[data-maint-monthly]');
-    if (!annualBtn || !monthlyBtn || !cards.length) return;
+    if (!annualBtns.length || !monthlyBtns.length || !cards.length) return;
 
     function formatKz(n) {
       return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
@@ -571,8 +573,8 @@
 
     function setBilling(mode) {
       const isAnnual = mode === 'annual';
-      annualBtn.classList.toggle('is-active', isAnnual);
-      monthlyBtn.classList.toggle('is-active', !isAnnual);
+      annualBtns.forEach(function (btn) { btn.classList.toggle('is-active', isAnnual); });
+      monthlyBtns.forEach(function (btn) { btn.classList.toggle('is-active', !isAnnual); });
 
       cards.forEach(function (card) {
         const monthly = parseInt(card.getAttribute('data-maint-monthly'), 10);
@@ -594,8 +596,12 @@
       });
     }
 
-    annualBtn.addEventListener('click', function () { setBilling('annual'); });
-    monthlyBtn.addEventListener('click', function () { setBilling('monthly'); });
+    annualBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () { setBilling('annual'); });
+    });
+    monthlyBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () { setBilling('monthly'); });
+    });
     setBilling('annual');
   })();
 
