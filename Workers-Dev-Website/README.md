@@ -1,4 +1,4 @@
-# Workers Dev — Website
+# Workers Dev Website
 
 Marketing site for **Workers Dev**, an agency that builds and hosts professional websites for services and businesses in Angola.
 
@@ -13,11 +13,12 @@ Marketing site for **Workers Dev**, an agency that builds and hosts professional
 ```text
 Workers-Dev-Website/
 ├── index.html          # Page markup
-├── styles.css          # Minimalist Luxury styles
+├── styles.css          # Brand styles (blue background, white cards)
 ├── script.js           # i18n, header, carousel, contact form
 ├── favicon.png
 ├── assets/
 │   ├── clients/        # Project screenshots (carousel)
+│   ├── promo-loja-online.jpg
 │   ├── logo.png
 │   ├── Moto.jpg        # Hero background
 │   └── favicons…
@@ -28,13 +29,15 @@ Workers-Dev-Website/
 
 ## Sections
 
-1. Announcement bar + transparent/solid header  
+1. Announcement bar + header  
 2. Hero (full-bleed image)  
-3. **Clientes** — carousel of live projects  
-4. Sobre  
-5. Como funciona (process)  
-6. Planos (prices)  
-7. Contacto — form + WhatsApp / email  
+3. **Planos** (X-style pricing cards + feature cards + trust line)  
+4. **Clientes** (carousel of live projects, including +100 placeholder)  
+5. Promo CTA (full-bleed)  
+6. Sobre  
+7. Como funciona  
+8. **Site próprio** (managed vs ownership comparison + rules)  
+9. Contacto (form + WhatsApp / email)  
 
 ---
 
@@ -45,6 +48,8 @@ Workers-Dev-Website/
 | **Básico** | 20.000 Kz | 2.500 Kz |
 | **Profissional** | 42.000 Kz | 5.000 Kz |
 | **Empresa** | 100.000 Kz | 12.000 Kz |
+
+**Site próprio:** one-time = build price of the chosen plan. Full file transfer, no monthly fee. Free adjustments for 14 days after transfer, then **3.000 Kz** per change.
 
 Heavy custom work (full e-commerce, advanced systems) is quoted separately.
 
@@ -118,4 +123,6 @@ After deploy, hard-refresh if assets or `script.js` look cached.
 
 - Name: **Workers Dev**  
 - Text wordmark on the site (no logo image in the header)  
-- Style: Minimalist Luxury — thin lines, cream background, charcoal text, blue accent  
+- Page background: brand blue (`#0c2461`)  
+- Cards and panels: white, elevated  
+- Accent: lighter blue on the page (`#6b9bff`), primary blue on cards (`#1a56db`)  

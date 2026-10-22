@@ -1,4 +1,4 @@
-/* Workers Dev — minimal interactions */
+/* Workers Dev: minimal interactions */
 
 (function () {
   'use strict';
@@ -28,7 +28,7 @@
       'announce.after': '· Construção + manutenção',
       'clients.eyebrow': 'Clientes',
       'clients.title': 'Sites que construímos',
-      'clients.desc': 'Alguns dos projectos online — clique para visitar.',
+      'clients.desc': 'Alguns dos projectos online, clique para visitar.',
       'clients.wakanda.type': 'Ginásio',
       'clients.decifer.type': 'Resort desportivo',
       'clients.naravazz.type': 'Cosméticos',
@@ -43,7 +43,7 @@
       'clients.more.name': 'Muitos mais projectos',
       'about.eyebrow': 'Sobre nós',
       'about.title': 'Simples, profissional e focado no cliente',
-      'about.p1': 'A Workers Dev cria e gere sites profissionais para serviços e negócios em Angola. Sem jargão técnico, sem complicações — apenas uma presença online limpa, rápida e móvel que o seu cliente consegue usar e partilhar.',
+      'about.p1': 'A Workers Dev cria e gere sites profissionais para serviços e negócios em Angola. Sem jargão técnico, sem complicações, apenas uma presença online limpa, rápida e móvel que o seu cliente consegue usar e partilhar.',
       'about.p2': 'Trabalhamos com salões, lojas, freelancers, imobiliárias, ofícios e outros negócios que precisam de estar online de forma organizada e profissional.',
       'about.point1': 'Sites rápidos e pensados para telemóvel',
       'about.point2': 'Contacto por WhatsApp e/ou e-mail em todos os planos',
@@ -53,10 +53,10 @@
       'plans.desc': 'Construção (pagamento único) + manutenção mensal. Preços em Kwanzas (Kz). WhatsApp e/ou e-mail em todos os planos.',
       'plans.x.title': 'O caminho mais rápido para o seu negócio online',
       'plans.x.sub': 'Construção (pagamento único) + manutenção mensal. Preços em Kwanzas (Kz). WhatsApp e/ou e-mail em todos os planos.',
-      'plans.x.trust': '— +100 sites online · confiável para negócios em Angola —',
+      'plans.x.trust': '+100 sites online · confiável para negócios em Angola',
       'plans.x.featTitle': 'Ferramentas pensadas para o seu crescimento',
       'plans.x.feat1.title': 'Mobile first',
-      'plans.x.feat1.desc': 'Sites rápidos e pensados para telemóvel — onde os seus clientes estão.',
+      'plans.x.feat1.desc': 'Sites rápidos e pensados para telemóvel, onde os seus clientes estão.',
       'plans.x.feat2.title': 'WhatsApp e e-mail',
       'plans.x.feat2.desc': 'Contacto directo em todos os planos. O cliente fala consigo sem fricção.',
       'plans.x.feat3.title': 'Construção + manutenção',
@@ -66,7 +66,7 @@
       'plans.perMonth': '/mês',
       'plans.cta': 'Quero este plano',
       'plans.ctaQuote': 'Pedir orçamento',
-      'plans.basico.ideal': 'Presença online clara com formulário de inscrição ou pedidos — sem login, sem base de dados',
+      'plans.basico.ideal': 'Presença online clara com formulário de inscrição ou pedidos, sem login, sem base de dados',
       'plans.basico.f1': 'Site profissional e mobile',
       'plans.basico.f2': 'Formulário de inscrição / pedidos',
       'plans.basico.f3': 'Contacto por WhatsApp e/ou e-mail',
@@ -78,7 +78,7 @@
       'plans.pro.f3': 'Área de cliente (dashboard)',
       'plans.pro.f4': 'Reservas / pedidos + base de dados',
       'plans.pro.f5': 'Actualizações e suporte prioritários',
-      'plans.empresa.ideal': 'Sistemas multi-utilizador (ex.: colégios, equipas) — perfis, capacidade, à medida e suporte prioritário',
+      'plans.empresa.ideal': 'Sistemas multi-utilizador (ex.: colégios, equipas), perfis, capacidade, à medida e suporte prioritário',
       'plans.empresa.f1': 'Tudo o que está no Profissional',
       'plans.empresa.f2': 'Vários tipos de utilizador (ex.: alunos, funcionários)',
       'plans.empresa.f3': 'Maior capacidade e funcionalidades à medida',
@@ -99,7 +99,7 @@
       'contact.email': 'E-mail',
       'own.eyebrow': 'Alternativa',
       'own.title': 'Plano gerido ou Site próprio?',
-      'own.desc': 'Duas formas de ter o site: nós gerimos por si todos os meses, ou paga uma vez e fica com o site — ficheiros incluídos, sem mensalidade.',
+      'own.desc': 'Duas formas de ter o site: nós gerimos por si todos os meses, ou paga uma vez e fica com o site, ficheiros incluídos, sem mensalidade.',
       'own.cmp.managed': 'Plano gerido',
       'own.cmp.managedSub': 'Construção + mensalidade',
       'own.cmp.own': 'Site próprio',
@@ -109,7 +109,7 @@
       'own.cmp.r1o': 'Só o valor de construção (uma vez)',
       'own.cmp.r2': 'Quem é dono',
       'own.cmp.r2m': 'Nós alojamos e gerimos o site',
-      'own.cmp.r2o': 'Você — recebe todas as pastas e ficheiros',
+      'own.cmp.r2o': 'Você: recebe todas as pastas e ficheiros',
       'own.cmp.r3': 'Mensalidade',
       'own.cmp.r3m': 'Sim (manutenção + alojamento)',
       'own.cmp.r3o': 'Não',
@@ -124,7 +124,7 @@
       'own.cmp.r6o': 'Quem quer ser dono e não pagar mensal',
       'own.badge': 'Pagamento único',
       'own.headline': 'Compre o site. Fique com tudo.',
-      'own.lead': 'Paga só o valor de construção do plano que escolher. Entregamos todas as pastas e ficheiros — o site passa a ser seu.',
+      'own.lead': 'Paga só o valor de construção do plano que escolher. Entregamos todas as pastas e ficheiros, o site passa a ser seu.',
       'own.f1': 'Pagamento único = preço de construção (Básico, Profissional ou Empresa)',
       'own.f2': 'Transferência completa: código, pastas, imagens e configurações',
       'own.f3': 'Sem mensalidade de manutenção',
@@ -172,7 +172,7 @@
       'announce.after': '· Build + maintenance',
       'clients.eyebrow': 'Clients',
       'clients.title': 'Sites we built',
-      'clients.desc': 'A selection of live projects — click to visit.',
+      'clients.desc': 'A selection of live projects, click to visit.',
       'clients.wakanda.type': 'Gym',
       'clients.decifer.type': 'Sports resort',
       'clients.naravazz.type': 'Cosmetics',
@@ -187,7 +187,7 @@
       'clients.more.name': 'Many more projects',
       'about.eyebrow': 'About us',
       'about.title': 'Simple, professional and client-focused',
-      'about.p1': 'Workers Dev builds and manages professional websites for services and businesses in Angola. No technical jargon, no complications — just a clean, fast, mobile-ready online presence your clients can use and share.',
+      'about.p1': 'Workers Dev builds and manages professional websites for services and businesses in Angola. No technical jargon, no complications, just a clean, fast, mobile-ready online presence your clients can use and share.',
       'about.p2': 'We work with salons, shops, freelancers, real estate, trades and other businesses that need to be online in an organised, professional way.',
       'about.point1': 'Fast, mobile-first websites',
       'about.point2': 'WhatsApp and/or email contact on every plan',
@@ -197,10 +197,10 @@
       'plans.desc': 'One-time build + monthly maintenance. Prices in Angolan Kwanza (Kz). WhatsApp and/or email on every plan.',
       'plans.x.title': 'The fastest way to get your business online',
       'plans.x.sub': 'One-time build + monthly maintenance. Prices in Angolan Kwanza (Kz). WhatsApp and/or email on every plan.',
-      'plans.x.trust': '— +100 websites online · trusted by businesses in Angola —',
+      'plans.x.trust': '+100 websites online · trusted by businesses in Angola',
       'plans.x.featTitle': 'Tools designed to help you grow',
       'plans.x.feat1.title': 'Mobile first',
-      'plans.x.feat1.desc': 'Fast sites built for phones — where your customers already are.',
+      'plans.x.feat1.desc': 'Fast sites built for phones, where your customers already are.',
       'plans.x.feat2.title': 'WhatsApp and email',
       'plans.x.feat2.desc': 'Direct contact on every plan. Customers reach you without friction.',
       'plans.x.feat3.title': 'Build + maintenance',
@@ -210,7 +210,7 @@
       'plans.perMonth': '/mo',
       'plans.cta': 'I want this plan',
       'plans.ctaQuote': 'Request a quote',
-      'plans.basico.ideal': 'Clear online presence with an enrolment or order form — no login, no database',
+      'plans.basico.ideal': 'Clear online presence with an enrolment or order form, no login, no database',
       'plans.basico.f1': 'Professional mobile-friendly site',
       'plans.basico.f2': 'Enrolment / order form',
       'plans.basico.f3': 'WhatsApp and/or email contact',
@@ -222,7 +222,7 @@
       'plans.pro.f3': 'Client area (dashboard)',
       'plans.pro.f4': 'Booking / orders + database',
       'plans.pro.f5': 'Priority updates & support',
-      'plans.empresa.ideal': 'Multi-user systems (e.g. schools, teams) — roles, capacity, custom features, priority support',
+      'plans.empresa.ideal': 'Multi-user systems (e.g. schools, teams), roles, capacity, custom features, priority support',
       'plans.empresa.f1': 'Everything in Profissional',
       'plans.empresa.f2': 'Multiple user roles (e.g. students, staff)',
       'plans.empresa.f3': 'Higher capacity & custom features',
@@ -243,7 +243,7 @@
       'contact.email': 'Email',
       'own.eyebrow': 'Alternative',
       'own.title': 'Managed plan or Own the site?',
-      'own.desc': 'Two ways to have a site: we manage it for you every month, or you pay once and own it — files included, no monthly fee.',
+      'own.desc': 'Two ways to have a site: we manage it for you every month, or you pay once and own it, files included, no monthly fee.',
       'own.cmp.managed': 'Managed plan',
       'own.cmp.managedSub': 'Build + monthly fee',
       'own.cmp.own': 'Own the site',
@@ -253,7 +253,7 @@
       'own.cmp.r1o': 'Build price only (one time)',
       'own.cmp.r2': 'Who owns it',
       'own.cmp.r2m': 'We host and manage the site',
-      'own.cmp.r2o': 'You — full folders and files transferred',
+      'own.cmp.r2o': 'You: full folders and files transferred',
       'own.cmp.r3': 'Monthly fee',
       'own.cmp.r3m': 'Yes (maintenance + hosting)',
       'own.cmp.r3o': 'No',
@@ -268,7 +268,7 @@
       'own.cmp.r6o': 'Anyone who wants to own it and skip the monthly fee',
       'own.badge': 'One-time payment',
       'own.headline': 'Buy the site. Keep everything.',
-      'own.lead': 'Pay only the build price of the plan you choose. We hand over all folders and files — the site becomes yours.',
+      'own.lead': 'Pay only the build price of the plan you choose. We hand over all folders and files, the site becomes yours.',
       'own.f1': 'One-time payment = build price (Básico, Profissional or Empresa)',
       'own.f2': 'Full transfer: code, folders, images and configuration',
       'own.f3': 'No monthly maintenance fee',
@@ -470,8 +470,8 @@
       const plan = document.getElementById('plan').value;
       const message = document.getElementById('message').value.trim();
       const subject = plan
-        ? 'Workers Dev — contacto (' + plan + ')'
-        : 'Workers Dev — contacto do site';
+        ? 'Workers Dev: contacto (' + plan + ')'
+        : 'Workers Dev: contacto do site';
 
       const payload = {
         name: name,
@@ -608,7 +608,7 @@
       startAuto();
     });
 
-    /* auto-scroll every 4s — pause on hover */
+    /* auto-scroll every 4s, pause on hover */
     let autoTimer = null;
     function startAuto() {
       stopAuto();
