@@ -916,30 +916,31 @@ body.drawer-open {
 }
 
 /* ---------- Site próprio ---------- */
+/* Horizontal scroll on small screens — real table layout */
 .own-compare {
   border: 1px solid var(--border);
   border-radius: var(--radius);
   background: var(--white);
-  overflow: hidden;
   margin-bottom: 2rem;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
 }
 
 .own-compare-head,
 .own-compare-row {
   display: grid;
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 720px) {
-  .own-compare-head,
-  .own-compare-row {
-    grid-template-columns: 0.9fr 1.1fr 1.2fr;
-  }
+  grid-template-columns: minmax(120px, 0.85fr) minmax(170px, 1.1fr) minmax(190px, 1.25fr);
+  min-width: 540px;
 }
 
 .own-compare-head {
   background: var(--bg-alt);
   border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .own-compare-cell {
@@ -960,56 +961,16 @@ body.drawer-open {
   font-size: 0.8rem;
   color: var(--text-muted);
   letter-spacing: 0.02em;
+  position: sticky;
+  left: 0;
+  z-index: 1;
+  background: var(--white);
+  box-shadow: 4px 0 8px -4px rgba(26, 35, 50, 0.08);
 }
 
-@media (max-width: 719px) {
-  .own-compare-head .own-compare-label {
-    display: none;
-  }
-
-  .own-compare-row {
-    padding: 0.65rem 0 0.85rem;
-    border-bottom: 1px solid var(--border);
-  }
-
-  .own-compare-row--last {
-    border-bottom: none;
-  }
-
-  .own-compare-row .own-compare-label {
-    padding-bottom: 0.35rem;
-    border-bottom: none;
-    color: var(--accent);
-    text-transform: uppercase;
-    font-size: 0.7rem;
-    letter-spacing: 0.08em;
-  }
-
-  .own-compare-row .own-compare-cell:not(.own-compare-label) {
-    border-bottom: none;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-  }
-
-  .own-compare-row .own-compare-cell:nth-child(2)::before {
-    content: 'Plano gerido · ';
-    font-weight: 500;
-    color: var(--text-muted);
-  }
-
-  .own-compare-row .own-compare-cell--own::before {
-    content: 'Site próprio · ';
-    font-weight: 500;
-    color: var(--accent);
-  }
-
-  html[lang="en"] .own-compare-row .own-compare-cell:nth-child(2)::before {
-    content: 'Managed · ';
-  }
-
-  html[lang="en"] .own-compare-row .own-compare-cell--own::before {
-    content: 'Own the site · ';
-  }
+.own-compare-head .own-compare-label {
+  background: var(--bg-alt);
+  z-index: 3;
 }
 
 .own-compare-col-title {
@@ -1037,10 +998,19 @@ body.drawer-open {
   font-weight: 400;
 }
 
-@media (min-width: 720px) {
-  .own-compare-head .own-compare-col--own,
-  .own-compare-cell--own {
-    border-left: 1px solid rgba(26, 86, 219, 0.12);
+.own-compare-head .own-compare-col--own,
+.own-compare-cell--own {
+  border-left: 1px solid rgba(26, 86, 219, 0.12);
+}
+
+@media (max-width: 719px) {
+  .own-compare-cell {
+    padding: 0.8rem 0.9rem;
+    font-size: 0.84rem;
+  }
+
+  .own-compare-col-title {
+    font-size: 0.88rem;
   }
 }
 
@@ -1249,7 +1219,271 @@ body.drawer-open {
   line-height: 1.55;
 }
 
-/* ---------- Plans ---------- */
+/* ---------- Plans (X-style, light) ---------- */
+.plans-x {
+  background: var(--bg);
+  padding-top: 4.5rem;
+  padding-bottom: 5rem;
+}
+
+.plans-x-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 2.75rem;
+}
+
+.plans-x-title {
+  font-size: clamp(1.75rem, 4.5vw, 2.55rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.85rem;
+}
+
+.plans-x-sub {
+  font-size: 0.98rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.65;
+}
+
+.plans-x-grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (min-width: 900px) {
+  .plans-x-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+.x-plan-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: var(--white);
+  border: 1px solid rgba(26, 35, 50, 0.06);
+  border-radius: 16px;
+  padding: 1.85rem 1.6rem 1.7rem;
+  box-shadow:
+    0 1px 2px rgba(15, 39, 68, 0.04),
+    0 8px 24px rgba(15, 39, 68, 0.06),
+    0 24px 48px rgba(15, 39, 68, 0.05);
+  transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.x-plan-card:hover {
+  border-color: rgba(26, 35, 50, 0.1);
+  box-shadow:
+    0 2px 4px rgba(15, 39, 68, 0.05),
+    0 12px 32px rgba(15, 39, 68, 0.1),
+    0 32px 64px rgba(15, 39, 68, 0.08);
+  transform: translateY(-4px);
+}
+
+.x-plan-card--featured {
+  border-color: rgba(26, 86, 219, 0.28);
+  box-shadow:
+    0 1px 2px rgba(26, 86, 219, 0.06),
+    0 10px 28px rgba(26, 86, 219, 0.12),
+    0 28px 56px rgba(15, 39, 68, 0.08);
+}
+
+.x-plan-card--featured:hover {
+  border-color: rgba(26, 86, 219, 0.4);
+  box-shadow:
+    0 2px 4px rgba(26, 86, 219, 0.08),
+    0 14px 36px rgba(26, 86, 219, 0.16),
+    0 36px 72px rgba(15, 39, 68, 0.1);
+}
+
+.x-plan-popular {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.28rem 0.65rem;
+  border-radius: 999px;
+}
+
+.x-plan-top {
+  margin-bottom: 1.25rem;
+}
+
+.x-plan-name {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.x-plan-price {
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+}
+
+.x-plan-amount {
+  font-size: clamp(1.85rem, 3vw, 2.15rem);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: var(--navy);
+  line-height: 1;
+}
+
+.x-plan-unit {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+.x-plan-billing {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-bottom: 0.2rem;
+}
+
+.x-plan-maint {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-muted);
+}
+
+.x-plan-maint strong {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.x-plan-btn {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1.25rem;
+  border-radius: 999px;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.x-plan-ideal {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.x-plan-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  flex: 1;
+}
+
+.x-plan-features li {
+  position: relative;
+  padding-left: 1.35rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.45;
+}
+
+.x-plan-features li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.plans-x-trust {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+  margin: 2.75rem 0 2.5rem;
+}
+
+.plans-x-features-title {
+  text-align: center;
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 1.75rem;
+}
+
+.plans-x-feat-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .plans-x-feat-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.x-feat-card {
+  background: var(--white);
+  border: 1px solid rgba(26, 35, 50, 0.06);
+  border-radius: 16px;
+  padding: 1.5rem 1.35rem;
+  box-shadow:
+    0 1px 2px rgba(15, 39, 68, 0.03),
+    0 6px 20px rgba(15, 39, 68, 0.05);
+  transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.x-feat-card:hover {
+  border-color: rgba(26, 35, 50, 0.1);
+  box-shadow:
+    0 2px 4px rgba(15, 39, 68, 0.04),
+    0 12px 28px rgba(15, 39, 68, 0.08);
+  transform: translateY(-2px);
+}
+
+.x-feat-icon {
+  font-size: 1.35rem;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+
+.x-feat-card h4 {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+  letter-spacing: -0.01em;
+}
+
+.x-feat-card p {
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.55;
+}
+
+/* ---------- Plans (legacy photo cards — kept if referenced) ---------- */
 .plans-grid {
   display: grid;
   gap: 1.5rem;
