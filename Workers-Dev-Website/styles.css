@@ -2046,13 +2046,75 @@ body.drawer-open {
   vertical-align: middle;
 }
 
+.expand-more-block {
+  margin-top: 2rem;
+  padding-top: 1rem;
+}
+
 .expand-more {
   text-align: center;
   font-size: clamp(1.5rem, 3.5vw, 2rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #fff;
-  margin: 1rem 0 0;
+  margin: 0 0 2.5rem;
+}
+
+.expand-more-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+@media (min-width: 720px) {
+  .expand-more-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: none;
+  }
+}
+
+.expand-more-card {
+  min-width: 0;
+}
+
+.expand-more-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.expand-more-icon svg {
+  display: block;
+}
+
+.expand-more-card h4 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+@media (min-width: 720px) {
+  .expand-more-card h4 {
+    font-size: 1.1rem;
+  }
+}
+
+.expand-more-card p {
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.5;
+  max-width: 22rem;
+  margin: 0 auto;
 }
 
 /* ---------- Plans (legacy photo cards, kept if referenced) ---------- */
