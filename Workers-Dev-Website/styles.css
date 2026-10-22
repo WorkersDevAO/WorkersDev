@@ -1446,8 +1446,86 @@ body.drawer-open {
 @media (min-width: 720px) {
   .plans-x-dashboard {
     border-radius: 20px;
-    margin-bottom: 3.75rem;
+    margin-bottom: 2.5rem;
   }
+}
+
+/* Billing title + annual/monthly toggle (X-style) */
+.plans-billing {
+  text-align: center;
+  margin: 0 auto 2.25rem;
+  max-width: 640px;
+}
+
+.plans-billing-title {
+  font-size: clamp(1.55rem, 3.5vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1.35rem;
+}
+
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+}
+
+.billing-opt {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.65);
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.billing-opt.is-active {
+  background: #1a1f2e;
+  color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+}
+
+.billing-opt:hover:not(.is-active) {
+  color: #fff;
+}
+
+.billing-save {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #16a34a;
+  color: #fff;
+  padding: 0.2rem 0.45rem;
+  border-radius: 999px;
+  line-height: 1.2;
+}
+
+.x-plan-annual-note {
+  display: none;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.55);
+  margin-top: 0.35rem;
+  line-height: 1.4;
+}
+
+.x-plan-annual-note.is-visible {
+  display: block;
 }
 
 .plans-x-grid {

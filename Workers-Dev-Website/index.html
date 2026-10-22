@@ -50,9 +50,22 @@
           >
         </div>
 
-        <div class="plans-x-grid" id="planos-precos">
+        <div class="plans-billing" id="planos-precos">
+          <h2 class="plans-billing-title" data-i18n="plans.billing.title">Construir credibilidade e impulsionar o crescimento</h2>
+          <div class="billing-toggle" role="group" aria-label="Periodicidade">
+            <button type="button" class="billing-opt is-active" data-billing="annual" id="billingAnnual">
+              <span data-i18n="plans.billing.annual">Anual</span>
+              <span class="billing-save" data-i18n="plans.billing.save">POUPA 16%</span>
+            </button>
+            <button type="button" class="billing-opt" data-billing="monthly" id="billingMonthly">
+              <span data-i18n="plans.billing.monthly">Mensal</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="plans-x-grid">
           <!-- Básico -->
-          <article class="x-plan-card">
+          <article class="x-plan-card" data-maint-monthly="2500" data-maint-annual="2100" data-maint-annual-total="25200">
             <div class="x-plan-top">
               <h3 class="x-plan-name">Básico</h3>
               <div class="x-plan-price">
@@ -60,7 +73,11 @@
                 <span class="x-plan-unit">Kz</span>
               </div>
               <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
-              <p class="x-plan-maint"><span data-i18n="plans.maint">Manutenção</span> · <strong>2.500 Kz</strong><span data-i18n="plans.perMonth">/mês</span></p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">2.100 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
             </div>
             <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Quero este plano</a>
             <p class="x-plan-ideal" data-i18n="plans.basico.ideal">Presença online clara com formulário de inscrição ou pedidos, sem login, sem base de dados</p>
@@ -73,7 +90,7 @@
           </article>
 
           <!-- Profissional -->
-          <article class="x-plan-card x-plan-card--featured">
+          <article class="x-plan-card x-plan-card--featured" data-maint-monthly="5000" data-maint-annual="4200" data-maint-annual-total="50400">
             <span class="x-plan-popular" data-i18n="plans.pro.badge">Mais popular</span>
             <div class="x-plan-top">
               <h3 class="x-plan-name">Profissional</h3>
@@ -82,7 +99,11 @@
                 <span class="x-plan-unit">Kz</span>
               </div>
               <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
-              <p class="x-plan-maint"><span data-i18n="plans.maint">Manutenção</span> · <strong>5.000 Kz</strong><span data-i18n="plans.perMonth">/mês</span></p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">4.200 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
             </div>
             <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Quero este plano</a>
             <p class="x-plan-ideal" data-i18n="plans.pro.ideal">Registo, base de dados, reservas ou pedidos e área de cliente</p>
@@ -96,7 +117,7 @@
           </article>
 
           <!-- Empresa -->
-          <article class="x-plan-card">
+          <article class="x-plan-card" data-maint-monthly="12000" data-maint-annual="10080" data-maint-annual-total="120960">
             <div class="x-plan-top">
               <h3 class="x-plan-name">Empresa</h3>
               <div class="x-plan-price">
@@ -104,7 +125,11 @@
                 <span class="x-plan-unit">Kz</span>
               </div>
               <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
-              <p class="x-plan-maint"><span data-i18n="plans.maint">Manutenção</span> · <strong>12.000 Kz</strong><span data-i18n="plans.perMonth">/mês</span></p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">10.080 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
             </div>
             <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.ctaQuote">Pedir orçamento</a>
             <p class="x-plan-ideal" data-i18n="plans.empresa.ideal">Sistemas multi-utilizador (ex.: colégios, equipas), perfis, capacidade, à medida e suporte prioritário</p>

@@ -54,6 +54,11 @@
       'plans.build': 'Construção',
       'plans.maint': 'Manutenção',
       'plans.perMonth': '/mês',
+      'plans.billing.title': 'Construir credibilidade e impulsionar o crescimento',
+      'plans.billing.annual': 'Anual',
+      'plans.billing.monthly': 'Mensal',
+      'plans.billing.save': 'POUPA 16%',
+      'plans.billing.billed': 'Facturado anualmente',
       'plans.cta': 'Quero este plano',
       'plans.ctaQuote': 'Pedir orçamento',
       'plans.basico.ideal': 'Presença online clara com formulário de inscrição ou pedidos, sem login, sem base de dados',
@@ -187,6 +192,11 @@
       'plans.build': 'Build',
       'plans.maint': 'Maintenance',
       'plans.perMonth': '/mo',
+      'plans.billing.title': 'Build credibility and drive growth',
+      'plans.billing.annual': 'Annually',
+      'plans.billing.monthly': 'Monthly',
+      'plans.billing.save': 'SAVE 16%',
+      'plans.billing.billed': 'Billed annually',
       'plans.cta': 'I want this plan',
       'plans.ctaQuote': 'Request a quote',
       'plans.basico.ideal': 'Clear online presence with an enrolment or order form, no login, no database',
@@ -503,6 +513,47 @@
   /* ---------- Year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+  /* ---------- Billing toggle (annual / monthly, 16% off annual) ---------- */
+  (function initBillingToggle() {
+    const annualBtn = document.getElementById('billingAnnual');
+    const monthlyBtn = document.getElementById('billingMonthly');
+    const cards = document.querySelectorAll('.x-plan-card[data-maint-monthly]');
+    if (!annualBtn || !monthlyBtn || !cards.length) return;
+
+    function formatKz(n) {
+      return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+
+    function setBilling(mode) {
+      const isAnnual = mode === 'annual';
+      annualBtn.classList.toggle('is-active', isAnnual);
+      monthlyBtn.classList.toggle('is-active', !isAnnual);
+
+      cards.forEach(function (card) {
+        const monthly = parseInt(card.getAttribute('data-maint-monthly'), 10);
+        const annual = parseInt(card.getAttribute('data-maint-annual'), 10);
+        const annualTotal = parseInt(card.getAttribute('data-maint-annual-total'), 10);
+        const priceEl = card.querySelector('.x-plan-maint-price');
+        const noteEl = card.querySelector('.x-plan-annual-note');
+        const totalEl = card.querySelector('.x-plan-annual-total');
+
+        if (priceEl) {
+          priceEl.textContent = formatKz(isAnnual ? annual : monthly) + ' Kz';
+        }
+        if (noteEl) {
+          noteEl.classList.toggle('is-visible', isAnnual);
+        }
+        if (totalEl && isAnnual) {
+          totalEl.textContent = formatKz(annualTotal) + ' Kz';
+        }
+      });
+    }
+
+    annualBtn.addEventListener('click', function () { setBilling('annual'); });
+    monthlyBtn.addEventListener('click', function () { setBilling('monthly'); });
+    setBilling('annual');
+  })();
 
   /* Init */
   setLanguage('pt');
