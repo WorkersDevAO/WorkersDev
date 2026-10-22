@@ -24,7 +24,7 @@
       'nav.own': 'Site próprio',
       'nav.contact': 'Contacto',
       'brand.tag': 'Sites profissionais',
-      'brand.phrase': 'True greatness is serving others',
+      'brand.phrase': 'True Greatness Is Serving Others',
       'announce.before': 'Planos a partir de',
       'announce.after': '· Construção + manutenção',
 
@@ -157,7 +157,7 @@
       'nav.own': 'Own the site',
       'nav.contact': 'Contact',
       'brand.tag': 'Professional sites',
-      'brand.phrase': 'True greatness is serving others',
+      'brand.phrase': 'True Greatness Is Serving Others',
       'announce.before': 'Plans from',
       'announce.after': '· Build + maintenance',
       'about.eyebrow': 'About us',

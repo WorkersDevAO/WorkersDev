@@ -52,7 +52,7 @@ body {
 
 /* ---------- Minimal top brand (X Premium Business style) ---------- */
 .top-brand {
-  padding: 1.75rem 0 0.5rem;
+  padding: 1.75rem 0 1.5rem;
 }
 
 .top-brand-inner {
@@ -71,20 +71,20 @@ body {
 }
 
 .top-brand-logo {
-  width: 28px;
-  height: 28px;
-  border-radius: 6px;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
   flex-shrink: 0;
   display: block;
   object-fit: contain;
 }
 
 .top-brand-phrase {
-  font-size: 1.05rem;
+  font-size: 1.35rem;
   font-weight: 600;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.02em;
   color: #fff;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
 .top-brand .lang-toggle {
@@ -96,16 +96,16 @@ body {
 
 @media (min-width: 720px) {
   .top-brand {
-    padding: 2.25rem 0 0.75rem;
+    padding: 2.25rem 0 2rem;
   }
 
   .top-brand-logo {
-    width: 32px;
-    height: 32px;
+    width: 40px;
+    height: 40px;
   }
 
   .top-brand-phrase {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
   }
 }
 
@@ -1391,7 +1391,7 @@ body.drawer-open {
 /* ---------- Plans (X-style, light) ---------- */
 .plans-x {
   background: var(--bg);
-  padding-top: 2rem;
+  padding-top: 3.5rem;
   padding-bottom: 5rem;
 }
 
