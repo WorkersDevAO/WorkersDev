@@ -741,6 +741,56 @@ body.drawer-open {
   color: var(--text);
 }
 
+/* "+100 sites" placeholder card */
+.client-card--more {
+  text-decoration: none;
+  color: inherit;
+}
+
+.client-card-media--more {
+  background: linear-gradient(160deg, var(--navy) 0%, #1a3a5c 55%, #0f2744 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.client-more-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.5rem 1rem;
+  gap: 0.2rem;
+}
+
+.client-more-stat {
+  font-size: clamp(2.4rem, 5vw, 3rem);
+  font-weight: 500;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: #ffffff;
+}
+
+.client-more-label {
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.02em;
+}
+
+.client-more-sub {
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: #93c5fd;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 0.35rem;
+}
+
+.client-card--more:hover .client-card-media--more {
+  background: linear-gradient(160deg, #143050 0%, #1a3a5c 55%, #0f2744 100%);
+}
+
 .carousel-btn {
   position: absolute;
   top: 42%;
@@ -866,6 +916,134 @@ body.drawer-open {
 }
 
 /* ---------- Site próprio ---------- */
+.own-compare {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--white);
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.own-compare-head,
+.own-compare-row {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 720px) {
+  .own-compare-head,
+  .own-compare-row {
+    grid-template-columns: 0.9fr 1.1fr 1.2fr;
+  }
+}
+
+.own-compare-head {
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+.own-compare-cell {
+  padding: 0.85rem 1.1rem;
+  font-size: 0.88rem;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.45;
+  border-bottom: 1px solid var(--border);
+}
+
+.own-compare-row--last .own-compare-cell {
+  border-bottom: none;
+}
+
+.own-compare-label {
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+@media (max-width: 719px) {
+  .own-compare-head .own-compare-label {
+    display: none;
+  }
+
+  .own-compare-row {
+    padding: 0.65rem 0 0.85rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .own-compare-row--last {
+    border-bottom: none;
+  }
+
+  .own-compare-row .own-compare-label {
+    padding-bottom: 0.35rem;
+    border-bottom: none;
+    color: var(--accent);
+    text-transform: uppercase;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+  }
+
+  .own-compare-row .own-compare-cell:not(.own-compare-label) {
+    border-bottom: none;
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+  }
+
+  .own-compare-row .own-compare-cell:nth-child(2)::before {
+    content: 'Plano gerido · ';
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .own-compare-row .own-compare-cell--own::before {
+    content: 'Site próprio · ';
+    font-weight: 500;
+    color: var(--accent);
+  }
+
+  html[lang="en"] .own-compare-row .own-compare-cell:nth-child(2)::before {
+    content: 'Managed · ';
+  }
+
+  html[lang="en"] .own-compare-row .own-compare-cell--own::before {
+    content: 'Own the site · ';
+  }
+}
+
+.own-compare-col-title {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: -0.01em;
+}
+
+.own-compare-col-sub {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  margin-top: 0.2rem;
+}
+
+.own-compare-col--own .own-compare-col-title {
+  color: var(--accent);
+}
+
+.own-compare-cell--own {
+  background: var(--accent-soft);
+  font-weight: 400;
+}
+
+@media (min-width: 720px) {
+  .own-compare-head .own-compare-col--own,
+  .own-compare-cell--own {
+    border-left: 1px solid rgba(26, 86, 219, 0.12);
+  }
+}
+
 .own-box {
   display: grid;
   gap: 1.75rem;
