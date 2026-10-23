@@ -20,11 +20,6 @@
   <!-- Minimal top brand (X Premium Business style) -->
   <header class="top-brand" id="inicio">
     <div class="container top-brand-inner">
-      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
       <div class="top-brand-mark">
         <a href="index.html" class="top-brand-mark-link">
           <img class="top-brand-logo" src="assets/favicon-48.png" alt="Workers Dev" width="36" height="36">
@@ -36,24 +31,6 @@
       </button>
     </div>
   </header>
-
-  <!-- Mobile drawer -->
-  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
-  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menu">
-    <div class="drawer-head">
-      <a href="index.html" class="brand brand--drawer">
-        <span class="brand-name">Workers Dev</span>
-        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
-      </a>
-      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
-        <span class="menu-line"></span>
-        <span class="menu-line"></span>
-      </button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="index.html" class="drawer-link" data-i18n="nav.home">Home</a>
-    </nav>
-  </aside>
 
   <main>
     <!-- Plans (X-style block) -->
@@ -104,7 +81,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
+            <a href="contacto.html?plan=Basico" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.basico.f1">Site profissional</li>
               <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
@@ -133,7 +110,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
+            <a href="contacto.html?plan=Profissional" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
               <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
@@ -158,7 +135,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
+            <a href="contacto.html?plan=Empresa" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
               <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>
@@ -471,7 +448,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
+                <a href="contacto.html?plan=Basico" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.basico.f1">Site profissional</li>
                   <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
@@ -498,7 +475,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
+                <a href="contacto.html?plan=Profissional" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
                   <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
@@ -521,7 +498,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
+                <a href="contacto.html?plan=Empresa" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
                   <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>

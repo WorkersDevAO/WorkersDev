@@ -494,7 +494,7 @@
     });
   }
 
-  /* ---------- Plan CTA → preselect form ---------- */
+  /* ---------- Plan CTA → preselect form (same page) ---------- */
   document.querySelectorAll('.plan-cta').forEach(function (btn) {
     btn.addEventListener('click', function () {
       const plan = btn.getAttribute('data-plan');
@@ -505,8 +505,21 @@
     });
   });
 
+  /* ---------- Preselect plan from URL ?plan=Basico|Profissional|Empresa ---------- */
+  (function preselectPlanFromUrl() {
+    const select = document.getElementById('plan');
+    if (!select) return;
+    const params = new URLSearchParams(window.location.search);
+    const plan = params.get('plan');
+    if (!plan) return;
+    const allowed = ['Basico', 'Profissional', 'Empresa', 'Nao sei'];
+    if (allowed.indexOf(plan) !== -1) {
+      select.value = plan;
+    }
+  })();
+
   /* ---------- Contact form → Cloudflare Worker (Resend → Gmail) ---------- */
-  const CONTACT_API = 'https://old-lab-e4bacontact-form.workersdevao.workers.dev/';
+  const CONTACT_API = 'https://workersdev-contact-api.workersdevao.workers.dev/';
   const form = document.getElementById('contactForm');
   if (form) {
     form.addEventListener('submit', function (e) {
