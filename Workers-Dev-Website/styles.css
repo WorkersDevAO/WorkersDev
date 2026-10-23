@@ -2327,26 +2327,35 @@ body.drawer-open {
 }
 
 .expand-more-block {
-  margin-top: 2rem;
-  padding-top: 1rem;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
 }
 
 .expand-more {
   text-align: center;
-  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  font-size: clamp(1.85rem, 6vw, 2.5rem);
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   color: #fff;
-  margin: 0 0 2.5rem;
+  margin: 0 0 2.25rem;
+  line-height: 1.15;
 }
 
 .expand-more-grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem 1.25rem;
   max-width: 640px;
   margin: 0 auto;
   text-align: center;
+}
+
+/* Third card on its own row, centered (X-style mobile) */
+.expand-more-card:nth-child(3) {
+  grid-column: 1 / -1;
+  max-width: 16rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (min-width: 720px) {
@@ -2354,6 +2363,13 @@ body.drawer-open {
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     max-width: none;
+  }
+
+  .expand-more-card:nth-child(3) {
+    grid-column: auto;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -2365,20 +2381,22 @@ body.drawer-open {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin: 0 auto 0.85rem;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .expand-more-icon svg {
   display: block;
+  width: 26px;
+  height: 26px;
 }
 
 .expand-more-card h4 {
-  font-size: 1.05rem;
+  font-size: 0.98rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.02em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
   line-height: 1.3;
 }
 
@@ -2389,12 +2407,19 @@ body.drawer-open {
 }
 
 .expand-more-card p {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.6);
-  line-height: 1.5;
-  max-width: 22rem;
+  line-height: 1.45;
+  max-width: 18rem;
   margin: 0 auto;
+}
+
+@media (min-width: 720px) {
+  .expand-more-card p {
+    font-size: 0.9rem;
+    max-width: 22rem;
+  }
 }
 
 /* Bottom join CTA + repeated plans */
