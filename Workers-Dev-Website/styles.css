@@ -152,7 +152,7 @@ textarea {
   padding: 0 1rem;
   background: var(--navy);
   color: rgba(255, 255, 255, 0.88);
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   text-align: center;
@@ -216,7 +216,7 @@ textarea {
 }
 
 .brand-name {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 500;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -225,7 +225,7 @@ textarea {
 }
 
 .brand-tag {
-  font-size: 0.58rem;
+  font-size: 0.68rem;
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -275,7 +275,7 @@ textarea {
 }
 
 .nav-link {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -306,8 +306,8 @@ textarea {
   background: none;
   border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius);
-  padding: 0.3rem 0.55rem;
-  font-size: 0.68rem;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.85);
@@ -451,7 +451,7 @@ textarea {
 }
 
 .drawer-link {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 400;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -478,7 +478,7 @@ textarea {
   display: block;
   text-align: center;
   padding: 0.75rem 1rem;
-  font-size: 0.72rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -669,7 +669,7 @@ body.drawer-open {
 }
 
 .section-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -686,7 +686,7 @@ body.drawer-open {
 }
 
 .section-desc {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   font-weight: 300;
   color: var(--text-muted);
   line-height: 1.65;
@@ -889,7 +889,7 @@ body.drawer-open {
 }
 
 .client-type {
-  font-size: 0.68rem;
+  font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -897,7 +897,7 @@ body.drawer-open {
 }
 
 .client-name {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   font-weight: 400;
   letter-spacing: 0.01em;
   color: var(--card-text);
@@ -941,7 +941,7 @@ body.drawer-open {
 }
 
 .client-more-sub {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 300;
   color: #93c5fd;
   letter-spacing: 0.06em;
@@ -1150,7 +1150,7 @@ body.drawer-open {
 
 .own-compare-col-sub {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.7);
   margin-top: 0.2rem;
@@ -1204,13 +1204,13 @@ body.drawer-open {
 
 .own-badge {
   display: inline-block;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #0c2461;
   background: var(--accent);
-  padding: 0.3rem 0.65rem;
+  padding: 0.32rem 0.7rem;
   border-radius: var(--radius);
   margin-bottom: 1rem;
 }
@@ -1267,12 +1267,12 @@ body.drawer-open {
 }
 
 .own-price-chip {
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(12, 36, 97, 0.45);
-  padding: 0.35rem 0.7rem;
+  padding: 0.4rem 0.75rem;
   border-radius: var(--radius);
 }
 
@@ -1291,7 +1291,7 @@ body.drawer-open {
 }
 
 .own-change-label {
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1317,7 +1317,7 @@ body.drawer-open {
 }
 
 .own-change-note {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.8);
   line-height: 1.5;
@@ -1325,7 +1325,7 @@ body.drawer-open {
 }
 
 .own-change-free {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 300;
   color: #93c5fd;
   line-height: 1.5;
@@ -1378,7 +1378,7 @@ body.drawer-open {
 }
 
 .own-rule-num {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   color: var(--accent);
   letter-spacing: 0.06em;
@@ -1387,14 +1387,14 @@ body.drawer-open {
 }
 
 .own-rule h4 {
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 0.3rem;
 }
 
 .own-rule p {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 400;
   color: var(--text-muted);
   line-height: 1.55;
@@ -1504,7 +1504,7 @@ body.drawer-open {
 }
 
 .own-x-eyebrow {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1522,7 +1522,7 @@ body.drawer-open {
 }
 
 .own-x-buy-lead {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   color: rgba(255, 255, 255, 0.6);
   line-height: 1.55;
   margin-bottom: 1.5rem;
@@ -1567,7 +1567,7 @@ body.drawer-open {
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(255, 255, 255, 0.06);
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 500;
   color: #fff;
 }
@@ -1597,7 +1597,7 @@ body.drawer-open {
 }
 
 .own-x-fee-label {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1796,20 +1796,20 @@ body.drawer-open {
 }
 
 .billing-save {
-  font-size: 0.65rem;
+  font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   background: #16a34a;
   color: #fff;
-  padding: 0.2rem 0.45rem;
+  padding: 0.22rem 0.5rem;
   border-radius: 999px;
   line-height: 1.2;
 }
 
 .x-plan-annual-note {
   display: none;
-  font-size: 0.78rem;
+  font-size: 0.88rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.55);
   margin-top: 0.35rem;
@@ -1882,10 +1882,10 @@ body.drawer-open {
   right: 1rem;
   background: var(--accent);
   color: #0c2461;
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.02em;
-  padding: 0.3rem 0.7rem;
+  padding: 0.32rem 0.75rem;
   border-radius: 999px;
 }
 
@@ -1923,14 +1923,14 @@ body.drawer-open {
 }
 
 .x-plan-billing {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
   margin-bottom: 0.2rem;
 }
 
 .x-plan-maint {
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.65);
 }
@@ -1973,7 +1973,7 @@ body.drawer-open {
 }
 
 .x-plan-ideal {
-  font-size: 0.84rem;
+  font-size: 0.92rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   line-height: 1.5;
@@ -1995,7 +1995,7 @@ body.drawer-open {
 .x-plan-features li {
   position: relative;
   padding-left: 1.35rem;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.9);
   line-height: 1.45;
@@ -2007,13 +2007,13 @@ body.drawer-open {
   left: 0;
   top: 0;
   color: var(--accent);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 500;
 }
 
 .plans-x-trust {
   text-align: center;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
   font-weight: 500;
   letter-spacing: 0.02em;
   color: var(--text-muted);
@@ -2027,7 +2027,7 @@ body.drawer-open {
 
 .trusted-heading {
   text-align: center;
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: var(--text-muted);
@@ -2058,7 +2058,7 @@ body.drawer-open {
   display: flex;
   gap: 1.25rem;
   width: max-content;
-  animation: trusted-scroll 40s linear infinite;
+  animation: trusted-scroll 80s linear infinite;
 }
 
 .trusted-marquee:hover .trusted-track {
@@ -2121,45 +2121,68 @@ body.drawer-open {
   margin-bottom: 2.25rem;
 }
 
-/* Top row: visual/icon cards only */
-.plans-x-feat-visuals {
+/* Feature cards: visual + text paired (X Premium Business layout) */
+.plans-x-feat-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-  margin-bottom: 2rem;
+  gap: 0.65rem;
+  align-items: start;
 }
 
-@media (min-width: 720px) {
-  .plans-x-feat-visuals {
-    gap: 1.25rem;
-    margin-bottom: 2.75rem;
+@media (min-width: 600px) {
+  .plans-x-feat-grid {
+    gap: 1.1rem;
   }
 }
 
+@media (min-width: 900px) {
+  .plans-x-feat-grid {
+    gap: 1.35rem;
+  }
+}
+
+.x-feat-card {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
 .x-feat-visual {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1 / 1;
-  max-height: 140px;
-  background: #0f2a6e;
+  width: 100%;
+  max-height: none;
+  background: #0a1a45;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 16px;
+  border-radius: 14px;
   color: var(--accent);
+  overflow: hidden;
   box-shadow:
     0 1px 2px rgba(0, 0, 0, 0.2),
     0 8px 24px rgba(0, 0, 0, 0.22);
   transition: border-color 0.25s ease, box-shadow 0.3s ease, transform 0.3s ease;
+  margin-bottom: 0.75rem;
 }
 
-@media (min-width: 720px) {
+@media (min-width: 600px) {
   .x-feat-visual {
-    max-height: 180px;
-    border-radius: 18px;
+    border-radius: 16px;
+    margin-bottom: 1rem;
   }
 }
 
-.x-feat-visual:hover {
+@media (min-width: 900px) {
+  .x-feat-visual {
+    border-radius: 18px;
+    margin-bottom: 1.15rem;
+  }
+}
+
+.x-feat-card:hover .x-feat-visual {
   border-color: rgba(255, 255, 255, 0.2);
   box-shadow:
     0 2px 4px rgba(0, 0, 0, 0.25),
@@ -2167,38 +2190,47 @@ body.drawer-open {
   transform: translateY(-2px);
 }
 
-.x-feat-visual svg {
-  width: 36px;
-  height: 36px;
+.x-feat-visual-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
 }
 
-@media (min-width: 720px) {
+.x-feat-visual-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #0f2a6e;
+  z-index: 0;
+}
+
+.x-feat-visual svg {
+  width: 28px;
+  height: 28px;
+}
+
+@media (min-width: 600px) {
+  .x-feat-visual svg {
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (min-width: 900px) {
   .x-feat-visual svg {
     width: 48px;
     height: 48px;
   }
 }
 
-/* Bottom row: text columns (not bound to icons) */
-.plans-x-feat-text {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0.75rem;
-}
-
-@media (min-width: 720px) {
-  .plans-x-feat-text {
-    gap: 1.25rem;
-  }
-}
-
-.x-feat-text {
-  min-width: 0;
-  text-align: left;
-}
-
-.x-feat-text h4 {
-  font-size: 0.85rem;
+.x-feat-card h4 {
+  font-size: 0.95rem;
   font-weight: 600;
   color: #fff;
   margin-bottom: 0.35rem;
@@ -2206,24 +2238,55 @@ body.drawer-open {
   line-height: 1.3;
 }
 
-@media (min-width: 720px) {
-  .x-feat-text h4 {
-    font-size: 1.1rem;
-    margin-bottom: 0.45rem;
+@media (min-width: 600px) {
+  .x-feat-card h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.4rem;
   }
 }
 
-.x-feat-text p {
-  font-size: 0.75rem;
+@media (min-width: 900px) {
+  .x-feat-card h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.x-feat-card p {
+  font-size: 0.85rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.68);
+  color: rgba(255, 255, 255, 0.7);
   line-height: 1.45;
 }
 
-@media (min-width: 720px) {
-  .x-feat-text p {
-    font-size: 0.95rem;
+@media (min-width: 600px) {
+  .x-feat-card p {
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+}
+
+@media (min-width: 900px) {
+  .x-feat-card p {
+    font-size: 1.02rem;
     line-height: 1.55;
+  }
+}
+
+/* Very narrow phones: keep 3-up, readable type */
+@media (max-width: 379px) {
+  .plans-x-feat-grid {
+    gap: 0.5rem;
+  }
+  .x-feat-visual {
+    border-radius: 12px;
+    margin-bottom: 0.6rem;
+  }
+  .x-feat-card h4 {
+    font-size: 0.88rem;
+  }
+  .x-feat-card p {
+    font-size: 0.8rem;
   }
 }
 
@@ -2392,7 +2455,7 @@ body.drawer-open {
 }
 
 .expand-more-card h4 {
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: #fff;
   letter-spacing: -0.02em;
@@ -2402,22 +2465,22 @@ body.drawer-open {
 
 @media (min-width: 720px) {
   .expand-more-card h4 {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
   }
 }
 
 .expand-more-card p {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 400;
-  color: rgba(255, 255, 255, 0.6);
-  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.5;
   max-width: 18rem;
   margin: 0 auto;
 }
 
 @media (min-width: 720px) {
   .expand-more-card p {
-    font-size: 0.9rem;
+    font-size: 0.98rem;
     max-width: 22rem;
   }
 }
@@ -2524,10 +2587,10 @@ body.drawer-open {
   left: auto;
   background: var(--accent);
   color: var(--white);
-  font-size: 0.7rem;
+  font-size: 0.78rem;
   font-weight: 500;
   letter-spacing: 0.04em;
-  padding: 0.3rem 0.7rem;
+  padding: 0.32rem 0.75rem;
   border-radius: var(--radius);
   z-index: 3;
 }
@@ -2545,7 +2608,7 @@ body.drawer-open {
 }
 
 .plan-ideal {
-  font-size: 0.85rem;
+  font-size: 0.92rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.75);
   line-height: 1.5;
@@ -2568,7 +2631,7 @@ body.drawer-open {
 }
 
 .price-label {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -2716,7 +2779,7 @@ body.drawer-open {
 }
 
 .contact-label {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -2742,12 +2805,12 @@ body.drawer-open {
 }
 
 .chip {
-  font-size: 0.75rem;
+  font-size: 0.82rem;
   font-weight: 400;
   color: var(--text-muted);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  padding: 0.3rem 0.65rem;
+  padding: 0.35rem 0.7rem;
   letter-spacing: 0.02em;
 }
 
@@ -2774,7 +2837,7 @@ body.drawer-open {
 }
 
 .form-group label {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.7);
   letter-spacing: 0.02em;
@@ -2849,7 +2912,7 @@ body.drawer-open {
 }
 
 .footer-tagline {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 300;
   color: var(--text-muted);
   margin-top: 0.5rem;
@@ -2857,7 +2920,7 @@ body.drawer-open {
 }
 
 .footer-meta {
-  font-size: 0.8rem;
+  font-size: 0.88rem;
   font-weight: 300;
   color: var(--text-muted);
   display: flex;
@@ -2939,12 +3002,12 @@ body.drawer-open {
   }
 
   .brand-name {
-    font-size: 0.82rem;
+    font-size: 0.95rem;
     letter-spacing: 0.18em;
   }
 
   .brand-tag {
-    font-size: 0.6rem;
+    font-size: 0.72rem;
   }
 
   .hero {

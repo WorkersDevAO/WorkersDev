@@ -2,7 +2,7 @@
 
 Marketing site for **Workers Dev**, an agency that builds and hosts professional websites for services and businesses in Angola.
 
-- **Stack:** Pure HTML / CSS / JS (no frameworks)
+- **Stack:** Pure HTML / CSS / JS (no frameworks, no build step)
 - **Languages:** Portuguese (Angola) default · English toggle
 - **Deploy:** Cloudflare Pages (or any static host) via GitHub
 
@@ -13,14 +13,15 @@ Marketing site for **Workers Dev**, an agency that builds and hosts professional
 ```text
 Workers-Dev-Website/
 ├── index.html          # Page markup
-├── styles.css          # Brand styles (blue background, white cards)
-├── script.js           # i18n, header, carousel, contact form
+├── styles.css          # Brand styles (blue background, X-style sections)
+├── script.js           # i18n, billing toggle, contact form, UI behaviour
 ├── favicon.png
 ├── assets/
-│   ├── clients/        # Project screenshots (carousel)
+│   ├── clients/        # Client site screenshots (trusted marquee)
+│   ├── expand-*.jpg    # Feature mockups
+│   ├── dashboard-workersdev.jpg
+│   ├── logo.png / logo.jpg
 │   ├── promo-loja-online.jpg
-│   ├── logo.png
-│   ├── Moto.jpg        # Hero background
 │   └── favicons…
 └── README.md
 ```
@@ -29,25 +30,52 @@ Workers-Dev-Website/
 
 ## Sections
 
-1. Announcement bar + header  
-2. Hero (full-bleed image)  
-3. **Planos** (X-style pricing cards + feature cards + trust line)  
-4. **Clientes** (carousel of live projects, including +100 placeholder)  
-5. Promo CTA (full-bleed)  
-6. Sobre  
-7. Como funciona  
-8. **Site próprio** (managed vs ownership comparison + rules)  
-9. Contacto (form + WhatsApp / email)  
+1. Top brand mark  
+2. **Planos** (hero title, dashboard mockup, billing toggle, pricing cards)  
+3. **Confiado por…** (continuous client-site marquee)  
+4. Feature tools + expand blocks (credibility, data, domain)  
+5. “E muito mais” extras grid  
+6. Join CTA + repeated pricing cards  
+7. **Site próprio** (managed vs ownership)  
+8. Contacto (form + WhatsApp / email)
 
 ---
 
 ## Plans (public)
 
-| Plan | Build (one-time) | Maintenance / month |
-|------|------------------|---------------------|
-| **Básico** | 20.000 Kz | 2.500 Kz |
-| **Profissional** | 42.000 Kz | 5.000 Kz |
-| **Empresa** | 100.000 Kz | 12.000 Kz |
+| Plan | Build (one-time) | Maintenance / month (monthly) | Maintenance / month (annual, −16%) |
+|------|------------------|-------------------------------|-------------------------------------|
+| **Básico** | 20.000 Kz | 2.500 Kz | 2.100 Kz |
+| **Profissional** | 42.000 Kz | 5.000 Kz | 4.200 Kz |
+| **Empresa** | 100.000 Kz | 12.000 Kz | 10.080 Kz |
+
+Annual totals (maintenance only): Básico 25.200 Kz · Profissional 50.400 Kz · Empresa 120.960 Kz.
+
+### Features
+
+**Básico**
+- Site profissional  
+- Domínio gratuito em `oseunegocio.pages.dev`  
+- Painel de administração  
+- Alojamento de alta velocidade  
+- SEO  
+- 25 GB de armazenamento  
+- Segurança  
+- Suporte técnico diário  
+
+**Profissional** — everything in Básico, plus:
+- Cadastro e login de utilizadores  
+- Área do cliente (portal da conta / página de perfil)  
+- Até **250** contas de cliente  
+- Actualizações e suporte prioritários  
+
+**Empresa** — everything in Profissional, plus:
+- Domínio personalizado `.com`  
+- Vários tipos de utilizador (ex.: alunos, funcionários)  
+- Até **1.000** contas de cliente  
+- Maior capacidade e funcionalidades à medida  
+- Admin avançado, relatórios e integrações  
+- Suporte prioritário  
 
 **Site próprio:** one-time = build price of the chosen plan. Full file transfer, no monthly fee. Free adjustments for 14 days after transfer, then **3.000 Kz** per change.
 
@@ -113,16 +141,16 @@ After deploy, hard-refresh if assets or `script.js` look cached.
 ## Editing tips
 
 - **Copy / i18n:** strings live in `script.js` under `translations.pt` and `translations.en`  
-- **Prices:** `index.html` plan cards + contact chips; keep both in sync  
-- **Clients carousel:** cards in `index.html` · images in `assets/clients/`  
-- **Header / announce bar:** markup in `index.html` · behaviour in `script.js`  
+- **Prices:** plan cards in `index.html` (both grids) + `data-maint-monthly` / `data-maint-annual` attributes; billing toggle logic in `script.js`  
+- **Plan features:** feature lists in both pricing grids in `index.html` · matching keys in `script.js`  
+- **Client marquee:** items in `index.html` · images in `assets/clients/` · speed in `.trusted-track` (`styles.css`)  
+- **Headings / layout:** main type scale and expand grids in `styles.css`
 
 ---
 
 ## Brand
 
 - Name: **Workers Dev**  
-- Text wordmark on the site (no logo image in the header)  
 - Page background: brand blue (`#0c2461`)  
-- Cards and panels: white, elevated  
-- Accent: lighter blue on the page (`#6b9bff`), primary blue on cards (`#1a56db`)  
+- Accent: lighter blue (`#6b9bff`)  
+- Layout inspired by X Premium Business–style marketing pages  

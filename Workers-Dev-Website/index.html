@@ -148,7 +148,7 @@
 
         <!-- Trusted by · continuous scroll (images only) -->
         <div class="trusted-block" id="clientes">
-          <p class="trusted-heading" data-i18n="plans.x.trust">Confiável para dezenas de negócios</p>
+          <p class="trusted-heading" data-i18n="plans.x.trust">Confiado por dezenas de empresas</p>
           <div class="trusted-marquee" aria-label="Sites de clientes">
             <div class="trusted-track">
               <a class="trusted-item" href="https://www.wakandatraining.com" target="_blank" rel="noopener">
@@ -207,45 +207,50 @@
         <div class="plans-x-features">
           <h3 class="plans-x-features-title" data-i18n="plans.x.featTitle">Ferramentas desenvolvidas para ajudar você a progredir</h3>
 
-          <!-- Visual cards (icons only) -->
-          <div class="plans-x-feat-visuals" aria-hidden="true">
-            <div class="x-feat-visual">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
-                <path d="M9 12l2 2 4-4"/>
-              </svg>
-            </div>
-            <div class="x-feat-visual">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 3v18h18"/>
-                <path d="M7 14l4-4 3 3 5-6"/>
-                <circle cx="19" cy="7" r="1.5" fill="currentColor" stroke="none"/>
-              </svg>
-            </div>
-            <div class="x-feat-visual">
-              <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="9"/>
-                <path d="M3 12h18"/>
-                <path d="M12 3a14 14 0 0 1 0 18"/>
-                <path d="M12 3a14 14 0 0 0 0 18"/>
-              </svg>
-            </div>
-          </div>
-
-          <!-- Text columns (separate from visuals) -->
-          <div class="plans-x-feat-text">
-            <div class="x-feat-text">
+          <!-- Feature cards: visual + text paired (X Premium Business layout) -->
+          <div class="plans-x-feat-grid">
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-credibilidade.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </div>
+              </div>
               <h4 data-i18n="plans.x.feat1.title">Aumente a credibilidade e a visibilidade</h4>
               <p data-i18n="plans.x.feat1.desc">Destaque-se com um site excepcional e SEO para expandir sua presença online.</p>
-            </div>
-            <div class="x-feat-text">
+            </article>
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-analytics.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="M7 14l4-4 3 3 5-6"/>
+                    <circle cx="19" cy="7" r="1.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+              </div>
               <h4 data-i18n="plans.x.feat2.title">Obtenha informações em tempo real</h4>
               <p data-i18n="plans.x.feat2.desc">Monitore os dados do seu site.</p>
-            </div>
-            <div class="x-feat-text">
+            </article>
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-dominio.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18"/>
+                    <path d="M12 3a14 14 0 0 1 0 18"/>
+                    <path d="M12 3a14 14 0 0 0 0 18"/>
+                  </svg>
+                </div>
+              </div>
               <h4 data-i18n="plans.x.feat3.title">Acesse um domínio gratuito</h4>
               <p data-i18n="plans.x.feat3.desc">Adquira um domínio gratuito sem custo adicional.</p>
-            </div>
+            </article>
           </div>
 
           <!-- Client quote (part of tools section) -->
