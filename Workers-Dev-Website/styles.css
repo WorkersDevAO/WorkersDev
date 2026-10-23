@@ -94,6 +94,28 @@ body {
   transform: translateY(-50%);
 }
 
+.top-brand .menu-toggle {
+  position: absolute;
+  right: 0;
+  top: 40%;
+  transform: translateY(-50%);
+}
+
+.top-brand-mark-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Show hamburger on top-brand (mobile only — hide on desktop) */
+@media (min-width: 900px) {
+  .top-brand .menu-toggle {
+    display: none;
+  }
+}
+
 @media (min-width: 720px) {
   .top-brand {
     padding: 2.25rem 0 2rem;
@@ -3040,4 +3062,189 @@ body.drawer-open {
     padding-top: 5.5rem;
     padding-bottom: 8.5rem;
   }
+}
+
+/* ---------- Contact team CTA (X-style) ---------- */
+.contact-team-section {
+  padding: 2.5rem 0 5rem;
+}
+
+.contact-team-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contact-team-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-team-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.45);
+  color: #fff;
+}
+
+.contact-team-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+/* ---------- Interest / contact page (X Business form style) ---------- */
+.page-contact .top-brand {
+  padding-bottom: 1rem;
+}
+
+.interest-section {
+  padding: 1.5rem 0 4rem;
+}
+
+.interest-wrap {
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.interest-header {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.interest-title {
+  font-size: clamp(1.65rem, 4.5vw, 2.15rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  color: #fff;
+  margin-bottom: 0.85rem;
+}
+
+.interest-sub {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin-bottom: 0.75rem;
+}
+
+.interest-lead {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #fff;
+}
+
+.interest-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.15rem;
+}
+
+.interest-form .form-group label {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 0.3rem;
+}
+
+.interest-form .form-group input,
+.interest-form .form-group select,
+.interest-form .form-group textarea {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  background: transparent;
+  color: #fff;
+  font-size: 0.95rem;
+  width: 100%;
+}
+
+.interest-form .form-group input:focus,
+.interest-form .form-group select:focus,
+.interest-form .form-group textarea:focus {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.interest-form .form-group select option {
+  background: #0c2461;
+  color: #fff;
+}
+
+.interest-submit {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.95rem 1.5rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #0c2461;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.interest-submit:hover {
+  background: #e8eefc;
+}
+
+.interest-submit:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.interest-footer {
+  border-top: 1px solid var(--border);
+  padding: 2rem 0 2.5rem;
+}
+
+.interest-footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.interest-footer-inner a {
+  color: var(--text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.interest-footer-inner a:hover {
+  color: #fff;
+}
+
+/* Brand in drawer */
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-name {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.brand-tag {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
 }

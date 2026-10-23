@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-AO" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <meta name="description" content="Contacte a Workers Dev — sites profissionais para serviços e negócios em Angola.">
+  <title>Workers Dev | Contacto</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="page-contact">
+  <!-- Top brand -->
+  <header class="top-brand" id="inicio">
+    <div class="container top-brand-inner">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+      <div class="top-brand-mark">
+        <a href="index.html" class="top-brand-mark-link">
+          <img class="top-brand-logo" src="assets/favicon-48.png" alt="Workers Dev" width="36" height="36">
+          <span class="top-brand-phrase" data-i18n="brand.phrase">True Greatness Is Serving Others</span>
+        </a>
+      </div>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span id="langLabel">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menu">
+    <div class="drawer-head">
+      <a href="index.html" class="brand brand--drawer">
+        <span class="brand-name">Workers Dev</span>
+        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-link" data-i18n="nav.home">Home</a>
+    </nav>
+  </aside>
+
+  <main>
+    <section class="section interest-section">
+      <div class="container interest-wrap">
+        <header class="interest-header">
+          <h1 class="interest-title" data-i18n="interest.title">Desbloqueie o crescimento do seu negócio com a Workers Dev</h1>
+          <p class="interest-sub" data-i18n="interest.sub">O conjunto de ferramentas mais simples para impulsionar vendas, construir credibilidade e ter o seu negócio online — sem complicações técnicas.</p>
+          <p class="interest-lead" data-i18n="interest.lead">Preencha o formulário para saber mais.</p>
+        </header>
+
+        <form class="interest-form" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name" data-i18n="form.name">Nome</label>
+            <input type="text" id="name" name="name" required autocomplete="name">
+          </div>
+          <div class="form-group">
+            <label for="email" data-i18n="form.email">E-mail</label>
+            <input type="email" id="email" name="email" required autocomplete="email">
+          </div>
+          <div class="form-group">
+            <label for="phone" data-i18n="form.phone">Telefone</label>
+            <input type="tel" id="phone" name="phone" required autocomplete="tel">
+          </div>
+          <div class="form-group">
+            <label for="business" data-i18n="form.business">Nome do negócio / serviço</label>
+            <input type="text" id="business" name="business" required>
+          </div>
+          <div class="form-group">
+            <label for="location" data-i18n="form.location">Localização</label>
+            <input type="text" id="location" name="location" required placeholder="ex.: Luanda">
+          </div>
+          <div class="form-group">
+            <label for="plan" data-i18n="form.plan">Plano de interesse</label>
+            <select id="plan" name="plan" required>
+              <option value="" data-i18n="form.planPlaceholder">Seleccione…</option>
+              <option value="Basico">Básico</option>
+              <option value="Profissional">Profissional</option>
+              <option value="Empresa">Empresa</option>
+              <option value="Nao sei" data-i18n="form.notSure">Ainda não sei</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message" data-i18n="form.message">Mensagem</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+          </div>
+          <button type="submit" class="btn interest-submit" data-i18n="form.submit">Enviar</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="interest-footer">
+    <div class="container interest-footer-inner">
+      <p>&copy; <span id="year"></span> Workers Dev</p>
+      <p><a href="mailto:workersdevao@gmail.com">workersdevao@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

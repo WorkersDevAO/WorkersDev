@@ -20,15 +20,40 @@
   <!-- Minimal top brand (X Premium Business style) -->
   <header class="top-brand" id="inicio">
     <div class="container top-brand-inner">
+      <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="navDrawer">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
       <div class="top-brand-mark">
-        <img class="top-brand-logo" src="assets/favicon-48.png" alt="" width="36" height="36">
-        <span class="top-brand-phrase" data-i18n="brand.phrase">True Greatness Is Serving Others</span>
+        <a href="index.html" class="top-brand-mark-link">
+          <img class="top-brand-logo" src="assets/favicon-48.png" alt="Workers Dev" width="36" height="36">
+          <span class="top-brand-phrase" data-i18n="brand.phrase">True Greatness Is Serving Others</span>
+        </a>
       </div>
       <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
         <span id="langLabel">EN</span>
       </button>
     </div>
   </header>
+
+  <!-- Mobile drawer -->
+  <div class="nav-overlay" id="navOverlay" aria-hidden="true"></div>
+  <aside class="nav-drawer" id="navDrawer" aria-hidden="true" aria-label="Menu">
+    <div class="drawer-head">
+      <a href="index.html" class="brand brand--drawer">
+        <span class="brand-name">Workers Dev</span>
+        <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
+      </a>
+      <button class="drawer-close" id="drawerClose" aria-label="Fechar menu">
+        <span class="menu-line"></span>
+        <span class="menu-line"></span>
+      </button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html" class="drawer-link" data-i18n="nav.home">Home</a>
+    </nav>
+  </aside>
 
   <main>
     <!-- Plans (X-style block) -->
@@ -79,7 +104,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Quero este plano</a>
+            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.basico.f1">Site profissional</li>
               <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
@@ -108,7 +133,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Quero este plano</a>
+            <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
               <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
@@ -133,7 +158,7 @@
               </p>
               <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
             </div>
-            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.ctaQuote">Pedir orçamento</a>
+            <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
             <ul class="x-plan-features">
               <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
               <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>
@@ -446,7 +471,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Quero este plano</a>
+                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.basico.f1">Site profissional</li>
                   <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
@@ -473,7 +498,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Quero este plano</a>
+                <a href="#contacto" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
                   <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
@@ -496,7 +521,7 @@
                   </p>
                   <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
                 </div>
-                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.ctaQuote">Pedir orçamento</a>
+                <a href="#contacto" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
                 <ul class="x-plan-features">
                   <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
                   <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>
@@ -513,215 +538,21 @@
       </div>
     </section>
 
-    <!-- Site próprio (X-style) -->
-    <section class="section own-section" id="site-proprio">
-      <div class="container own-x">
-        <header class="own-x-header">
-          <h2 class="own-x-title" data-i18n="own.title">Plano gerido ou Site próprio?</h2>
-          <p class="own-x-sub" data-i18n="own.desc">Duas formas de ter o site: nós gerimos por si todos os meses, ou paga uma vez e fica com o site, ficheiros incluídos, sem mensalidade.</p>
-        </header>
-
-        <!-- Two option cards -->
-        <div class="own-x-options">
-          <article class="own-x-option">
-            <h3 data-i18n="own.cmp.managed">Plano gerido</h3>
-            <p class="own-x-option-sub" data-i18n="own.cmp.managedSub">Construção + mensalidade</p>
-            <ul class="own-x-list">
-              <li data-i18n="own.cmp.r1m">Construção + taxa mensal</li>
-              <li data-i18n="own.cmp.r2m">Nós alojamos e gerimos o site</li>
-              <li data-i18n="own.cmp.r3m">Mensalidade: manutenção + alojamento</li>
-              <li data-i18n="own.cmp.r4m">Alojamento incluído connosco</li>
-              <li data-i18n="own.cmp.r5m">Actualizações incluídas na manutenção</li>
-              <li data-i18n="own.cmp.r6m">Ideal: zero preocupação técnica</li>
-            </ul>
-          </article>
-          <article class="own-x-option own-x-option--highlight">
-            <h3 data-i18n="own.cmp.own">Site próprio</h3>
-            <p class="own-x-option-sub" data-i18n="own.cmp.ownSub">Só construção · sem mensalidade</p>
-            <ul class="own-x-list">
-              <li data-i18n="own.cmp.r1o">Só o valor de construção (uma vez)</li>
-              <li data-i18n="own.cmp.r2o">Você: recebe todas as pastas e ficheiros</li>
-              <li data-i18n="own.cmp.r3o">Sem mensalidade</li>
-              <li data-i18n="own.cmp.r4o">O seu domínio e hosting</li>
-              <li data-i18n="own.cmp.r5o">Grátis 14 dias · depois 3.000 Kz por alteração</li>
-              <li data-i18n="own.cmp.r6o">Ideal: ser dono e não pagar mensal</li>
-            </ul>
-          </article>
-        </div>
-
-        <!-- Buy once block -->
-        <div class="own-x-buy">
-          <p class="own-x-eyebrow" data-i18n="own.badge">Pagamento único</p>
-          <h3 class="own-x-buy-title" data-i18n="own.headline">Compre o site. Fique com tudo.</h3>
-          <p class="own-x-buy-lead" data-i18n="own.lead">Paga só o valor de construção do plano que escolher. Entregamos todas as pastas e ficheiros, o site passa a ser seu.</p>
-          <ul class="own-x-checks">
-            <li data-i18n="own.f1">Pagamento único = preço de construção (Básico, Profissional ou Empresa)</li>
-            <li data-i18n="own.f2">Transferência completa: código, pastas, imagens e configurações</li>
-            <li data-i18n="own.f3">Sem mensalidade de manutenção</li>
-            <li data-i18n="own.f4">Pode alojar onde quiser (o seu domínio, o seu hosting)</li>
-          </ul>
-          <div class="own-x-prices">
-            <span class="own-x-chip">Básico · 20.000 Kz</span>
-            <span class="own-x-chip">Profissional · 42.000 Kz</span>
-            <span class="own-x-chip">Empresa · 100.000 Kz</span>
-          </div>
-        </div>
-
-        <!-- Change fee + CTA -->
-        <div class="own-x-cta-row">
-          <div class="own-x-fee">
-            <p class="own-x-fee-label" data-i18n="own.changeLabel">Alterações depois</p>
-            <p class="own-x-fee-price"><span>3.000</span> Kz</p>
-            <p class="own-x-fee-note" data-i18n="own.changeNote">por correção, alteração ou nova funcionalidade (após os 14 dias)</p>
-            <p class="own-x-fee-free" data-i18n="own.changeFree">Ajustes grátis nos primeiros 14 dias após a compra / transferência</p>
-          </div>
-          <a href="#contacto" class="btn btn-primary plan-cta own-x-btn" data-plan="Site proprio" data-i18n="own.cta">Quero o Site próprio</a>
-        </div>
-
-        <!-- Rules -->
-        <div class="own-x-rules">
-          <h3 class="own-x-rules-title" data-i18n="own.rulesTitle">Regras e condições</h3>
-          <div class="own-x-rules-list">
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">01</span>
-              <div>
-                <h4 data-i18n="own.r1.title">Propriedade</h4>
-                <p data-i18n="own.r1.desc">Após o pagamento e a entrega, o site (código e ficheiros entregues) passa a ser seu.</p>
-              </div>
-            </div>
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">02</span>
-              <div>
-                <h4 data-i18n="own.r2.title">Transferência</h4>
-                <p data-i18n="own.r2.desc">Recebe todas as pastas do projecto e, se necessário, ajuda para colocar o site na sua conta de alojamento.</p>
-              </div>
-            </div>
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">03</span>
-              <div>
-                <h4 data-i18n="own.r3.title">Sem mensalidade</h4>
-                <p data-i18n="own.r3.desc">Não há taxa mensal. Alojamento e domínio ficam a seu cargo (ou pode contratar hosting à parte).</p>
-              </div>
-            </div>
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">04</span>
-              <div>
-                <h4 data-i18n="own.r4.title">Alterações após os 14 dias</h4>
-                <p data-i18n="own.r4.desc">Correcção, alteração, nova secção ou funcionalidade: 3.000 Kz por pedido, com âmbito acordado antes do trabalho.</p>
-              </div>
-            </div>
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">05</span>
-              <div>
-                <h4 data-i18n="own.r5.title">14 dias grátis após a compra</h4>
-                <p data-i18n="own.r5.desc">Nos primeiros 14 dias após a transferência: ajustes e correcções sem custo. Depois disso, cada pedido é 3.000 Kz.</p>
-              </div>
-            </div>
-            <div class="own-x-rule">
-              <span class="own-x-rule-num">06</span>
-              <div>
-                <h4 data-i18n="own.r6.title">Após a entrega</h4>
-                <p data-i18n="own.r6.desc">Não somos responsáveis pelo uptime, backups ou segurança do hosting que escolher. Novos trabalhos só mediante pedido pago.</p>
-              </div>
-            </div>
-          </div>
-        </div>
+    <!-- Contact team CTA (X-style) -->
+    <section class="section contact-team-section">
+      <div class="container contact-team-wrap">
+        <a href="contacto.html" class="contact-team-btn">
+          <svg class="contact-team-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z" fill="currentColor"/>
+          </svg>
+          <span data-i18n="contact.team">Dúvidas? Fale com a nossa equipa</span>
+        </a>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section class="section section-alt" id="contacto">
-      <div class="container">
-        <div class="section-header">
-          <p class="section-eyebrow" data-i18n="contact.eyebrow">Contacto</p>
-          <h2 class="section-title" data-i18n="contact.title">Fale connosco</h2>
-          <p class="section-desc" data-i18n="contact.desc">Resposta rápida. Preencha o formulário ou contacte-nos directamente por WhatsApp ou e-mail.</p>
-        </div>
-
-        <div class="contact-grid">
-          <div class="contact-info">
-            <div class="contact-item">
-              <span class="contact-label" data-i18n="contact.whatsapp">WhatsApp</span>
-              <a href="https://wa.me/244943278361" class="contact-value" target="_blank" rel="noopener">+244 943 278 361</a>
-            </div>
-            <div class="contact-item">
-              <span class="contact-label" data-i18n="contact.email">E-mail</span>
-              <a href="mailto:workersdevao@gmail.com" class="contact-value">workersdevao@gmail.com</a>
-            </div>
-            <div class="plan-chips">
-              <span class="chip">Básico · 20.000 + 2.500/mês</span>
-              <span class="chip">Profissional · 42.000 + 5.000/mês</span>
-              <span class="chip">Empresa · 100.000 + 12.000/mês</span>
-              <span class="chip">Site próprio · só construção (sem mensalidade)</span>
-            </div>
-          </div>
-
-          <form class="contact-form" id="contactForm">
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name" data-i18n="form.name">Nome</label>
-                <input type="text" id="name" name="name" required autocomplete="name">
-              </div>
-              <div class="form-group">
-                <label for="email" data-i18n="form.email">E-mail</label>
-                <input type="email" id="email" name="email" required autocomplete="email">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone" data-i18n="form.phone">Telefone</label>
-                <input type="tel" id="phone" name="phone" required autocomplete="tel">
-              </div>
-              <div class="form-group">
-                <label for="business" data-i18n="form.business">Tipo de negócio / serviço</label>
-                <input type="text" id="business" name="business" required>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="location" data-i18n="form.location">Localização</label>
-                <input type="text" id="location" name="location" required>
-              </div>
-              <div class="form-group">
-                <label for="plan" data-i18n="form.plan">Plano desejado</label>
-                <select id="plan" name="plan" required>
-                  <option value="" data-i18n="form.planPlaceholder">Select…</option>
-                  <option value="Basico">Básico</option>
-                  <option value="Profissional">Profissional</option>
-                  <option value="Empresa">Empresa</option>
-                  <option value="Site proprio" data-i18n="form.own">Site próprio</option>
-                  <option value="Nao sei" data-i18n="form.notSure">Not sure yet</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="message" data-i18n="form.message">Mensagem</label>
-              <textarea id="message" name="message" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-full" data-i18n="form.submit">Enviar mensagem</button>
-          </form>
-        </div>
-      </div>
-    </section>
   </main>
 
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <a href="#inicio" class="brand brand--footer">
-          <span class="brand-name">Workers Dev</span>
-          <span class="brand-tag" data-i18n="brand.tag">Sites profissionais</span>
-        </a>
-        <p class="footer-tagline" data-i18n="footer.tagline">Sites profissionais para serviços e negócios em Angola.</p>
-      </div>
-      <div class="footer-meta">
-        <p>&copy; <span id="year"></span> Workers Dev</p>
-        <p><a href="mailto:workersdevao@gmail.com">workersdevao@gmail.com</a></p>
-      </div>
-    </div>
-  </footer>
-
   <script src="script.js"></script>
+
 </body>
 </html>
