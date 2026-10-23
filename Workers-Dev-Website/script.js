@@ -182,6 +182,9 @@
       'form.own': 'Site próprio',
       'form.message': 'Mensagem',
       'form.submit': 'Enviar mensagem',
+      'form.successTitle': 'Pedido recebido',
+      'form.successText': 'Obrigado. A equipa Workers Dev vai responder em breve por e-mail ou WhatsApp.',
+      'form.successHome': 'Voltar ao início',
       'footer.tagline': 'Sites profissionais para serviços e negócios em Angola.'
     },
     en: {
@@ -350,6 +353,9 @@
       'form.own': 'Own the site',
       'form.message': 'Message',
       'form.submit': 'Send message',
+      'form.successTitle': 'Request received',
+      'form.successText': 'Thank you. The Workers Dev team will reply soon by email or WhatsApp.',
+      'form.successHome': 'Back to home',
       'footer.tagline': 'Professional websites for services and businesses in Angola.'
     }
   };
@@ -554,6 +560,12 @@
         submitBtn.textContent = currentLang === 'en' ? 'Sending…' : 'A enviar…';
       }
 
+      const formError = document.getElementById('formError');
+      if (formError) {
+        formError.textContent = '';
+        formError.classList.add('hidden');
+      }
+
       fetch(CONTACT_API, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -565,16 +577,20 @@
         })
         .then(function () {
           form.reset();
-          alert(currentLang === 'en'
-            ? 'Message sent. We will reply soon.'
-            : 'Mensagem enviada. Responderemos em breve.');
+          form.classList.add('hidden');
+          const success = document.getElementById('formSuccess');
+          if (success) success.classList.remove('hidden');
+          const header = document.querySelector('.interest-header');
+          if (header) header.classList.add('hidden');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         })
         .catch(function () {
-          alert(currentLang === 'en'
-            ? 'Could not send. Please try WhatsApp or email.'
-            : 'Não foi possível enviar. Tente WhatsApp ou e-mail.');
-        })
-        .finally(function () {
+          if (formError) {
+            formError.textContent = currentLang === 'en'
+              ? 'Could not send. Try again or WhatsApp +244 943 278 361.'
+              : 'Não foi possível enviar. Tente de novo ou WhatsApp +244 943 278 361.';
+            formError.classList.remove('hidden');
+          }
           if (submitBtn) {
             submitBtn.disabled = false;
             submitBtn.textContent = submitBtn.getAttribute('data-label') || submitBtn.textContent;

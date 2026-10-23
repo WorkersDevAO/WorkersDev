@@ -99,8 +99,16 @@
             <label for="message" data-i18n="form.message">Mensagem</label>
             <textarea id="message" name="message" rows="4"></textarea>
           </div>
+          <p class="form-inline-error hidden" id="formError" role="alert"></p>
           <button type="submit" class="btn interest-submit" data-i18n="form.submit">Enviar</button>
         </form>
+
+        <div class="interest-success hidden" id="formSuccess" role="status">
+          <div class="interest-success-icon" aria-hidden="true">✓</div>
+          <h2 class="interest-success-title" data-i18n="form.successTitle">Pedido recebido</h2>
+          <p class="interest-success-text" data-i18n="form.successText">Obrigado. A equipa Workers Dev vai responder em breve por e-mail ou WhatsApp.</p>
+          <a href="index.html" class="btn interest-submit interest-success-home" data-i18n="form.successHome">Voltar ao início</a>
+        </div>
       </div>
     </section>
   </main>
