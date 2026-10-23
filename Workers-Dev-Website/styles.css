@@ -90,7 +90,7 @@ body {
 .top-brand .lang-toggle {
   position: absolute;
   left: 0;
-  top: 50%;
+  top: 40%;
   transform: translateY(-50%);
 }
 
