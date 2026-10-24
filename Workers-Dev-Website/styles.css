@@ -817,25 +817,25 @@ body.drawer-open {
 /* Desktop only: X-style quote — left text, soft glow, author bottom-right */
 @media (min-width: 1024px) {
   .plans-x-quote.testimonial {
-    padding: 5.5rem 0 1rem;
-    margin-top: 5rem;
+    padding: 6.5rem 0 2rem;
+    margin-top: 5.5rem;
   }
 
   .testimonial-inner {
-    max-width: 920px;
-    padding: 3.5rem 2.5rem 2.5rem;
+    max-width: 980px;
+    padding: 4.5rem 3rem 3.25rem;
   }
 
   /* Soft radial glow behind quote (like X Premium Business) */
   .testimonial-inner::before {
     content: "";
     position: absolute;
-    inset: -10% -5% -20% -5%;
+    inset: -12% -8% -22% -8%;
     background: radial-gradient(
-      ellipse 70% 65% at 40% 45%,
-      rgba(107, 155, 255, 0.12) 0%,
-      rgba(12, 36, 97, 0.06) 45%,
-      transparent 70%
+      ellipse 72% 68% at 38% 42%,
+      rgba(107, 155, 255, 0.13) 0%,
+      rgba(12, 36, 97, 0.06) 48%,
+      transparent 72%
     );
     pointer-events: none;
     z-index: 0;
@@ -847,25 +847,25 @@ body.drawer-open {
   }
 
   .testimonial-mark {
-    font-size: 5.5rem;
-    margin-bottom: 1rem;
+    font-size: 6rem;
+    margin-bottom: 1.5rem;
     color: rgba(255, 255, 255, 0.22);
   }
 
   .testimonial-quote {
-    margin: 0 0 3rem;
-    max-width: 780px;
+    margin: 0 0 3.75rem;
+    max-width: 860px;
   }
 
   .testimonial-quote p {
-    font-size: clamp(1.85rem, 2.4vw, 2.35rem);
-    line-height: 1.28;
-    letter-spacing: -0.035em;
+    font-size: clamp(1.9rem, 2.5vw, 2.4rem);
+    line-height: 1.38;
+    letter-spacing: -0.03em;
   }
 
   .testimonial-author {
     justify-content: flex-end;
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
   }
 }
 
@@ -1834,32 +1834,38 @@ body.drawer-open {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 3rem;
+    gap: 3.5rem;
     margin-bottom: 5.5rem;
   }
 
   .plans-x-header {
     text-align: left;
-    max-width: 440px;
+    max-width: 480px;
     margin: 0;
-    flex: 0 1 42%;
+    flex: 0 0 38%;
+    padding-right: 0.5rem;
   }
 
   .plans-x-title {
-    font-size: clamp(2.4rem, 3.2vw, 3.5rem);
+    font-size: clamp(2.55rem, 3.4vw, 3.65rem);
+    line-height: 1.12;
+    margin-bottom: 1.35rem;
+    letter-spacing: -0.04em;
   }
 
   .plans-x-sub {
-    font-size: 1.05rem;
-    max-width: 400px;
+    font-size: 1.1rem;
+    line-height: 1.65;
+    max-width: 26rem;
+    margin-bottom: 0.25rem;
   }
 
   .plans-x-start {
-    margin-top: 1.75rem;
+    margin-top: 2rem;
   }
 
   .plans-x-dashboard {
-    flex: 1 1 55%;
+    flex: 1 1 58%;
     max-width: none;
     margin: 0;
   }
@@ -2427,6 +2433,14 @@ body.drawer-open {
   }
 }
 
+/* Desktop: full width so two columns can sit side by side */
+@media (min-width: 1024px) {
+  .expand-blocks {
+    max-width: none;
+    margin-top: 6rem;
+  }
+}
+
 .expand-block {
   margin-bottom: 5rem;
 }
@@ -2437,6 +2451,12 @@ body.drawer-open {
   }
 }
 
+@media (min-width: 1024px) {
+  .expand-block {
+    margin-bottom: 7.5rem;
+  }
+}
+
 .expand-block-title {
   font-size: clamp(2rem, 4.5vw, 2.7rem);
   font-weight: 700;
@@ -2444,6 +2464,38 @@ body.drawer-open {
   color: #fff;
   line-height: 1.12;
   margin-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .expand-block-title {
+    margin-bottom: 2.75rem;
+  }
+}
+
+/* Pair = subtitle block + mockup (stacked by default) */
+.expand-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.expand-pair {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Desktop: two subtitle blocks side by side */
+@media (min-width: 1024px) {
+  .expand-pairs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem 2.75rem;
+    align-items: start;
+  }
+
+  .expand-pair .expand-mockup {
+    margin-bottom: 0;
+  }
 }
 
 .expand-feature {
@@ -2485,6 +2537,12 @@ body.drawer-open {
   color: rgba(255, 255, 255, 0.65);
   line-height: 1.55;
   max-width: 36rem;
+}
+
+@media (min-width: 1024px) {
+  .expand-feature p {
+    max-width: none;
+  }
 }
 
 .expand-mockup {
@@ -2622,19 +2680,42 @@ body.drawer-open {
   }
 }
 
+@media (min-width: 1024px) {
+  .plans-join {
+    margin-top: 7.5rem;
+    padding-top: 5.5rem;
+  }
+}
+
 .plans-join-title {
   text-align: center;
   font-size: clamp(1.95rem, 4.5vw, 2.75rem);
   font-weight: 700;
   letter-spacing: -0.04em;
   color: #fff;
-  line-height: 1.12;
-  max-width: 30rem;
+  line-height: 1.18;
+  max-width: 38rem;
   margin: 0 auto 2rem;
+}
+
+@media (min-width: 1024px) {
+  .plans-join-title {
+    font-size: clamp(2.35rem, 3.2vw, 3.1rem);
+    line-height: 1.15;
+    max-width: 46rem;
+    margin: 0 auto 2.5rem;
+    letter-spacing: -0.035em;
+  }
 }
 
 .plans-billing--join {
   margin-bottom: 2.5rem;
+}
+
+@media (min-width: 1024px) {
+  .plans-billing--join {
+    margin-bottom: 3rem;
+  }
 }
 
 /* ---------- Plans (legacy photo cards, kept if referenced) ---------- */
@@ -3212,14 +3293,33 @@ body.drawer-open {
   padding: 1.5rem 0 4rem;
 }
 
+@media (min-width: 1024px) {
+  .interest-section {
+    padding: 2.5rem 0 5.5rem;
+  }
+}
+
 .interest-wrap {
   max-width: 520px;
   margin: 0 auto;
 }
 
+/* Desktop: wider form + title like X Business interest page */
+@media (min-width: 1024px) {
+  .interest-wrap {
+    max-width: 640px;
+  }
+}
+
 .interest-header {
   text-align: center;
   margin-bottom: 2.25rem;
+}
+
+@media (min-width: 1024px) {
+  .interest-header {
+    margin-bottom: 2.75rem;
+  }
 }
 
 .interest-title {
@@ -3231,6 +3331,15 @@ body.drawer-open {
   margin-bottom: 0.85rem;
 }
 
+@media (min-width: 1024px) {
+  .interest-title {
+    font-size: clamp(2.15rem, 3.2vw, 2.85rem);
+    line-height: 1.18;
+    letter-spacing: -0.035em;
+    margin-bottom: 1.15rem;
+  }
+}
+
 .interest-sub {
   font-size: 1rem;
   line-height: 1.55;
@@ -3238,10 +3347,28 @@ body.drawer-open {
   margin-bottom: 0.75rem;
 }
 
+@media (min-width: 1024px) {
+  .interest-sub {
+    font-size: 1.08rem;
+    line-height: 1.6;
+    max-width: 36rem;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1rem;
+  }
+}
+
 .interest-lead {
   font-size: 0.95rem;
   font-weight: 500;
   color: #fff;
+}
+
+@media (min-width: 1024px) {
+  .interest-lead {
+    font-size: 1rem;
+    margin-top: 0.15rem;
+  }
 }
 
 .interest-form {
