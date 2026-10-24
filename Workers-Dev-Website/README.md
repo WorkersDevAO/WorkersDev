@@ -66,13 +66,13 @@ Annual totals (maintenance only): Básico 25.200 Kz · Profissional 50.400 Kz ·
 **Profissional** — everything in Básico, plus:
 - Cadastro e login de utilizadores  
 - Área do cliente (portal da conta / página de perfil)  
-- Até **250** contas de cliente  
+- Até **1.000** contas de cliente  
 - Actualizações e suporte prioritários  
 
 **Empresa** — everything in Profissional, plus:
 - Domínio personalizado `.com`  
 - Vários tipos de utilizador (ex.: alunos, funcionários)  
-- Até **1.000** contas de cliente  
+- Até **10.000** contas de cliente  
 - Maior capacidade e funcionalidades à medida  
 - Admin avançado, relatórios e integrações  
 - Suporte prioritário  
