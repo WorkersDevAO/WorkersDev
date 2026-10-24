@@ -1830,33 +1830,38 @@ body.drawer-open {
 
 /* Desktop only: X-style — text left, dashboard right */
 @media (min-width: 1024px) {
+  .plans-x .container {
+    max-width: 1280px;
+  }
+
   .plans-x-hero {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 3.5rem;
+    gap: 3rem;
     margin-bottom: 5.5rem;
   }
 
   .plans-x-header {
     text-align: left;
-    max-width: 480px;
+    max-width: 560px;
     margin: 0;
-    flex: 0 0 38%;
-    padding-right: 0.5rem;
+    flex: 0 1 46%;
+    min-width: 0;
+    padding-right: 0.25rem;
   }
 
   .plans-x-title {
-    font-size: clamp(2.55rem, 3.4vw, 3.65rem);
-    line-height: 1.12;
-    margin-bottom: 1.35rem;
+    font-size: clamp(2.65rem, 3.6vw, 3.85rem);
+    line-height: 1.1;
+    margin-bottom: 1.4rem;
     letter-spacing: -0.04em;
   }
 
   .plans-x-sub {
-    font-size: 1.1rem;
+    font-size: 1.12rem;
     line-height: 1.65;
-    max-width: 26rem;
+    max-width: none;
     margin-bottom: 0.25rem;
   }
 
@@ -1865,7 +1870,7 @@ body.drawer-open {
   }
 
   .plans-x-dashboard {
-    flex: 1 1 58%;
+    flex: 1 1 50%;
     max-width: none;
     margin: 0;
   }
