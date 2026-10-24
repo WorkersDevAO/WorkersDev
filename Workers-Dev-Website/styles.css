@@ -814,6 +814,61 @@ body.drawer-open {
   }
 }
 
+/* Desktop only: X-style quote — left text, soft glow, author bottom-right */
+@media (min-width: 1024px) {
+  .plans-x-quote.testimonial {
+    padding: 5.5rem 0 1rem;
+    margin-top: 5rem;
+  }
+
+  .testimonial-inner {
+    max-width: 920px;
+    padding: 3.5rem 2.5rem 2.5rem;
+  }
+
+  /* Soft radial glow behind quote (like X Premium Business) */
+  .testimonial-inner::before {
+    content: "";
+    position: absolute;
+    inset: -10% -5% -20% -5%;
+    background: radial-gradient(
+      ellipse 70% 65% at 40% 45%,
+      rgba(107, 155, 255, 0.12) 0%,
+      rgba(12, 36, 97, 0.06) 45%,
+      transparent 70%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .testimonial-inner > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .testimonial-mark {
+    font-size: 5.5rem;
+    margin-bottom: 1rem;
+    color: rgba(255, 255, 255, 0.22);
+  }
+
+  .testimonial-quote {
+    margin: 0 0 3rem;
+    max-width: 780px;
+  }
+
+  .testimonial-quote p {
+    font-size: clamp(1.85rem, 2.4vw, 2.35rem);
+    line-height: 1.28;
+    letter-spacing: -0.035em;
+  }
+
+  .testimonial-author {
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+}
+
 /* ---------- Promo CTA (full-bleed) ---------- */
 .promo-cta {
   padding: 2.5rem 0;
@@ -1709,10 +1764,19 @@ body.drawer-open {
   padding-bottom: 7rem;
 }
 
+/* Hero: text + dashboard — stacked on mobile, side-by-side on desktop */
+.plans-x-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 4.5rem;
+  gap: 2.25rem;
+}
+
 .plans-x-header {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 2.25rem;
+  margin: 0 auto;
 }
 
 .plans-x-title {
@@ -1739,8 +1803,9 @@ body.drawer-open {
 }
 
 .plans-x-dashboard {
+  width: 100%;
   max-width: 920px;
-  margin: 0 auto 4.5rem;
+  margin: 0 auto;
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1760,7 +1825,43 @@ body.drawer-open {
 @media (min-width: 720px) {
   .plans-x-dashboard {
     border-radius: 20px;
-    margin-bottom: 5rem;
+  }
+}
+
+/* Desktop only: X-style — text left, dashboard right */
+@media (min-width: 1024px) {
+  .plans-x-hero {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 5.5rem;
+  }
+
+  .plans-x-header {
+    text-align: left;
+    max-width: 440px;
+    margin: 0;
+    flex: 0 1 42%;
+  }
+
+  .plans-x-title {
+    font-size: clamp(2.4rem, 3.2vw, 3.5rem);
+  }
+
+  .plans-x-sub {
+    font-size: 1.05rem;
+    max-width: 400px;
+  }
+
+  .plans-x-start {
+    margin-top: 1.75rem;
+  }
+
+  .plans-x-dashboard {
+    flex: 1 1 55%;
+    max-width: none;
+    margin: 0;
   }
 }
 
