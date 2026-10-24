@@ -648,6 +648,85 @@
     setBilling('annual');
   })();
 
+  /* ---------- Slide-in on first load / scroll ---------- */
+  (function initReveal() {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var selectors = [
+      '.top-brand-mark',
+      '.plans-x-header',
+      '.plans-x-dashboard',
+      '.plans-billing',
+      '.plans-x-grid > .x-plan-card',
+      '.trusted-block',
+      '.plans-x-features-title',
+      '.plans-x-feat-grid > .x-feat-card',
+      '.plans-x-quote',
+      '.expand-block',
+      '.expand-pair',
+      '.expand-more-block',
+      '.expand-more-grid > .expand-more-card',
+      '.plans-join-title',
+      '.plans-billing--join',
+      '.plans-join .plans-x-grid > .x-plan-card',
+      '.contact-team-section'
+    ];
+
+    var nodes = [];
+    selectors.forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (el) {
+        nodes.push(el);
+      });
+    });
+
+    if (!nodes.length) return;
+
+    if (reduce) {
+      nodes.forEach(function (el) { el.classList.add('reveal', 'is-in'); });
+      return;
+    }
+
+    nodes.forEach(function (el, i) {
+      el.classList.add('reveal', 'reveal--up');
+      var delay = Math.min(i % 6, 5);
+      if (delay > 0) el.classList.add('reveal--delay-' + delay);
+    });
+
+    // Stagger plan cards / feature cards left-to-right more clearly
+    document.querySelectorAll('.plans-x-grid > .x-plan-card, .plans-x-feat-grid > .x-feat-card, .expand-more-grid > .expand-more-card').forEach(function (el, i) {
+      el.classList.remove('reveal--delay-1', 'reveal--delay-2', 'reveal--delay-3', 'reveal--delay-4', 'reveal--delay-5');
+      var d = Math.min(i + 1, 5);
+      el.classList.add('reveal--delay-' + d);
+    });
+
+    if (!('IntersectionObserver' in window)) {
+      nodes.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, {
+      root: null,
+      rootMargin: '0px 0px -8% 0px',
+      threshold: 0.12
+    });
+
+    nodes.forEach(function (el) { io.observe(el); });
+
+    // Immediate first paint for above-the-fold brand + hero
+    requestAnimationFrame(function () {
+      ['.top-brand-mark', '.plans-x-header', '.plans-x-dashboard'].forEach(function (sel) {
+        var el = document.querySelector(sel);
+        if (el) el.classList.add('is-in');
+      });
+    });
+  })();
+
   /* Init */
   setLanguage('pt');
 })();
