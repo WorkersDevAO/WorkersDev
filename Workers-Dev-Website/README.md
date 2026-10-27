@@ -63,9 +63,9 @@ No announcement bar, classic nav, hamburger, or full-bleed photo hero on the hom
 
 | Plan | Build (one-time) | Maintenance / month | Annual (−16%) / month | Annual total |
 |------|------------------|---------------------|------------------------|--------------|
-| **Básico** | 20.000 Kz | 2.500 Kz | 2.100 Kz | 25.200 Kz |
-| **Profissional** | 42.000 Kz | 5.000 Kz | 4.200 Kz | 50.400 Kz |
-| **Empresa** | 100.000 Kz | 12.000 Kz | 10.080 Kz | 120.960 Kz |
+| **Básico** | 19.000 Kz | 2.500 Kz | 2.100 Kz | 25.200 Kz |
+| **Profissional** | 39.000 Kz | 5.000 Kz | 4.200 Kz | 50.400 Kz |
+| **Empresa** | 99.000 Kz | 12.000 Kz | 10.080 Kz | 120.960 Kz |
 
 Construction price is always one-time. The toggle only changes **maintenance** display (monthly vs annual billing at 16% off).
 
