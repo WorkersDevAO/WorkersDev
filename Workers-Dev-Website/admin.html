@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-AO" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="google" content="notranslate">
+  <title>Workers Dev | Admin</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .admin-page { min-height: 100dvh; padding-bottom: 3rem; }
+    .admin-wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+    .admin-top {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; padding: 1.5rem 0 1.25rem; flex-wrap: wrap;
+    }
+    .admin-top h1 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+    .admin-top-actions { display: flex; gap: 0.5rem; align-items: center; }
+    .admin-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 500;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.28);
+      background: transparent; color: #fff; cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .admin-btn:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.45); }
+    .admin-btn--solid { background: #fff; color: #0c2461; border-color: #fff; }
+    .admin-btn--solid:hover { background: #e8eefc; }
+    .admin-btn--danger { border-color: rgba(255,120,120,0.45); color: #ffb4b4; }
+    .admin-btn--danger:hover { background: rgba(255,80,80,0.12); }
+
+    .admin-login {
+      max-width: 360px; margin: 4rem auto 0; text-align: center;
+    }
+    .admin-login h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .admin-login p { color: rgba(244,247,252,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .admin-login form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .admin-login input {
+      padding: 0.85rem 1rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.22); background: transparent;
+      color: #fff; font-size: 1rem; outline: none;
+    }
+    .admin-login input:focus { border-color: rgba(255,255,255,0.5); }
+    .admin-error { color: #ffb4b4; font-size: 0.85rem; min-height: 1.2em; }
+
+    .admin-meta { color: rgba(244,247,252,0.65); font-size: 0.85rem; margin-bottom: 1rem; }
+    .admin-empty {
+      text-align: center; padding: 3rem 1rem;
+      color: rgba(244,247,252,0.6); border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 12px;
+    }
+
+    .lead-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .lead-card {
+      background: rgba(20, 52, 138, 0.55);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px; padding: 1.1rem 1.2rem;
+    }
+    .lead-card-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 0.75rem; margin-bottom: 0.65rem;
+    }
+    .lead-name { font-weight: 600; font-size: 1.05rem; }
+    .lead-plan {
+      font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+      padding: 0.2rem 0.55rem; border-radius: 999px;
+      background: rgba(107,155,255,0.2); color: #9ec0ff; white-space: nowrap;
+    }
+    .lead-row {
+      display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem;
+      font-size: 0.88rem; color: rgba(244,247,252,0.8); margin-bottom: 0.35rem;
+    }
+    .lead-row a { color: #9ec0ff; text-decoration: underline; text-underline-offset: 2px; }
+    .lead-msg {
+      margin-top: 0.6rem; padding-top: 0.6rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.88rem; color: rgba(244,247,252,0.75); white-space: pre-wrap;
+    }
+    .lead-date { font-size: 0.75rem; color: rgba(244,247,252,0.45); margin-top: 0.5rem; }
+    .lead-actions { margin-top: 0.65rem; display: flex; gap: 0.5rem; }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body class="admin-page">
+  <!-- LOGIN -->
+  <div class="admin-wrap" id="loginView">
+    <div class="admin-login">
+      <h1>Admin</h1>
+      <p>Workers Dev — contactos do formulário</p>
+      <form id="loginForm">
+        <input type="password" id="password" placeholder="Palavra-passe" autocomplete="current-password" required>
+        <button type="submit" class="admin-btn admin-btn--solid" style="width:100%;padding:0.85rem">Entrar</button>
+        <p class="admin-error" id="loginError"></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- DASHBOARD -->
+  <div class="admin-wrap hidden" id="dashView">
+    <div class="admin-top">
+      <h1>Contactos</h1>
+      <div class="admin-top-actions">
+        <button type="button" class="admin-btn" id="btnRefresh">Actualizar</button>
+        <button type="button" class="admin-btn" id="btnLogout">Sair</button>
+      </div>
+    </div>
+    <p class="admin-meta" id="metaLine">A carregar…</p>
+    <div class="admin-empty hidden" id="emptyState">Ainda não há contactos.</div>
+    <div class="lead-list" id="leadList"></div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+name = "workersdev-contact-api"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Bind KV namespace (create once: npx wrangler kv namespace create LEADS)
+[[kv_namespaces]]
+binding = "LEADS"
+id = "635d03909a9e41219cf309b7814e42c0"
+
+# Secrets (set via CLI, never commit):
+#   npx wrangler secret put ADMIN_PASSWORD
+#   npx wrangler secret put RESEND_API_KEY
