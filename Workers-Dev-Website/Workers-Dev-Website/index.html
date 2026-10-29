@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="pt-AO" class="notranslate" translate="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <meta name="description" content="Workers Dev | Sites profissionais para serviços e negócios em Angola. Planos simples, rápidos e sem complicações técnicas.">
+  <title>Workers Dev | Sites profissionais para o seu negócio</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" sizes="32x32">
+  <link rel="icon" href="assets/favicon-48.png" type="image/png" sizes="48x48">
+  <link rel="icon" href="assets/favicon-192.png" type="image/png" sizes="192x192">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" sizes="180x180">
+  <link rel="shortcut icon" href="assets/favicon.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Minimal top brand (X Premium Business style) -->
+  <header class="top-brand" id="inicio">
+    <div class="container top-brand-inner">
+      <div class="top-brand-mark">
+        <a href="index.html" class="top-brand-mark-link">
+          <img class="top-brand-logo" src="assets/favicon-48.png" alt="Workers Dev" width="36" height="36">
+          <span class="top-brand-phrase" data-i18n="brand.phrase">True Greatness Is Serving Others</span>
+        </a>
+      </div>
+      <button class="lang-toggle" id="langToggle" aria-label="Toggle language">
+        <span id="langLabel">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Plans (X-style block) -->
+    <section class="section plans-x" id="planos">
+      <div class="container">
+        <div class="plans-x-hero">
+          <div class="plans-x-header">
+            <h1 class="plans-x-title" data-i18n="plans.x.title">O caminho mais rápido para o seu negócio online</h1>
+            <p class="plans-x-sub" data-i18n="plans.x.sub">Desbloqueie um conjunto de ferramentas que o ajudarão a impulsionar as vendas, construir credibilidade e obter informações de mercado em tempo real.</p>
+            <a href="#planos-precos" class="btn btn-primary plans-x-start" data-i18n="plans.x.start">Começar agora</a>
+          </div>
+
+          <div class="plans-x-dashboard">
+            <img
+              src="assets/dashboard-workersdev.jpg"
+              alt="Painel Workers Dev, sites activos, visitas e resumo dos planos"
+              width="1200"
+              height="750"
+              loading="eager"
+            >
+          </div>
+        </div>
+
+        <div class="plans-billing" id="planos-precos">
+          <h2 class="plans-billing-title" data-i18n="plans.billing.title">Construa credibilidade e impulsione o crescimento</h2>
+          <div class="billing-toggle" role="group" aria-label="Periodicidade">
+            <button type="button" class="billing-opt is-active" data-billing="annual" id="billingAnnual">
+              <span data-i18n="plans.billing.annual">Anual</span>
+              <span class="billing-save" data-i18n="plans.billing.save">POUPA 16%</span>
+            </button>
+            <button type="button" class="billing-opt" data-billing="monthly" id="billingMonthly">
+              <span data-i18n="plans.billing.monthly">Mensal</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="plans-x-grid">
+          <!-- Básico -->
+          <article class="x-plan-card" data-maint-monthly="2500" data-maint-annual="2100" data-maint-annual-total="25200">
+            <div class="x-plan-top">
+              <h3 class="x-plan-name">Básico</h3>
+              <div class="x-plan-price">
+                <span class="x-plan-amount">19.000</span>
+                <span class="x-plan-unit">Kz</span>
+              </div>
+              <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">2.100 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
+            </div>
+            <a href="contacto.html?plan=Basico" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
+            <ul class="x-plan-features">
+              <li data-i18n="plans.basico.f1">Site profissional</li>
+              <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
+              <li data-i18n="plans.basico.f3">Painel de administração</li>
+              <li data-i18n="plans.basico.f4">Alojamento de alta velocidade</li>
+              <li data-i18n="plans.basico.f5">SEO</li>
+              <li data-i18n="plans.basico.f6">25 GB de armazenamento</li>
+              <li data-i18n="plans.basico.f7">Segurança</li>
+              <li data-i18n="plans.basico.f8">Suporte técnico diário</li>
+            </ul>
+          </article>
+
+          <!-- Profissional -->
+          <article class="x-plan-card x-plan-card--featured" data-maint-monthly="5000" data-maint-annual="4200" data-maint-annual-total="50400">
+            <span class="x-plan-popular" data-i18n="plans.pro.badge">Mais popular</span>
+            <div class="x-plan-top">
+              <h3 class="x-plan-name">Profissional</h3>
+              <div class="x-plan-price">
+                <span class="x-plan-amount">39.000</span>
+                <span class="x-plan-unit">Kz</span>
+              </div>
+              <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">4.200 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
+            </div>
+            <a href="contacto.html?plan=Profissional" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
+            <ul class="x-plan-features">
+              <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
+              <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
+              <li data-i18n="plans.pro.f3">Área do cliente (portal da conta / página de perfil)</li>
+              <li data-i18n="plans.pro.f4">Até 1.000 contas de cliente</li>
+              <li data-i18n="plans.pro.f5">Actualizações e suporte prioritários</li>
+            </ul>
+          </article>
+
+          <!-- Empresa -->
+          <article class="x-plan-card" data-maint-monthly="12000" data-maint-annual="10080" data-maint-annual-total="120960">
+            <div class="x-plan-top">
+              <h3 class="x-plan-name">Empresa</h3>
+              <div class="x-plan-price">
+                <span class="x-plan-amount">99.000</span>
+                <span class="x-plan-unit">Kz</span>
+              </div>
+              <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+              <p class="x-plan-maint">
+                <span data-i18n="plans.maint">Manutenção</span> ·
+                <strong class="x-plan-maint-price">10.080 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+              </p>
+              <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
+            </div>
+            <a href="contacto.html?plan=Empresa" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
+            <ul class="x-plan-features">
+              <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
+              <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>
+              <li data-i18n="plans.empresa.f3">Vários tipos de utilizador (ex.: alunos, funcionários)</li>
+              <li data-i18n="plans.empresa.f4">Até 10.000 contas de cliente</li>
+              <li data-i18n="plans.empresa.f5">Maior capacidade e funcionalidades à medida</li>
+              <li data-i18n="plans.empresa.f6">Admin avançado, relatórios e integrações</li>
+              <li data-i18n="plans.empresa.f7">Suporte prioritário</li>
+            </ul>
+          </article>
+        </div>
+
+        <!-- Trusted by · continuous scroll (images only) -->
+        <div class="trusted-block" id="clientes">
+          <p class="trusted-heading" data-i18n="plans.x.trust">Confiado por dezenas de empresas</p>
+          <div class="trusted-marquee" aria-label="Sites de clientes">
+            <div class="trusted-track">
+              <a class="trusted-item" href="https://www.wakandatraining.com" target="_blank" rel="noopener">
+                <img src="assets/clients/wakanda.jpg" alt="Wakanda Training" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/decifer.jpg" alt="Decifer" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://naravazzdiversos.storengola.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/naravazz.jpg" alt="Nara Vazz" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://academiasemente.pages.dev/" target="_blank" rel="noopener">
+                <img src="assets/clients/academiasemente.jpg" alt="Academia Semente" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://colegiolapidar.educationgola.workers.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/colegiolapidar.jpg" alt="Colégio Lapidar" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eliangocosmetico.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/eliango.jpg" alt="Eliango Cosmético" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://marimaraspaz.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/marimaraspaz.jpg" alt="Marimaras Paz" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://www.attituderunclub.com" target="_blank" rel="noopener">
+                <img src="assets/clients/attituderunclub.jpg" alt="Attitude Run Club" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://buzioshealthclub.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/buzioshealthclub.jpg" alt="Búzios Health Club" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmo.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/eldocarmo.jpg" alt="Eldo Carmo" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmobarbershop.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/eldocarmobarbershop.jpg" alt="Eldo Carmo Barbershop" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmoglamorize.pages.dev" target="_blank" rel="noopener">
+                <img src="assets/clients/eldocarmoglamorize.jpg" alt="Eldo Carmo Glamorize" loading="lazy" width="400" height="248">
+              </a>
+              <!-- duplicate set for seamless loop -->
+              <a class="trusted-item" href="https://www.wakandatraining.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/wakanda.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://decifer.workersdevao.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/decifer.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://naravazzdiversos.storengola.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/naravazz.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://academiasemente.pages.dev/" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/academiasemente.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://colegiolapidar.educationgola.workers.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/colegiolapidar.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eliangocosmetico.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/eliango.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://marimaraspaz.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/marimaraspaz.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://www.attituderunclub.com" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/attituderunclub.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://buzioshealthclub.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/buzioshealthclub.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmo.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/eldocarmo.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmobarbershop.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/eldocarmobarbershop.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+              <a class="trusted-item" href="https://eldocarmoglamorize.pages.dev" target="_blank" rel="noopener" aria-hidden="true" tabindex="-1">
+                <img src="assets/clients/eldocarmoglamorize.jpg" alt="" loading="lazy" width="400" height="248">
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="plans-x-features">
+          <h3 class="plans-x-features-title" data-i18n="plans.x.featTitle">Ferramentas desenvolvidas para ajudar você a progredir</h3>
+
+          <!-- Feature cards: visual + text paired (X Premium Business layout) -->
+          <div class="plans-x-feat-grid">
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-credibilidade.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 data-i18n="plans.x.feat1.title">Aumente a credibilidade e a visibilidade</h4>
+              <p data-i18n="plans.x.feat1.desc">Destaque-se com um site excepcional e SEO para expandir sua presença online.</p>
+            </article>
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-analytics.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 3v18h18"/>
+                    <path d="M7 14l4-4 3 3 5-6"/>
+                    <circle cx="19" cy="7" r="1.5" fill="currentColor" stroke="none"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 data-i18n="plans.x.feat2.title">Obtenha informações em tempo real</h4>
+              <p data-i18n="plans.x.feat2.desc">Monitore os dados do seu site.</p>
+            </article>
+            <article class="x-feat-card">
+              <div class="x-feat-visual">
+                <img class="x-feat-visual-img" src="assets/feat-dominio.jpg" alt="" width="400" height="400" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="x-feat-visual-fallback" aria-hidden="true">
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="9"/>
+                    <path d="M3 12h18"/>
+                    <path d="M12 3a14 14 0 0 1 0 18"/>
+                    <path d="M12 3a14 14 0 0 0 0 18"/>
+                  </svg>
+                </div>
+              </div>
+              <h4 data-i18n="plans.x.feat3.title">Acesse um domínio gratuito</h4>
+              <p data-i18n="plans.x.feat3.desc">Adquira um domínio gratuito sem custo adicional.</p>
+            </article>
+          </div>
+
+          <!-- Client quote (part of tools section) -->
+          <div class="testimonial plans-x-quote" id="testemunho" aria-label="Testemunho de cliente">
+            <div class="testimonial-inner">
+              <span class="testimonial-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial-quote">
+                <p data-i18n="testimonial.quote" data-i18n-html>Antes de mais, quero agradecer-te pelo website que desenvolveste. Está <em>muito bonito, elegante</em> e <em>superou as minhas expectativas</em>! Há apenas alguns aspectos que precisaremos de melhorar, mas, no geral, está mesmo muito, mas muito lindo. Muito obrigada pelo excelente trabalho!</p>
+              </blockquote>
+              <div class="testimonial-author">
+                <img class="testimonial-avatar" src="assets/clients/naravazz-logo.jpg" alt="Nara Vazz" width="48" height="48">
+                <div class="testimonial-meta">
+                  <span class="testimonial-name">Nara Vazz</span>
+                  <span class="testimonial-role" data-i18n="testimonial.role">Cliente · Cosméticos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Expanded feature blocks (X Premium Business style) -->
+          <div class="expand-blocks">
+
+            <!-- 1. Credibility & visibility -->
+            <div class="expand-block">
+              <h3 class="expand-block-title" data-i18n="expand.cred.title">Construa credibilidade online</h3>
+
+              <div class="expand-pairs">
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.cred.f1.title">Site profissional que transmite confiança</h4>
+                    <p data-i18n="expand.cred.f1.desc">Um site bem desenhado mostra aos clientes que o seu negócio é sério e fiável, sem parecer amador.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-site-profissional.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.cred.f1.alt">
+                  </div>
+                </div>
+
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="7"/>
+                        <path d="M21 21l-4.3-4.3"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.cred.f2.title">SEO para ser encontrado</h4>
+                    <p data-i18n="expand.cred.f2.desc">Estrutura e conteúdos pensados para o site aparecer nos motores de busca e atrair mais clientes em Angola.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-seo.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.cred.f2.alt">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Real-time insights -->
+            <div class="expand-block">
+              <h3 class="expand-block-title" data-i18n="expand.data.title">Dados em tempo real</h3>
+
+              <div class="expand-pairs">
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 3v18h18"/>
+                        <path d="M7 14l4-4 3 3 5-6"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.data.f1.title">Painel de visitas do site</h4>
+                    <p data-i18n="expand.data.f1.desc">Acompanhe quantas pessoas visitam o site, de onde vêm e quais páginas mais interessam, sem complicações.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-analytics.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.data.f1.alt">
+                  </div>
+                </div>
+
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="3" width="7" height="9" rx="1"/>
+                        <rect x="14" y="3" width="7" height="5" rx="1"/>
+                        <rect x="14" y="12" width="7" height="9" rx="1"/>
+                        <rect x="3" y="16" width="7" height="5" rx="1"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.data.f2.title">Métricas do negócio num só lugar</h4>
+                    <p data-i18n="expand.data.f2.desc">Veja pedidos, formulários e desempenho do site num painel simples, pensado para o dono do negócio.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-dashboard.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.data.f2.alt">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Free domain -->
+            <div class="expand-block">
+              <h3 class="expand-block-title" data-i18n="expand.domain.title">Domínio e identidade online</h3>
+
+              <div class="expand-pairs">
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="9"/>
+                        <path d="M3 12h18"/>
+                        <path d="M12 3a14 14 0 0 1 0 18"/>
+                        <path d="M12 3a14 14 0 0 0 0 18"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.domain.f1.title">Domínio gratuito incluído</h4>
+                    <p data-i18n="expand.domain.f1.desc">Receba um domínio profissional sem custo adicional, a base da sua presença online.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-dominio.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.domain.f1.alt">
+                  </div>
+                </div>
+
+                <div class="expand-pair">
+                  <div class="expand-feature">
+                    <div class="expand-feature-icon" aria-hidden="true">
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                        <path d="M9 12l2 2 4-4"/>
+                      </svg>
+                    </div>
+                    <h4 data-i18n="expand.domain.f2.title">Proteja a sua marca online</h4>
+                    <p data-i18n="expand.domain.f2.desc">Um domínio próprio reforça a confiança dos clientes e ajuda a evitar que outros usem o nome do seu negócio.</p>
+                  </div>
+                  <div class="expand-mockup">
+                    <img src="assets/expand-marca.jpg" alt="" width="960" height="640" loading="lazy" data-i18n-alt="expand.domain.f2.alt">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- And so much more (X-style extras grid) -->
+            <div class="expand-more-block">
+              <h3 class="expand-more" data-i18n="expand.more">E muito mais</h3>
+              <div class="expand-more-grid">
+                <article class="expand-more-card">
+                  <div class="expand-more-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="7" height="9" rx="1"/>
+                      <rect x="14" y="3" width="7" height="5" rx="1"/>
+                      <rect x="14" y="12" width="7" height="9" rx="1"/>
+                      <rect x="3" y="16" width="7" height="5" rx="1"/>
+                    </svg>
+                  </div>
+                  <h4 data-i18n="expand.more.f1.title">Dashboard para clientes</h4>
+                  <p data-i18n="expand.more.f1.desc">Área de cliente onde os seus clientes acompanham pedidos, reservas ou progresso, sem telefonemas desnecessários.</p>
+                </article>
+                <article class="expand-more-card">
+                  <div class="expand-more-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/>
+                      <path d="M9 12l2 2 4-4"/>
+                    </svg>
+                  </div>
+                  <h4 data-i18n="expand.more.f2.title">Painel de administração</h4>
+                  <p data-i18n="expand.more.f2.desc">Gerir produtos, clientes e recursos do site (imagens e textos) num só lugar, pensado para o dono do negócio.</p>
+                </article>
+                <article class="expand-more-card">
+                  <div class="expand-more-icon" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="11" cy="11" r="7"/>
+                      <path d="M21 21l-4.3-4.3"/>
+                      <path d="M11 8v6M8 11h6"/>
+                    </svg>
+                  </div>
+                  <h4 data-i18n="expand.more.f3.title">Optimização SEO</h4>
+                  <p data-i18n="expand.more.f3.desc">Estrutura e conteúdos preparados para o site aparecer mais facilmente nos motores de busca.</p>
+                </article>
+              </div>
+            </div>
+          </div>
+
+          <!-- Join CTA + plans again (X-style bottom pricing) -->
+          <div class="plans-join" id="planos-join">
+            <h2 class="plans-join-title" data-i18n="plans.join.title">Junte-se às marcas que mais crescem na internet</h2>
+            <div class="plans-billing plans-billing--join">
+              <div class="billing-toggle" role="group" aria-label="Periodicidade">
+                <button type="button" class="billing-opt is-active" data-billing="annual">
+                  <span data-i18n="plans.billing.annual">Anual</span>
+                  <span class="billing-save" data-i18n="plans.billing.save">POUPA 16%</span>
+                </button>
+                <button type="button" class="billing-opt" data-billing="monthly">
+                  <span data-i18n="plans.billing.monthly">Mensal</span>
+                </button>
+              </div>
+            </div>
+            <div class="plans-x-grid">
+              <article class="x-plan-card" data-maint-monthly="2500" data-maint-annual="2100" data-maint-annual-total="25200">
+                <div class="x-plan-top">
+                  <h3 class="x-plan-name">Básico</h3>
+                  <div class="x-plan-price">
+                    <span class="x-plan-amount">19.000</span>
+                    <span class="x-plan-unit">Kz</span>
+                  </div>
+                  <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+                  <p class="x-plan-maint">
+                    <span data-i18n="plans.maint">Manutenção</span> ·
+                    <strong class="x-plan-maint-price">2.100 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+                  </p>
+                  <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">25.200 Kz</span></p>
+                </div>
+                <a href="contacto.html?plan=Basico" class="btn btn-outline plan-cta x-plan-btn" data-plan="Basico" data-i18n="plans.cta">Inscreva-se agora</a>
+                <ul class="x-plan-features">
+                  <li data-i18n="plans.basico.f1">Site profissional</li>
+                  <li data-i18n="plans.basico.f2">Domínio gratuito em oseunegocio.pages.dev</li>
+                  <li data-i18n="plans.basico.f3">Painel de administração</li>
+                  <li data-i18n="plans.basico.f4">Alojamento de alta velocidade</li>
+                  <li data-i18n="plans.basico.f5">SEO</li>
+                  <li data-i18n="plans.basico.f6">25 GB de armazenamento</li>
+                  <li data-i18n="plans.basico.f7">Segurança</li>
+                  <li data-i18n="plans.basico.f8">Suporte técnico diário</li>
+                </ul>
+              </article>
+              <article class="x-plan-card x-plan-card--featured" data-maint-monthly="5000" data-maint-annual="4200" data-maint-annual-total="50400">
+                <span class="x-plan-popular" data-i18n="plans.pro.badge">Mais popular</span>
+                <div class="x-plan-top">
+                  <h3 class="x-plan-name">Profissional</h3>
+                  <div class="x-plan-price">
+                    <span class="x-plan-amount">39.000</span>
+                    <span class="x-plan-unit">Kz</span>
+                  </div>
+                  <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+                  <p class="x-plan-maint">
+                    <span data-i18n="plans.maint">Manutenção</span> ·
+                    <strong class="x-plan-maint-price">4.200 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+                  </p>
+                  <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">50.400 Kz</span></p>
+                </div>
+                <a href="contacto.html?plan=Profissional" class="btn btn-primary plan-cta x-plan-btn" data-plan="Profissional" data-i18n="plans.cta">Inscreva-se agora</a>
+                <ul class="x-plan-features">
+                  <li data-i18n="plans.pro.f1">Tudo o que está no Básico</li>
+                  <li data-i18n="plans.pro.f2">Cadastro e login de utilizadores</li>
+                  <li data-i18n="plans.pro.f3">Área do cliente (portal da conta / página de perfil)</li>
+                  <li data-i18n="plans.pro.f4">Até 1.000 contas de cliente</li>
+                  <li data-i18n="plans.pro.f5">Actualizações e suporte prioritários</li>
+                </ul>
+              </article>
+              <article class="x-plan-card" data-maint-monthly="12000" data-maint-annual="10080" data-maint-annual-total="120960">
+                <div class="x-plan-top">
+                  <h3 class="x-plan-name">Empresa</h3>
+                  <div class="x-plan-price">
+                    <span class="x-plan-amount">99.000</span>
+                    <span class="x-plan-unit">Kz</span>
+                  </div>
+                  <p class="x-plan-billing" data-i18n="plans.build">Construção</p>
+                  <p class="x-plan-maint">
+                    <span data-i18n="plans.maint">Manutenção</span> ·
+                    <strong class="x-plan-maint-price">10.080 Kz</strong><span class="x-plan-maint-unit" data-i18n="plans.perMonth">/mês</span>
+                  </p>
+                  <p class="x-plan-annual-note is-visible"><span data-i18n="plans.billing.billed">Facturado anualmente</span> · <span class="x-plan-annual-total">120.960 Kz</span></p>
+                </div>
+                <a href="contacto.html?plan=Empresa" class="btn btn-outline plan-cta x-plan-btn" data-plan="Empresa" data-i18n="plans.cta">Inscreva-se agora</a>
+                <ul class="x-plan-features">
+                  <li data-i18n="plans.empresa.f1">Tudo o que está no Profissional</li>
+                  <li data-i18n="plans.empresa.f2">Domínio personalizado .com</li>
+                  <li data-i18n="plans.empresa.f3">Vários tipos de utilizador (ex.: alunos, funcionários)</li>
+                  <li data-i18n="plans.empresa.f4">Até 10.000 contas de cliente</li>
+                  <li data-i18n="plans.empresa.f5">Maior capacidade e funcionalidades à medida</li>
+                  <li data-i18n="plans.empresa.f6">Admin avançado, relatórios e integrações</li>
+                  <li data-i18n="plans.empresa.f7">Suporte prioritário</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact team CTA (X-style) -->
+    <section class="section contact-team-section">
+      <div class="container contact-team-wrap">
+        <a href="contacto.html" class="contact-team-btn">
+          <svg class="contact-team-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z" fill="currentColor"/>
+          </svg>
+          <span data-i18n="contact.team">Dúvidas? Fale com a nossa equipa</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
