@@ -2193,6 +2193,9 @@ body.drawer-open {
   gap: 1.25rem;
   width: max-content;
   animation: trusted-scroll 80s linear infinite;
+  /* Keep images composited so they paint without needing hover/tap */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .trusted-marquee:hover .trusted-track {
@@ -2227,6 +2230,10 @@ body.drawer-open {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   object-position: top center;
+  /* Force paint inside animated marquee (lazy + transform often delays first paint) */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  content-visibility: visible;
 }
 
 @media (min-width: 720px) {
