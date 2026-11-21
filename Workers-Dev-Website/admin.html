@@ -32,6 +32,7 @@
     .admin-btn--solid:hover { background: #e8eefc; }
     .admin-btn--danger { border-color: rgba(255,120,120,0.45); color: #ffb4b4; }
     .admin-btn--danger:hover { background: rgba(255,80,80,0.12); }
+    .admin-btn--sm { padding: 0.35rem 0.75rem; font-size: 0.78rem; }
 
     .admin-login {
       max-width: 360px; margin: 4rem auto 0; text-align: center;
@@ -48,9 +49,7 @@
     }
     .admin-login input[type="password"]:focus,
     .admin-login input[type="text"]:focus { border-color: rgba(255,255,255,0.5); }
-    .admin-pwd-wrap {
-      position: relative; width: 100%;
-    }
+    .admin-pwd-wrap { position: relative; width: 100%; }
     .admin-pwd-toggle {
       position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
       display: inline-flex; align-items: center; justify-content: center;
@@ -80,34 +79,127 @@
       border-radius: 12px;
     }
 
-    .lead-list { display: flex; flex-direction: column; gap: 0.75rem; }
-    .lead-card {
+    /* Tabs */
+    .admin-tabs {
+      display: flex; gap: 0.35rem; margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 0.5rem;
+    }
+    .admin-tab {
+      padding: 0.45rem 1rem; font-size: 0.88rem; font-weight: 500;
+      border-radius: 8px; border: none; background: transparent;
+      color: rgba(244,247,252,0.65); cursor: pointer;
+      transition: background 0.15s, color 0.15s;
+    }
+    .admin-tab:hover { color: #fff; background: rgba(255,255,255,0.06); }
+    .admin-tab.active {
+      color: #0c2461; background: #fff;
+    }
+
+    /* Summary strip */
+    .summary-strip {
+      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;
+    }
+    .summary-card {
+      flex: 1 1 120px; min-width: 110px;
+      background: rgba(20, 52, 138, 0.45);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 0.85rem 1rem;
+    }
+    .summary-card .label { font-size: 0.75rem; color: rgba(244,247,252,0.55); margin-bottom: 0.25rem; }
+    .summary-card .value { font-size: 1.25rem; font-weight: 600; }
+
+    /* Filters */
+    .filter-row {
+      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;
+    }
+    .filter-chip {
+      padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 500;
+      border-radius: 999px; border: 1px solid rgba(255,255,255,0.2);
+      background: transparent; color: rgba(244,247,252,0.7); cursor: pointer;
+    }
+    .filter-chip.active {
+      background: rgba(107,155,255,0.25); border-color: rgba(107,155,255,0.5); color: #9ec0ff;
+    }
+
+    /* Cards (shared) */
+    .lead-list, .client-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .lead-card, .client-card {
       background: rgba(20, 52, 138, 0.55);
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 12px; padding: 1.1rem 1.2rem;
     }
-    .lead-card-top {
+    .lead-card-top, .client-card-top {
       display: flex; justify-content: space-between; align-items: flex-start;
       gap: 0.75rem; margin-bottom: 0.65rem;
     }
-    .lead-name { font-weight: 600; font-size: 1.05rem; }
-    .lead-plan {
+    .lead-name, .client-name { font-weight: 600; font-size: 1.05rem; }
+    .lead-plan, .badge {
       font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
-      padding: 0.2rem 0.55rem; border-radius: 999px;
-      background: rgba(107,155,255,0.2); color: #9ec0ff; white-space: nowrap;
+      padding: 0.2rem 0.55rem; border-radius: 999px; white-space: nowrap;
     }
-    .lead-row {
+    .lead-plan { background: rgba(107,155,255,0.2); color: #9ec0ff; }
+    .badge--active { background: rgba(80,200,120,0.2); color: #8fefb0; }
+    .badge--overdue { background: rgba(255,100,100,0.2); color: #ffb4b4; }
+    .badge--pending { background: rgba(255,200,80,0.18); color: #ffd980; }
+    .badge--paid { background: rgba(80,200,120,0.2); color: #8fefb0; }
+    .badge--paused { background: rgba(160,160,180,0.2); color: #c0c0d0; }
+    .badge--ended { background: rgba(120,120,140,0.25); color: #a0a0b0; }
+
+    .lead-row, .client-row {
       display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem;
       font-size: 0.88rem; color: rgba(244,247,252,0.8); margin-bottom: 0.35rem;
     }
-    .lead-row a { color: #9ec0ff; text-decoration: underline; text-underline-offset: 2px; }
+    .lead-row a, .client-row a { color: #9ec0ff; text-decoration: underline; text-underline-offset: 2px; }
     .lead-msg {
       margin-top: 0.6rem; padding-top: 0.6rem;
       border-top: 1px solid rgba(255,255,255,0.1);
       font-size: 0.88rem; color: rgba(244,247,252,0.75); white-space: pre-wrap;
     }
-    .lead-date { font-size: 0.75rem; color: rgba(244,247,252,0.45); margin-top: 0.5rem; }
-    .lead-actions { margin-top: 0.65rem; display: flex; gap: 0.5rem; }
+    .lead-date, .client-meta { font-size: 0.75rem; color: rgba(244,247,252,0.45); margin-top: 0.5rem; }
+    .lead-actions, .client-actions { margin-top: 0.65rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    /* Period list inside client detail */
+    .period-list { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
+    .period-item {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.5rem; padding: 0.65rem 0.85rem;
+      background: rgba(0,0,0,0.18); border-radius: 8px;
+      font-size: 0.85rem;
+    }
+    .period-item .period-dates { color: rgba(244,247,252,0.85); }
+    .period-item .period-amount { font-weight: 500; }
+
+    /* Forms / modal */
+    .admin-form-panel {
+      background: rgba(20, 52, 138, 0.65);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 12px; padding: 1.25rem 1.35rem; margin-bottom: 1.25rem;
+    }
+    .admin-form-panel h2 { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 600; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1rem;
+    }
+    @media (max-width: 600px) {
+      .form-grid { grid-template-columns: 1fr; }
+    }
+    .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label {
+      font-size: 0.78rem; color: rgba(244,247,252,0.6); font-weight: 500;
+    }
+    .form-field input, .form-field select, .form-field textarea {
+      padding: 0.55rem 0.75rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2);
+      color: #fff; font-size: 0.9rem; outline: none; width: 100%;
+      box-sizing: border-box; font-family: inherit;
+    }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
+      border-color: rgba(255,255,255,0.45);
+    }
+    .form-field textarea { min-height: 70px; resize: vertical; }
+    .form-actions {
+      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+    }
 
     .hidden { display: none !important; }
   </style>
@@ -117,17 +209,15 @@
   <div class="admin-wrap" id="loginView">
     <div class="admin-login">
       <h1>Admin</h1>
-      <p>Workers Dev — contactos do formulário</p>
+      <p>Workers Dev — contactos e clientes</p>
       <form id="loginForm">
         <div class="admin-pwd-wrap">
           <input type="password" id="password" placeholder="Palavra-passe" autocomplete="current-password" required>
           <button type="button" class="admin-pwd-toggle" id="pwdToggle" aria-label="Mostrar palavra-passe" aria-pressed="false" title="Mostrar palavra-passe">
-            <!-- eye (show) -->
             <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
               <circle cx="12" cy="12" r="3"/>
             </svg>
-            <!-- eye-off (hide) — shown when password is visible -->
             <svg class="icon-eye-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
               <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
@@ -149,15 +239,134 @@
   <!-- DASHBOARD -->
   <div class="admin-wrap hidden" id="dashView">
     <div class="admin-top">
-      <h1>Contactos</h1>
+      <h1 id="pageTitle">Contactos</h1>
       <div class="admin-top-actions">
         <button type="button" class="admin-btn" id="btnRefresh">Actualizar</button>
         <button type="button" class="admin-btn" id="btnLogout">Sair</button>
       </div>
     </div>
-    <p class="admin-meta" id="metaLine">A carregar…</p>
-    <div class="admin-empty hidden" id="emptyState">Ainda não há contactos.</div>
-    <div class="lead-list" id="leadList"></div>
+
+    <div class="admin-tabs">
+      <button type="button" class="admin-tab active" data-tab="leads" id="tabLeads">Contactos</button>
+      <button type="button" class="admin-tab" data-tab="clients" id="tabClients">Clientes</button>
+    </div>
+
+    <!-- LEADS VIEW -->
+    <div id="leadsView">
+      <p class="admin-meta" id="metaLine">A carregar…</p>
+      <div class="admin-empty hidden" id="emptyState">Ainda não há contactos.</div>
+      <div class="lead-list" id="leadList"></div>
+    </div>
+
+    <!-- CLIENTS VIEW -->
+    <div id="clientsView" class="hidden">
+      <div class="summary-strip" id="summaryStrip">
+        <div class="summary-card"><div class="label">Clientes</div><div class="value" id="sumTotal">—</div></div>
+        <div class="summary-card"><div class="label">Activos</div><div class="value" id="sumActive">—</div></div>
+        <div class="summary-card"><div class="label">Em atraso</div><div class="value" id="sumOverdue">—</div></div>
+        <div class="summary-card"><div class="label">Esperado este mês</div><div class="value" id="sumExpected">—</div></div>
+      </div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+        <button type="button" class="admin-btn admin-btn--solid" id="btnNewClient">+ Novo cliente</button>
+        <div class="filter-row" style="margin:0;" id="clientFilters">
+          <button type="button" class="filter-chip active" data-filter="all">Todos</button>
+          <button type="button" class="filter-chip" data-filter="overdue">Em atraso</button>
+          <button type="button" class="filter-chip" data-filter="active">Activos</button>
+        </div>
+      </div>
+
+      <p class="admin-meta" id="clientsMeta">A carregar…</p>
+      <div class="admin-empty hidden" id="clientsEmpty">Ainda não há clientes.</div>
+      <div class="client-list" id="clientList"></div>
+
+      <!-- New / Edit client form -->
+      <div class="admin-form-panel hidden" id="clientFormPanel">
+        <h2 id="clientFormTitle">Novo cliente</h2>
+        <form id="clientForm">
+          <input type="hidden" id="cfId">
+          <div class="form-grid">
+            <div class="form-field">
+              <label for="cfName">Nome *</label>
+              <input type="text" id="cfName" required placeholder="Wakanda Training">
+            </div>
+            <div class="form-field">
+              <label for="cfWebsite">Website</label>
+              <input type="text" id="cfWebsite" placeholder="wakandatraining.com">
+            </div>
+            <div class="form-field">
+              <label for="cfStartDate">Data de início *</label>
+              <input type="date" id="cfStartDate" required>
+            </div>
+            <div class="form-field">
+              <label for="cfAmount">Valor mensal (Kz) *</label>
+              <input type="number" id="cfAmount" required min="1" step="1" placeholder="2000">
+            </div>
+            <div class="form-field">
+              <label for="cfPlan">Plano</label>
+              <select id="cfPlan">
+                <option value="">—</option>
+                <option value="Básico">Básico</option>
+                <option value="Profissional">Profissional</option>
+                <option value="Empresa">Empresa</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="cfStatus">Estado</label>
+              <select id="cfStatus">
+                <option value="active">Activo</option>
+                <option value="paused">Pausado</option>
+                <option value="ended">Terminado</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="cfContactName">Contacto (atenção de)</label>
+              <input type="text" id="cfContactName" placeholder="Wilson Benjamim">
+            </div>
+            <div class="form-field">
+              <label for="cfPhone">Telefone / WhatsApp</label>
+              <input type="text" id="cfPhone" placeholder="+244 9xx xxx xxx">
+            </div>
+            <div class="form-field">
+              <label for="cfEmail">E-mail</label>
+              <input type="email" id="cfEmail" placeholder="cliente@email.com">
+            </div>
+            <div class="form-field">
+              <label for="cfNif">NIF</label>
+              <input type="text" id="cfNif" placeholder="5417662739">
+            </div>
+            <div class="form-field full">
+              <label for="cfAddress">Morada</label>
+              <input type="text" id="cfAddress" placeholder="Benfica, Rua Direita do BFA…">
+            </div>
+            <div class="form-field full">
+              <label for="cfNotes">Notas internas</label>
+              <textarea id="cfNotes" placeholder="Observações…"></textarea>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="admin-btn admin-btn--solid" id="cfSubmit">Guardar</button>
+            <button type="button" class="admin-btn" id="cfCancel">Cancelar</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Client detail (periods) -->
+      <div class="admin-form-panel hidden" id="clientDetailPanel">
+        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
+          <h2 id="detailTitle" style="margin:0;">Cliente</h2>
+          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
+            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailEdit">Editar</button>
+            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailNext">Gerar próximo período</button>
+            <button type="button" class="admin-btn admin-btn--sm admin-btn--danger" id="btnDetailDelete">Apagar</button>
+            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailClose">Fechar</button>
+          </div>
+        </div>
+        <div id="detailInfo" class="client-row" style="margin-bottom:0.75rem;"></div>
+        <div class="period-list" id="periodList"></div>
+      </div>
+    </div>
   </div>
 
   <script src="admin.js"></script>
