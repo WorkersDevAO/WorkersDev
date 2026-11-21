@@ -186,16 +186,16 @@ async function writeClients(env, clients) {
 
 async function readInvoiceMeta(env) {
   const raw = await env.LEADS.get(INVOICE_META_KEY);
-  if (!raw) return { lastInvoiceNumber: 18101133 };
+  if (!raw) return { lastInvoiceNumber: 1000 };
   try {
     const parsed = JSON.parse(raw);
     return {
       lastInvoiceNumber: typeof parsed.lastInvoiceNumber === 'number'
         ? parsed.lastInvoiceNumber
-        : 18101133,
+        : 1000,
     };
   } catch {
-    return { lastInvoiceNumber: 18101133 };
+    return { lastInvoiceNumber: 1000 };
   }
 }
 

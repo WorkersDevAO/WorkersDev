@@ -134,16 +134,28 @@
     return res.json();
   }
 
-  /* ---------- Tabs ---------- */
+  /* ---------- Sidebar / Tabs ---------- */
+  const slideOverlay = document.getElementById('slideOverlay');
+  const adminSidebar = document.getElementById('adminSidebar');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+  const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+  function closeSidebarMobile() {
+    if (adminSidebar) adminSidebar.classList.remove('open');
+    if (sidebarBackdrop) sidebarBackdrop.classList.remove('open');
+  }
+
   function switchTab(tab) {
     currentTab = tab;
-    document.querySelectorAll('.admin-tab').forEach(function (el) {
+    document.querySelectorAll('.sidebar-link').forEach(function (el) {
       el.classList.toggle('active', el.getAttribute('data-tab') === tab);
     });
+    closeSidebarMobile();
     if (tab === 'leads') {
       leadsView.classList.remove('hidden');
       clientsView.classList.add('hidden');
       pageTitle.textContent = 'Contactos';
+      closeSlide();
       fetchLeads();
     } else {
       leadsView.classList.add('hidden');
@@ -156,6 +168,16 @@
 
   document.getElementById('tabLeads').addEventListener('click', function () { switchTab('leads'); });
   document.getElementById('tabClients').addEventListener('click', function () { switchTab('clients'); });
+
+  if (sidebarToggle) {
+    sidebarToggle.addEventListener('click', function () {
+      adminSidebar.classList.toggle('open');
+      sidebarBackdrop.classList.toggle('open');
+    });
+  }
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeSidebarMobile);
+  }
 
   /* ---------- Leads (existing) ---------- */
   function renderLeads(leads) {
@@ -247,10 +269,22 @@
   });
 
   /* ---------- Clients ---------- */
+  function closeSlide() {
+    clientDetailPanel.classList.remove('open');
+    clientDetailPanel.setAttribute('aria-hidden', 'true');
+    if (slideOverlay) slideOverlay.classList.remove('open');
+    selectedClientId = null;
+  }
+
+  function openSlide() {
+    clientDetailPanel.classList.add('open');
+    clientDetailPanel.setAttribute('aria-hidden', 'false');
+    if (slideOverlay) slideOverlay.classList.add('open');
+  }
+
   function hideClientPanels() {
     clientFormPanel.classList.add('hidden');
-    clientDetailPanel.classList.add('hidden');
-    selectedClientId = null;
+    closeSlide();
   }
 
   function statusBadge(status) {
@@ -364,7 +398,7 @@
 
   /* Client form */
   function openNewClientForm() {
-    clientDetailPanel.classList.add('hidden');
+    closeSlide();
     clientFormPanel.classList.remove('hidden');
     clientFormTitle.textContent = 'Novo cliente';
     clientForm.reset();
@@ -375,7 +409,7 @@
   }
 
   function openEditClientForm(client) {
-    clientDetailPanel.classList.add('hidden');
+    closeSlide();
     clientFormPanel.classList.remove('hidden');
     clientFormTitle.textContent = 'Editar cliente';
     document.getElementById('cfId').value = client.id;
@@ -442,11 +476,10 @@
     }
   });
 
-  /* Client detail / periods */
+  /* Client detail / periods — right slide-over */
   function openClientDetail(client) {
     selectedClientId = client.id;
     clientFormPanel.classList.add('hidden');
-    clientDetailPanel.classList.remove('hidden');
     detailTitle.textContent = client.name;
 
     const websiteLink = client.website
@@ -454,11 +487,11 @@
       : '—';
 
     detailInfo.innerHTML =
-      '<span>' + websiteLink + '</span>' +
-      '<span>' + formatMoney(client.monthlyAmount) + '/mês</span>' +
-      '<span>' + statusBadge(client.status) + '</span>' +
-      (client.contactName ? '<span>' + escapeHtml(client.contactName) + '</span>' : '') +
-      (client.phone ? '<span>' + escapeHtml(client.phone) + '</span>' : '');
+      websiteLink + ' · ' + formatMoney(client.monthlyAmount) + '/mês' +
+      (client.contactName ? ' · ' + escapeHtml(client.contactName) : '') +
+      (client.phone ? ' · ' + escapeHtml(client.phone) : '');
+
+    openSlide();
 
     const periods = (client.periods || []).slice().sort(function (a, b) {
       return b.periodEnd.localeCompare(a.periodEnd);
@@ -530,10 +563,10 @@
     }
   });
 
-  document.getElementById('btnDetailClose').addEventListener('click', function () {
-    clientDetailPanel.classList.add('hidden');
-    selectedClientId = null;
-  });
+  document.getElementById('btnDetailClose').addEventListener('click', closeSlide);
+  if (slideOverlay) {
+    slideOverlay.addEventListener('click', closeSlide);
+  }
 
   document.getElementById('btnDetailEdit').addEventListener('click', function () {
     if (!selectedClientId) return;

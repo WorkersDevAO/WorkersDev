@@ -12,14 +12,91 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    .admin-page { min-height: 100dvh; padding-bottom: 3rem; }
-    .admin-wrap { max-width: 960px; margin: 0 auto; padding: 0 1.25rem; }
+    /* ===== Base ===== */
+    .admin-page { min-height: 100dvh; margin: 0; }
+    .hidden { display: none !important; }
+
+    /* ===== Login (unchanged layout) ===== */
+    .admin-wrap-login { max-width: 360px; margin: 4rem auto 0; padding: 0 1.25rem; text-align: center; }
+    .admin-login h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .admin-login > p { color: rgba(244,247,252,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .admin-login form { display: flex; flex-direction: column; gap: 0.75rem; }
+    .admin-login input[type="password"],
+    .admin-login input[type="text"] {
+      padding: 0.85rem 2.75rem 0.85rem 1rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.22); background: transparent;
+      color: #fff; font-size: 1rem; outline: none; width: 100%; box-sizing: border-box;
+    }
+    .admin-login input:focus { border-color: rgba(255,255,255,0.5); }
+    .admin-pwd-wrap { position: relative; width: 100%; }
+    .admin-pwd-toggle {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; padding: 0; border: none; background: transparent;
+      color: rgba(255,255,255,0.55); cursor: pointer; border-radius: 6px;
+    }
+    .admin-pwd-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .admin-pwd-toggle[aria-pressed="true"] { color: #9ec0ff; }
+    .admin-pwd-toggle svg { width: 1.15rem; height: 1.15rem; display: block; }
+    .admin-remember {
+      display: flex; align-items: center; gap: 0.55rem;
+      text-align: left; font-size: 0.88rem; color: rgba(244,247,252,0.75);
+      user-select: none; cursor: pointer;
+    }
+    .admin-remember input { width: 1rem; height: 1rem; accent-color: #6b9bff; cursor: pointer; flex-shrink: 0; }
+    .admin-error { color: #ffb4b4; font-size: 0.85rem; min-height: 1.2em; }
+
+    /* ===== Shell: sidebar + main ===== */
+    .admin-shell {
+      display: flex; min-height: 100dvh;
+    }
+
+    /* Left sidebar */
+    .admin-sidebar {
+      width: 220px; flex-shrink: 0;
+      background: rgba(8, 24, 72, 0.92);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column;
+      padding: 1.25rem 0.85rem;
+      position: sticky; top: 0; height: 100dvh;
+    }
+    .sidebar-brand {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.35rem 0.5rem 1.25rem;
+      font-weight: 600; font-size: 0.95rem; letter-spacing: -0.02em;
+    }
+    .sidebar-brand img { width: 28px; height: 28px; border-radius: 6px; }
+    .sidebar-nav { display: flex; flex-direction: column; gap: 0.25rem; flex: 1; }
+    .sidebar-link {
+      display: flex; align-items: center; gap: 0.65rem;
+      padding: 0.65rem 0.85rem; border-radius: 8px;
+      border: none; background: transparent; color: rgba(244,247,252,0.65);
+      font-size: 0.9rem; font-weight: 500; cursor: pointer; text-align: left;
+      transition: background 0.15s, color 0.15s;
+    }
+    .sidebar-link:hover { background: rgba(255,255,255,0.06); color: #fff; }
+    .sidebar-link.active {
+      background: rgba(107,155,255,0.18); color: #9ec0ff;
+    }
+    .sidebar-footer {
+      padding-top: 0.75rem; border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex; flex-direction: column; gap: 0.35rem;
+    }
+
+    /* Main content */
+    .admin-main {
+      flex: 1; min-width: 0;
+      padding: 1.35rem 1.5rem 2.5rem;
+      overflow-x: hidden;
+    }
     .admin-top {
       display: flex; align-items: center; justify-content: space-between;
-      gap: 1rem; padding: 1.5rem 0 1.25rem; flex-wrap: wrap;
+      gap: 1rem; margin-bottom: 1.25rem; flex-wrap: wrap;
     }
-    .admin-top h1 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; }
+    .admin-top h1 { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.02em; margin: 0; }
     .admin-top-actions { display: flex; gap: 0.5rem; align-items: center; }
+
+    /* Buttons */
     .admin-btn {
       display: inline-flex; align-items: center; justify-content: center;
       padding: 0.5rem 1rem; font-size: 0.85rem; font-weight: 500;
@@ -34,44 +111,6 @@
     .admin-btn--danger:hover { background: rgba(255,80,80,0.12); }
     .admin-btn--sm { padding: 0.35rem 0.75rem; font-size: 0.78rem; }
 
-    .admin-login {
-      max-width: 360px; margin: 4rem auto 0; text-align: center;
-    }
-    .admin-login h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .admin-login > p { color: rgba(244,247,252,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
-    .admin-login form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .admin-login input[type="password"],
-    .admin-login input[type="text"] {
-      padding: 0.85rem 2.75rem 0.85rem 1rem; border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.22); background: transparent;
-      color: #fff; font-size: 1rem; outline: none; width: 100%;
-      box-sizing: border-box;
-    }
-    .admin-login input[type="password"]:focus,
-    .admin-login input[type="text"]:focus { border-color: rgba(255,255,255,0.5); }
-    .admin-pwd-wrap { position: relative; width: 100%; }
-    .admin-pwd-toggle {
-      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 2rem; height: 2rem; padding: 0;
-      border: none; background: transparent; color: rgba(255,255,255,0.55);
-      cursor: pointer; border-radius: 6px;
-      transition: color 0.15s, background 0.15s;
-    }
-    .admin-pwd-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
-    .admin-pwd-toggle[aria-pressed="true"] { color: #9ec0ff; }
-    .admin-pwd-toggle svg { width: 1.15rem; height: 1.15rem; display: block; }
-    .admin-remember {
-      display: flex; align-items: center; gap: 0.55rem;
-      text-align: left; font-size: 0.88rem; color: rgba(244,247,252,0.75);
-      user-select: none; cursor: pointer;
-    }
-    .admin-remember input {
-      width: 1rem; height: 1rem; accent-color: #6b9bff; cursor: pointer;
-      flex-shrink: 0;
-    }
-    .admin-error { color: #ffb4b4; font-size: 0.85rem; min-height: 1.2em; }
-
     .admin-meta { color: rgba(244,247,252,0.65); font-size: 0.85rem; margin-bottom: 1rem; }
     .admin-empty {
       text-align: center; padding: 3rem 1rem;
@@ -79,26 +118,8 @@
       border-radius: 12px;
     }
 
-    /* Tabs */
-    .admin-tabs {
-      display: flex; gap: 0.35rem; margin-bottom: 1.25rem;
-      border-bottom: 1px solid rgba(255,255,255,0.12); padding-bottom: 0.5rem;
-    }
-    .admin-tab {
-      padding: 0.45rem 1rem; font-size: 0.88rem; font-weight: 500;
-      border-radius: 8px; border: none; background: transparent;
-      color: rgba(244,247,252,0.65); cursor: pointer;
-      transition: background 0.15s, color 0.15s;
-    }
-    .admin-tab:hover { color: #fff; background: rgba(255,255,255,0.06); }
-    .admin-tab.active {
-      color: #0c2461; background: #fff;
-    }
-
-    /* Summary strip */
-    .summary-strip {
-      display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem;
-    }
+    /* Summary */
+    .summary-strip { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 1.25rem; }
     .summary-card {
       flex: 1 1 120px; min-width: 110px;
       background: rgba(20, 52, 138, 0.45);
@@ -109,9 +130,7 @@
     .summary-card .value { font-size: 1.25rem; font-weight: 600; }
 
     /* Filters */
-    .filter-row {
-      display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem;
-    }
+    .filter-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .filter-chip {
       padding: 0.3rem 0.7rem; font-size: 0.78rem; font-weight: 500;
       border-radius: 999px; border: 1px solid rgba(255,255,255,0.2);
@@ -121,7 +140,7 @@
       background: rgba(107,155,255,0.25); border-color: rgba(107,155,255,0.5); color: #9ec0ff;
     }
 
-    /* Cards (shared) */
+    /* Cards */
     .lead-list, .client-list { display: flex; flex-direction: column; gap: 0.75rem; }
     .lead-card, .client-card {
       background: rgba(20, 52, 138, 0.55);
@@ -158,35 +177,18 @@
     .lead-date, .client-meta { font-size: 0.75rem; color: rgba(244,247,252,0.45); margin-top: 0.5rem; }
     .lead-actions, .client-actions { margin-top: 0.65rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-    /* Period list inside client detail */
-    .period-list { margin-top: 0.85rem; display: flex; flex-direction: column; gap: 0.5rem; }
-    .period-item {
-      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
-      gap: 0.5rem; padding: 0.65rem 0.85rem;
-      background: rgba(0,0,0,0.18); border-radius: 8px;
-      font-size: 0.85rem;
-    }
-    .period-item .period-dates { color: rgba(244,247,252,0.85); }
-    .period-item .period-amount { font-weight: 500; }
-
-    /* Forms / modal */
+    /* Form panel (inline, for create/edit) */
     .admin-form-panel {
       background: rgba(20, 52, 138, 0.65);
       border: 1px solid rgba(255,255,255,0.14);
       border-radius: 12px; padding: 1.25rem 1.35rem; margin-bottom: 1.25rem;
     }
     .admin-form-panel h2 { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 600; }
-    .form-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1rem;
-    }
-    @media (max-width: 600px) {
-      .form-grid { grid-template-columns: 1fr; }
-    }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1rem; }
+    @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
     .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
     .form-field.full { grid-column: 1 / -1; }
-    .form-field label {
-      font-size: 0.78rem; color: rgba(244,247,252,0.6); font-weight: 500;
-    }
+    .form-field label { font-size: 0.78rem; color: rgba(244,247,252,0.6); font-weight: 500; }
     .form-field input, .form-field select, .form-field textarea {
       padding: 0.55rem 0.75rem; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.2);
@@ -197,17 +199,87 @@
       border-color: rgba(255,255,255,0.45);
     }
     .form-field textarea { min-height: 70px; resize: vertical; }
-    .form-actions {
-      display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem;
+    .form-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+
+    /* ===== Right slide-over panel ===== */
+    .slide-overlay {
+      position: fixed; inset: 0; background: rgba(0,0,0,0.45);
+      z-index: 40; opacity: 0; visibility: hidden;
+      transition: opacity 0.22s ease, visibility 0.22s;
+    }
+    .slide-overlay.open { opacity: 1; visibility: visible; }
+
+    .slide-panel {
+      position: fixed; top: 0; right: 0; bottom: 0;
+      width: min(440px, 100vw);
+      background: #0a1a4a;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      z-index: 50;
+      display: flex; flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 0.25s ease;
+      box-shadow: -12px 0 40px rgba(0,0,0,0.35);
+    }
+    .slide-panel.open { transform: translateX(0); }
+
+    .slide-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: 0.75rem; padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .slide-header h2 {
+      font-size: 1.1rem; font-weight: 600; margin: 0 0 0.25rem;
+      letter-spacing: -0.02em;
+    }
+    .slide-header .slide-sub {
+      font-size: 0.82rem; color: rgba(244,247,252,0.55);
+    }
+    .slide-header-actions { display: flex; gap: 0.35rem; flex-shrink: 0; }
+
+    .slide-body {
+      flex: 1; overflow-y: auto; padding: 1.1rem 1.25rem 2rem;
     }
 
-    .hidden { display: none !important; }
+    .period-list { display: flex; flex-direction: column; gap: 0.55rem; margin-top: 0.75rem; }
+    .period-item {
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+      gap: 0.5rem; padding: 0.75rem 0.9rem;
+      background: rgba(0,0,0,0.22); border-radius: 10px;
+      font-size: 0.85rem;
+    }
+    .period-item .period-dates { color: rgba(244,247,252,0.85); }
+    .period-item .period-amount { font-weight: 500; margin-top: 0.15rem; }
+
+    /* Mobile sidebar */
+    .sidebar-toggle {
+      display: none;
+      position: fixed; top: 0.85rem; left: 0.85rem; z-index: 30;
+      width: 2.4rem; height: 2.4rem; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(8,24,72,0.95);
+      color: #fff; cursor: pointer; align-items: center; justify-content: center;
+    }
+    .sidebar-backdrop {
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 25;
+    }
+
+    @media (max-width: 768px) {
+      .admin-sidebar {
+        position: fixed; left: 0; top: 0; bottom: 0; z-index: 30;
+        transform: translateX(-100%); transition: transform 0.22s ease;
+      }
+      .admin-sidebar.open { transform: translateX(0); }
+      .sidebar-toggle { display: inline-flex; }
+      .sidebar-backdrop.open { display: block; }
+      .admin-main { padding: 1.1rem 1rem 2rem; padding-top: 3.5rem; }
+      .slide-panel { width: 100vw; }
+    }
   </style>
 </head>
 <body class="admin-page">
   <!-- LOGIN -->
-  <div class="admin-wrap" id="loginView">
-    <div class="admin-login">
+  <div id="loginView">
+    <div class="admin-wrap-login admin-login">
       <h1>Admin</h1>
       <p>Workers Dev — contactos e clientes</p>
       <form id="loginForm">
@@ -236,138 +308,158 @@
     </div>
   </div>
 
-  <!-- DASHBOARD -->
-  <div class="admin-wrap hidden" id="dashView">
-    <div class="admin-top">
-      <h1 id="pageTitle">Contactos</h1>
-      <div class="admin-top-actions">
-        <button type="button" class="admin-btn" id="btnRefresh">Actualizar</button>
-        <button type="button" class="admin-btn" id="btnLogout">Sair</button>
+  <!-- DASHBOARD SHELL -->
+  <div class="admin-shell hidden" id="dashView">
+    <button type="button" class="sidebar-toggle" id="sidebarToggle" aria-label="Menu">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+    </button>
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <img src="assets/favicon.png" alt="">
+        <span>Workers Dev</span>
       </div>
-    </div>
+      <nav class="sidebar-nav">
+        <button type="button" class="sidebar-link active" data-tab="leads" id="tabLeads">Contactos</button>
+        <button type="button" class="sidebar-link" data-tab="clients" id="tabClients">Clientes</button>
+      </nav>
+      <div class="sidebar-footer">
+        <button type="button" class="admin-btn admin-btn--sm" id="btnRefresh" style="width:100%">Actualizar</button>
+        <button type="button" class="admin-btn admin-btn--sm" id="btnLogout" style="width:100%">Sair</button>
+      </div>
+    </aside>
 
-    <div class="admin-tabs">
-      <button type="button" class="admin-tab active" data-tab="leads" id="tabLeads">Contactos</button>
-      <button type="button" class="admin-tab" data-tab="clients" id="tabClients">Clientes</button>
-    </div>
-
-    <!-- LEADS VIEW -->
-    <div id="leadsView">
-      <p class="admin-meta" id="metaLine">A carregar…</p>
-      <div class="admin-empty hidden" id="emptyState">Ainda não há contactos.</div>
-      <div class="lead-list" id="leadList"></div>
-    </div>
-
-    <!-- CLIENTS VIEW -->
-    <div id="clientsView" class="hidden">
-      <div class="summary-strip" id="summaryStrip">
-        <div class="summary-card"><div class="label">Clientes</div><div class="value" id="sumTotal">—</div></div>
-        <div class="summary-card"><div class="label">Activos</div><div class="value" id="sumActive">—</div></div>
-        <div class="summary-card"><div class="label">Em atraso</div><div class="value" id="sumOverdue">—</div></div>
-        <div class="summary-card"><div class="label">Esperado este mês</div><div class="value" id="sumExpected">—</div></div>
+    <!-- MAIN -->
+    <main class="admin-main">
+      <div class="admin-top">
+        <h1 id="pageTitle">Contactos</h1>
       </div>
 
-      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-        <button type="button" class="admin-btn admin-btn--solid" id="btnNewClient">+ Novo cliente</button>
-        <div class="filter-row" style="margin:0;" id="clientFilters">
-          <button type="button" class="filter-chip active" data-filter="all">Todos</button>
-          <button type="button" class="filter-chip" data-filter="overdue">Em atraso</button>
-          <button type="button" class="filter-chip" data-filter="active">Activos</button>
+      <!-- LEADS VIEW -->
+      <div id="leadsView">
+        <p class="admin-meta" id="metaLine">A carregar…</p>
+        <div class="admin-empty hidden" id="emptyState">Ainda não há contactos.</div>
+        <div class="lead-list" id="leadList"></div>
+      </div>
+
+      <!-- CLIENTS VIEW -->
+      <div id="clientsView" class="hidden">
+        <div class="summary-strip" id="summaryStrip">
+          <div class="summary-card"><div class="label">Clientes</div><div class="value" id="sumTotal">—</div></div>
+          <div class="summary-card"><div class="label">Activos</div><div class="value" id="sumActive">—</div></div>
+          <div class="summary-card"><div class="label">Em atraso</div><div class="value" id="sumOverdue">—</div></div>
+          <div class="summary-card"><div class="label">Esperado este mês</div><div class="value" id="sumExpected">—</div></div>
         </div>
-      </div>
 
-      <p class="admin-meta" id="clientsMeta">A carregar…</p>
-      <div class="admin-empty hidden" id="clientsEmpty">Ainda não há clientes.</div>
-      <div class="client-list" id="clientList"></div>
-
-      <!-- New / Edit client form -->
-      <div class="admin-form-panel hidden" id="clientFormPanel">
-        <h2 id="clientFormTitle">Novo cliente</h2>
-        <form id="clientForm">
-          <input type="hidden" id="cfId">
-          <div class="form-grid">
-            <div class="form-field">
-              <label for="cfName">Nome *</label>
-              <input type="text" id="cfName" required placeholder="Wakanda Training">
-            </div>
-            <div class="form-field">
-              <label for="cfWebsite">Website</label>
-              <input type="text" id="cfWebsite" placeholder="wakandatraining.com">
-            </div>
-            <div class="form-field">
-              <label for="cfStartDate">Data de início *</label>
-              <input type="date" id="cfStartDate" required>
-            </div>
-            <div class="form-field">
-              <label for="cfAmount">Valor mensal (Kz) *</label>
-              <input type="number" id="cfAmount" required min="1" step="1" placeholder="2000">
-            </div>
-            <div class="form-field">
-              <label for="cfPlan">Plano</label>
-              <select id="cfPlan">
-                <option value="">—</option>
-                <option value="Básico">Básico</option>
-                <option value="Profissional">Profissional</option>
-                <option value="Empresa">Empresa</option>
-                <option value="Outro">Outro</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label for="cfStatus">Estado</label>
-              <select id="cfStatus">
-                <option value="active">Activo</option>
-                <option value="paused">Pausado</option>
-                <option value="ended">Terminado</option>
-              </select>
-            </div>
-            <div class="form-field">
-              <label for="cfContactName">Contacto (atenção de)</label>
-              <input type="text" id="cfContactName" placeholder="Wilson Benjamim">
-            </div>
-            <div class="form-field">
-              <label for="cfPhone">Telefone / WhatsApp</label>
-              <input type="text" id="cfPhone" placeholder="+244 9xx xxx xxx">
-            </div>
-            <div class="form-field">
-              <label for="cfEmail">E-mail</label>
-              <input type="email" id="cfEmail" placeholder="cliente@email.com">
-            </div>
-            <div class="form-field">
-              <label for="cfNif">NIF</label>
-              <input type="text" id="cfNif" placeholder="5417662739">
-            </div>
-            <div class="form-field full">
-              <label for="cfAddress">Morada</label>
-              <input type="text" id="cfAddress" placeholder="Benfica, Rua Direita do BFA…">
-            </div>
-            <div class="form-field full">
-              <label for="cfNotes">Notas internas</label>
-              <textarea id="cfNotes" placeholder="Observações…"></textarea>
-            </div>
-          </div>
-          <div class="form-actions">
-            <button type="submit" class="admin-btn admin-btn--solid" id="cfSubmit">Guardar</button>
-            <button type="button" class="admin-btn" id="cfCancel">Cancelar</button>
-          </div>
-        </form>
-      </div>
-
-      <!-- Client detail (periods) -->
-      <div class="admin-form-panel hidden" id="clientDetailPanel">
-        <div style="display:flex;justify-content:space-between;align-items:center;gap:0.75rem;flex-wrap:wrap;margin-bottom:0.75rem;">
-          <h2 id="detailTitle" style="margin:0;">Cliente</h2>
-          <div style="display:flex;gap:0.4rem;flex-wrap:wrap;">
-            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailEdit">Editar</button>
-            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailNext">Gerar próximo período</button>
-            <button type="button" class="admin-btn admin-btn--sm admin-btn--danger" id="btnDetailDelete">Apagar</button>
-            <button type="button" class="admin-btn admin-btn--sm" id="btnDetailClose">Fechar</button>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewClient">+ Novo cliente</button>
+          <div class="filter-row" style="margin:0;" id="clientFilters">
+            <button type="button" class="filter-chip active" data-filter="all">Todos</button>
+            <button type="button" class="filter-chip" data-filter="overdue">Em atraso</button>
+            <button type="button" class="filter-chip" data-filter="active">Activos</button>
           </div>
         </div>
-        <div id="detailInfo" class="client-row" style="margin-bottom:0.75rem;"></div>
-        <div class="period-list" id="periodList"></div>
+
+        <p class="admin-meta" id="clientsMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="clientsEmpty">Ainda não há clientes.</div>
+        <div class="client-list" id="clientList"></div>
+
+        <!-- New / Edit client form (inline) -->
+        <div class="admin-form-panel hidden" id="clientFormPanel">
+          <h2 id="clientFormTitle">Novo cliente</h2>
+          <form id="clientForm">
+            <input type="hidden" id="cfId">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="cfName">Nome *</label>
+                <input type="text" id="cfName" required placeholder="Wakanda Training">
+              </div>
+              <div class="form-field">
+                <label for="cfWebsite">Website</label>
+                <input type="text" id="cfWebsite" placeholder="wakandatraining.com">
+              </div>
+              <div class="form-field">
+                <label for="cfStartDate">Data de início *</label>
+                <input type="date" id="cfStartDate" required>
+              </div>
+              <div class="form-field">
+                <label for="cfAmount">Valor mensal (Kz) *</label>
+                <input type="number" id="cfAmount" required min="1" step="1" placeholder="2000">
+              </div>
+              <div class="form-field">
+                <label for="cfPlan">Plano</label>
+                <select id="cfPlan">
+                  <option value="">—</option>
+                  <option value="Básico">Básico</option>
+                  <option value="Profissional">Profissional</option>
+                  <option value="Empresa">Empresa</option>
+                  <option value="Outro">Outro</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="cfStatus">Estado</label>
+                <select id="cfStatus">
+                  <option value="active">Activo</option>
+                  <option value="paused">Pausado</option>
+                  <option value="ended">Terminado</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="cfContactName">Contacto (atenção de)</label>
+                <input type="text" id="cfContactName" placeholder="Wilson Benjamim">
+              </div>
+              <div class="form-field">
+                <label for="cfPhone">Telefone / WhatsApp</label>
+                <input type="text" id="cfPhone" placeholder="+244 9xx xxx xxx">
+              </div>
+              <div class="form-field">
+                <label for="cfEmail">E-mail</label>
+                <input type="email" id="cfEmail" placeholder="cliente@email.com">
+              </div>
+              <div class="form-field">
+                <label for="cfNif">NIF</label>
+                <input type="text" id="cfNif" placeholder="5417662739">
+              </div>
+              <div class="form-field full">
+                <label for="cfAddress">Morada</label>
+                <input type="text" id="cfAddress" placeholder="Benfica, Rua Direita do BFA…">
+              </div>
+              <div class="form-field full">
+                <label for="cfNotes">Notas internas</label>
+                <textarea id="cfNotes" placeholder="Observações…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--solid" id="cfSubmit">Guardar</button>
+              <button type="button" class="admin-btn" id="cfCancel">Cancelar</button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
+    </main>
   </div>
+
+  <!-- RIGHT SLIDE-OVER (client detail / periods) -->
+  <div class="slide-overlay" id="slideOverlay"></div>
+  <aside class="slide-panel" id="clientDetailPanel" aria-hidden="true">
+    <div class="slide-header">
+      <div>
+        <h2 id="detailTitle">Cliente</h2>
+        <div class="slide-sub" id="detailInfo"></div>
+      </div>
+      <div class="slide-header-actions">
+        <button type="button" class="admin-btn admin-btn--sm" id="btnDetailEdit">Editar</button>
+        <button type="button" class="admin-btn admin-btn--sm" id="btnDetailNext">Próximo período</button>
+        <button type="button" class="admin-btn admin-btn--sm admin-btn--danger" id="btnDetailDelete">Apagar</button>
+        <button type="button" class="admin-btn admin-btn--sm" id="btnDetailClose" aria-label="Fechar">✕</button>
+      </div>
+    </div>
+    <div class="slide-body">
+      <div class="period-list" id="periodList"></div>
+    </div>
+  </aside>
 
   <script src="admin.js"></script>
 </body>
