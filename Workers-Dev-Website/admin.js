@@ -7,26 +7,40 @@
   const API_BASE = 'https://workersdev-contact-api.workersdevao.workers.dev';
 
   const STORAGE_KEY = 'wd_admin_pwd';
+  const REMEMBER_KEY = 'wd_admin_remember';
 
   const loginView = document.getElementById('loginView');
   const dashView = document.getElementById('dashView');
   const loginForm = document.getElementById('loginForm');
   const loginError = document.getElementById('loginError');
   const passwordInput = document.getElementById('password');
+  const rememberMe = document.getElementById('rememberMe');
+  const pwdToggle = document.getElementById('pwdToggle');
   const leadList = document.getElementById('leadList');
   const emptyState = document.getElementById('emptyState');
   const metaLine = document.getElementById('metaLine');
 
   function getPwd() {
-    return sessionStorage.getItem(STORAGE_KEY) || '';
+    return localStorage.getItem(STORAGE_KEY) || sessionStorage.getItem(STORAGE_KEY) || '';
   }
 
-  function setPwd(pwd) {
-    sessionStorage.setItem(STORAGE_KEY, pwd);
+  function setPwd(pwd, persist) {
+    // Always clear both first so only one storage holds the value
+    sessionStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
+    if (persist) {
+      localStorage.setItem(STORAGE_KEY, pwd);
+      localStorage.setItem(REMEMBER_KEY, '1');
+    } else {
+      sessionStorage.setItem(STORAGE_KEY, pwd);
+      localStorage.removeItem(REMEMBER_KEY);
+    }
   }
 
   function clearPwd() {
     sessionStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(STORAGE_KEY);
+    localStorage.removeItem(REMEMBER_KEY);
   }
 
   function showLogin(msg) {
@@ -115,6 +129,8 @@
       showLogin();
       return;
     }
+    // Keep dashboard visible while reloading so hard refresh does not flash login
+    showDash();
     metaLine.textContent = 'A carregar…';
     try {
       const res = await fetch(API_BASE + '/leads', {
@@ -127,7 +143,6 @@
       }
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const data = await res.json();
-      showDash();
       renderLeads(data.leads || []);
     } catch (err) {
       metaLine.textContent = 'Erro ao carregar. Verifica a API.';
@@ -160,17 +175,51 @@
     }
   }
 
+  /* ---------- Show / hide password (eye toggle) ---------- */
+  if (pwdToggle && passwordInput) {
+    pwdToggle.addEventListener('click', function () {
+      const showing = passwordInput.type === 'text';
+      passwordInput.type = showing ? 'password' : 'text';
+      pwdToggle.setAttribute('aria-pressed', showing ? 'false' : 'true');
+      pwdToggle.setAttribute(
+        'aria-label',
+        showing ? 'Mostrar palavra-passe' : 'Ocultar palavra-passe'
+      );
+      pwdToggle.setAttribute(
+        'title',
+        showing ? 'Mostrar palavra-passe' : 'Ocultar palavra-passe'
+      );
+      const eye = pwdToggle.querySelector('.icon-eye');
+      const eyeOff = pwdToggle.querySelector('.icon-eye-off');
+      if (eye && eyeOff) {
+        eye.classList.toggle('hidden', !showing);
+        eyeOff.classList.toggle('hidden', showing);
+      }
+    });
+  }
+
   loginForm.addEventListener('submit', function (e) {
     e.preventDefault();
     const pwd = passwordInput.value.trim();
     if (!pwd) return;
-    setPwd(pwd);
+    const persist = !!(rememberMe && rememberMe.checked);
+    setPwd(pwd, persist);
     passwordInput.value = '';
+    // Reset eye toggle to hidden state after clear
+    if (passwordInput.type === 'text' && pwdToggle) {
+      passwordInput.type = 'password';
+      pwdToggle.setAttribute('aria-pressed', 'false');
+      const eye = pwdToggle.querySelector('.icon-eye');
+      const eyeOff = pwdToggle.querySelector('.icon-eye-off');
+      if (eye) eye.classList.remove('hidden');
+      if (eyeOff) eyeOff.classList.add('hidden');
+    }
     fetchLeads();
   });
 
   document.getElementById('btnLogout').addEventListener('click', function () {
     clearPwd();
+    if (rememberMe) rememberMe.checked = false;
     showLogin();
   });
 
@@ -181,7 +230,12 @@
     if (btn) deleteLead(btn.getAttribute('data-id'));
   });
 
-  // Auto-enter if already logged in this tab
+  // Restore "stay logged in" checkbox if a persistent session exists
+  if (localStorage.getItem(REMEMBER_KEY) === '1' && rememberMe) {
+    rememberMe.checked = true;
+  }
+
+  // Auto-enter if session or persistent password exists (survives hard refresh)
   if (getPwd()) {
     fetchLeads();
   }

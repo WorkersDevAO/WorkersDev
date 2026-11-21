@@ -37,14 +37,40 @@
       max-width: 360px; margin: 4rem auto 0; text-align: center;
     }
     .admin-login h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-    .admin-login p { color: rgba(244,247,252,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .admin-login > p { color: rgba(244,247,252,0.7); font-size: 0.9rem; margin-bottom: 1.5rem; }
     .admin-login form { display: flex; flex-direction: column; gap: 0.75rem; }
-    .admin-login input {
-      padding: 0.85rem 1rem; border-radius: 8px;
+    .admin-login input[type="password"],
+    .admin-login input[type="text"] {
+      padding: 0.85rem 2.75rem 0.85rem 1rem; border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.22); background: transparent;
-      color: #fff; font-size: 1rem; outline: none;
+      color: #fff; font-size: 1rem; outline: none; width: 100%;
+      box-sizing: border-box;
     }
-    .admin-login input:focus { border-color: rgba(255,255,255,0.5); }
+    .admin-login input[type="password"]:focus,
+    .admin-login input[type="text"]:focus { border-color: rgba(255,255,255,0.5); }
+    .admin-pwd-wrap {
+      position: relative; width: 100%;
+    }
+    .admin-pwd-toggle {
+      position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 2rem; height: 2rem; padding: 0;
+      border: none; background: transparent; color: rgba(255,255,255,0.55);
+      cursor: pointer; border-radius: 6px;
+      transition: color 0.15s, background 0.15s;
+    }
+    .admin-pwd-toggle:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .admin-pwd-toggle[aria-pressed="true"] { color: #9ec0ff; }
+    .admin-pwd-toggle svg { width: 1.15rem; height: 1.15rem; display: block; }
+    .admin-remember {
+      display: flex; align-items: center; gap: 0.55rem;
+      text-align: left; font-size: 0.88rem; color: rgba(244,247,252,0.75);
+      user-select: none; cursor: pointer;
+    }
+    .admin-remember input {
+      width: 1rem; height: 1rem; accent-color: #6b9bff; cursor: pointer;
+      flex-shrink: 0;
+    }
     .admin-error { color: #ffb4b4; font-size: 0.85rem; min-height: 1.2em; }
 
     .admin-meta { color: rgba(244,247,252,0.65); font-size: 0.85rem; margin-bottom: 1rem; }
@@ -93,7 +119,27 @@
       <h1>Admin</h1>
       <p>Workers Dev — contactos do formulário</p>
       <form id="loginForm">
-        <input type="password" id="password" placeholder="Palavra-passe" autocomplete="current-password" required>
+        <div class="admin-pwd-wrap">
+          <input type="password" id="password" placeholder="Palavra-passe" autocomplete="current-password" required>
+          <button type="button" class="admin-pwd-toggle" id="pwdToggle" aria-label="Mostrar palavra-passe" aria-pressed="false" title="Mostrar palavra-passe">
+            <!-- eye (show) -->
+            <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <!-- eye-off (hide) — shown when password is visible -->
+            <svg class="icon-eye-off hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/>
+              <path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+          </button>
+        </div>
+        <label class="admin-remember">
+          <input type="checkbox" id="rememberMe">
+          <span>Manter sessão iniciada</span>
+        </label>
         <button type="submit" class="admin-btn admin-btn--solid" style="width:100%;padding:0.85rem">Entrar</button>
         <p class="admin-error" id="loginError"></p>
       </form>
