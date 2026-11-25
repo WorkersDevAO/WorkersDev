@@ -324,6 +324,9 @@
       <nav class="sidebar-nav">
         <button type="button" class="sidebar-link active" data-tab="leads" id="tabLeads">Contactos</button>
         <button type="button" class="sidebar-link" data-tab="clients" id="tabClients">Clientes</button>
+        <button type="button" class="sidebar-link" data-tab="accounts" id="tabAccounts">Contas</button>
+        <button type="button" class="sidebar-link" data-tab="websites" id="tabWebsites">Websites</button>
+        <button type="button" class="sidebar-link" data-tab="pending" id="tabPending">Pendentes</button>
       </nav>
       <div class="sidebar-footer">
         <button type="button" class="admin-btn admin-btn--sm" id="btnRefresh" style="width:100%">Actualizar</button>
@@ -434,6 +437,198 @@
             <div class="form-actions">
               <button type="submit" class="admin-btn admin-btn--solid" id="cfSubmit">Guardar</button>
               <button type="button" class="admin-btn" id="cfCancel">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- ACCOUNTS VIEW -->
+      <div id="accountsView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewAccount">+ Nova conta</button>
+          <button type="button" class="admin-btn" id="btnExportAccounts">Exportar CSV</button>
+          <button type="button" class="admin-btn" id="btnSeedData">Carregar dados iniciais</button>
+          <input type="search" id="accountsSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="accountFilters">
+          <button type="button" class="filter-chip active" data-atype="all">Todos</button>
+          <button type="button" class="filter-chip" data-atype="google">Google</button>
+          <button type="button" class="filter-chip" data-atype="microsoft">Microsoft</button>
+          <button type="button" class="filter-chip" data-atype="github">GitHub</button>
+          <button type="button" class="filter-chip" data-atype="cloudflare">Cloudflare</button>
+          <button type="button" class="filter-chip" data-atype="cloudinary">Cloudinary</button>
+          <button type="button" class="filter-chip" data-atype="facebook">Facebook</button>
+          <button type="button" class="filter-chip" data-atype="instagram">Instagram</button>
+          <button type="button" class="filter-chip" data-atype="x">X</button>
+          <button type="button" class="filter-chip" data-atype="other">Outro</button>
+        </div>
+        <p class="admin-meta" id="accountsMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="accountsEmpty">Ainda não há contas.</div>
+        <div class="client-list" id="accountsList"></div>
+
+        <div class="admin-form-panel hidden" id="accountFormPanel">
+          <h2 id="accountFormTitle">Nova conta</h2>
+          <form id="accountForm">
+            <input type="hidden" id="afId">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="afType">Tipo *</label>
+                <select id="afType" required>
+                  <option value="google">Google</option>
+                  <option value="microsoft">Microsoft</option>
+                  <option value="github">GitHub</option>
+                  <option value="cloudflare">Cloudflare</option>
+                  <option value="cloudinary">Cloudinary</option>
+                  <option value="facebook">Facebook</option>
+                  <option value="instagram">Instagram</option>
+                  <option value="x">X</option>
+                  <option value="other">Outro</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="afEmail">E-mail / utilizador *</label>
+                <input type="text" id="afEmail" required placeholder="conta@gmail.com">
+              </div>
+              <div class="form-field">
+                <label for="afPassword">Password</label>
+                <div style="display:flex;gap:0.4rem;">
+                  <input type="password" id="afPassword" placeholder="••••••••" style="flex:1;">
+                  <button type="button" class="admin-btn admin-btn--sm" id="afPwdToggle" title="Mostrar">👁</button>
+                </div>
+              </div>
+              <div class="form-field full">
+                <label for="afNotes">Notas</label>
+                <textarea id="afNotes" placeholder="Notas internas…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--solid">Guardar</button>
+              <button type="button" class="admin-btn" id="afCancel">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- WEBSITES VIEW -->
+      <div id="websitesView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewWebsite">+ Novo website</button>
+          <button type="button" class="admin-btn" id="btnExportWebsites">Exportar CSV</button>
+          <input type="search" id="websitesSearch" placeholder="Pesquisar nome ou domínio…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <p class="admin-meta" id="websitesMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="websitesEmpty">Ainda não há websites.</div>
+        <div class="client-list" id="websitesList"></div>
+
+        <div class="admin-form-panel hidden" id="websiteFormPanel">
+          <h2 id="websiteFormTitle">Novo website</h2>
+          <form id="websiteForm">
+            <input type="hidden" id="wfId">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="wfName">Nome *</label>
+                <input type="text" id="wfName" required placeholder="F16 Restaurant">
+              </div>
+              <div class="form-field">
+                <label for="wfDomain">Domínio</label>
+                <input type="text" id="wfDomain" placeholder="exemplo.com">
+              </div>
+              <div class="form-field">
+                <label for="wfCloudflare">Conta Cloudflare</label>
+                <select id="wfCloudflare"><option value="">—</option></select>
+              </div>
+              <div class="form-field">
+                <label for="wfGithub">Conta GitHub</label>
+                <select id="wfGithub"><option value="">—</option></select>
+              </div>
+              <div class="form-field">
+                <label for="wfCloudinary">Conta Cloudinary</label>
+                <select id="wfCloudinary"><option value="">—</option></select>
+              </div>
+              <div class="form-field">
+                <label for="wfStatus">Estado</label>
+                <select id="wfStatus">
+                  <option value="active">Activo</option>
+                  <option value="paused">Pausado</option>
+                  <option value="archived">Arquivado</option>
+                </select>
+              </div>
+              <div class="form-field full">
+                <label for="wfNotes">Notas</label>
+                <textarea id="wfNotes" placeholder="Notas…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--solid">Guardar</button>
+              <button type="button" class="admin-btn" id="wfCancel">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- PENDING VIEW -->
+      <div id="pendingView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewPending">+ Novo pendente</button>
+          <button type="button" class="admin-btn" id="btnExportPending">Exportar CSV</button>
+          <button type="button" class="admin-btn" id="btnBulkPending" disabled>Alterar estado (0)</button>
+          <input type="search" id="pendingSearch" placeholder="Pesquisar nome, contacto…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="pendingFilters">
+          <button type="button" class="filter-chip active" data-pstatus="all">Todos</button>
+          <button type="button" class="filter-chip" data-pstatus="pending">Pendentes</button>
+          <button type="button" class="filter-chip" data-pstatus="contacted">Contactados</button>
+          <button type="button" class="filter-chip" data-pstatus="proposal">Proposta</button>
+          <button type="button" class="filter-chip" data-pstatus="won">Ganhos</button>
+          <button type="button" class="filter-chip" data-pstatus="lost">Perdidos</button>
+        </div>
+        <p class="admin-meta" id="pendingMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="pendingEmpty">Ainda não há pendentes.</div>
+        <div class="client-list" id="pendingList"></div>
+
+        <div class="admin-form-panel hidden" id="pendingFormPanel">
+          <h2 id="pendingFormTitle">Novo pendente</h2>
+          <form id="pendingForm">
+            <input type="hidden" id="pfId">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="pfName">Nome *</label>
+                <input type="text" id="pfName" required placeholder="Nome do negócio">
+              </div>
+              <div class="form-field">
+                <label for="pfContact">Contacto</label>
+                <input type="text" id="pfContact" placeholder="Nome da pessoa">
+              </div>
+              <div class="form-field">
+                <label for="pfPhone">Telefone</label>
+                <input type="text" id="pfPhone" placeholder="+244 …">
+              </div>
+              <div class="form-field">
+                <label for="pfStatus">Estado</label>
+                <select id="pfStatus">
+                  <option value="pending">Pendente</option>
+                  <option value="contacted">Contactado</option>
+                  <option value="proposal">Proposta</option>
+                  <option value="won">Ganho</option>
+                  <option value="lost">Perdido</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label for="pfInstagram">Instagram</label>
+                <input type="text" id="pfInstagram" placeholder="@utilizador">
+              </div>
+              <div class="form-field">
+                <label for="pfFacebook">Facebook</label>
+                <input type="text" id="pfFacebook" placeholder="página / perfil">
+              </div>
+              <div class="form-field full">
+                <label for="pfNotes">Notas</label>
+                <textarea id="pfNotes" placeholder="Notas…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--solid">Guardar</button>
+              <button type="button" class="admin-btn" id="pfCancel">Cancelar</button>
             </div>
           </form>
         </div>

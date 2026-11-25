@@ -145,29 +145,56 @@
     if (sidebarBackdrop) sidebarBackdrop.classList.remove('open');
   }
 
+  const accountsView = document.getElementById('accountsView');
+  const websitesView = document.getElementById('websitesView');
+  const pendingView = document.getElementById('pendingView');
+
+  function hideAllMainViews() {
+    leadsView.classList.add('hidden');
+    clientsView.classList.add('hidden');
+    if (accountsView) accountsView.classList.add('hidden');
+    if (websitesView) websitesView.classList.add('hidden');
+    if (pendingView) pendingView.classList.add('hidden');
+  }
+
   function switchTab(tab) {
     currentTab = tab;
     document.querySelectorAll('.sidebar-link').forEach(function (el) {
       el.classList.toggle('active', el.getAttribute('data-tab') === tab);
     });
     closeSidebarMobile();
+    hideAllMainViews();
+    closeSlide();
+    hideClientPanels();
+
     if (tab === 'leads') {
       leadsView.classList.remove('hidden');
-      clientsView.classList.add('hidden');
       pageTitle.textContent = 'Contactos';
-      closeSlide();
       fetchLeads();
-    } else {
-      leadsView.classList.add('hidden');
+    } else if (tab === 'clients') {
       clientsView.classList.remove('hidden');
       pageTitle.textContent = 'Clientes';
-      hideClientPanels();
       fetchClients();
+    } else if (tab === 'accounts') {
+      if (accountsView) accountsView.classList.remove('hidden');
+      pageTitle.textContent = 'Contas';
+      fetchAccounts();
+    } else if (tab === 'websites') {
+      if (websitesView) websitesView.classList.remove('hidden');
+      pageTitle.textContent = 'Websites';
+      fetchWebsites();
+    } else if (tab === 'pending') {
+      if (pendingView) pendingView.classList.remove('hidden');
+      pageTitle.textContent = 'Pendentes';
+      fetchPending();
     }
   }
 
   document.getElementById('tabLeads').addEventListener('click', function () { switchTab('leads'); });
   document.getElementById('tabClients').addEventListener('click', function () { switchTab('clients'); });
+  document.getElementById('tabAccounts').addEventListener('click', function () { switchTab('accounts'); });
+  document.getElementById('tabWebsites').addEventListener('click', function () { switchTab('websites'); });
+  document.getElementById('tabPending').addEventListener('click', function () { switchTab('pending'); });
 
   if (sidebarToggle) {
     sidebarToggle.addEventListener('click', function () {
@@ -675,7 +702,602 @@
 
   document.getElementById('btnRefresh').addEventListener('click', function () {
     if (currentTab === 'leads') fetchLeads();
-    else fetchClients();
+    else if (currentTab === 'clients') fetchClients();
+    else if (currentTab === 'accounts') fetchAccounts();
+    else if (currentTab === 'websites') fetchWebsites();
+    else if (currentTab === 'pending') fetchPending();
+  });
+
+  /* ---------- Accounts / Websites / Pending ---------- */
+
+  let accountsCache = [];
+  let websitesCache = [];
+  let pendingCache = [];
+  let accountTypeFilter = 'all';
+  let pendingStatusFilter = 'all';
+  let accountsSearchQ = '';
+  let websitesSearchQ = '';
+  let pendingSearchQ = '';
+  let selectedPendingIds = {};
+
+  const TYPE_LABELS = {
+    google: 'Google', microsoft: 'Microsoft', github: 'GitHub',
+    cloudflare: 'Cloudflare', cloudinary: 'Cloudinary',
+    facebook: 'Facebook', instagram: 'Instagram', x: 'X', other: 'Outro',
+  };
+  const PENDING_LABELS = {
+    pending: 'Pendente', contacted: 'Contactado', proposal: 'Proposta',
+    won: 'Ganho', lost: 'Perdido',
+  };
+
+  function downloadCsv(filename, rows) {
+    const bom = '\uFEFF';
+    const csv = rows.map(function (r) {
+      return r.map(function (c) {
+        const s = c == null ? '' : String(c);
+        if (/[",\n]/.test(s)) return '"' + s.replace(/"/g, '""') + '"';
+        return s;
+      }).join(',');
+    }).join('\n');
+    const blob = new Blob([bom + csv], { type: 'text/csv;charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = filename;
+    a.click();
+    URL.revokeObjectURL(a.href);
+  }
+
+  /* ---- Accounts ---- */
+
+  function filteredAccounts() {
+    let list = accountsCache.slice();
+    if (accountTypeFilter !== 'all') {
+      list = list.filter(function (a) { return a.type === accountTypeFilter; });
+    }
+    if (accountsSearchQ) {
+      const q = accountsSearchQ.toLowerCase();
+      list = list.filter(function (a) {
+        return (a.emailOrUsername || '').toLowerCase().indexOf(q) !== -1
+          || (a.notes || '').toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    return list;
+  }
+
+  function renderAccounts() {
+    const listEl = document.getElementById('accountsList');
+    const emptyEl = document.getElementById('accountsEmpty');
+    const metaEl = document.getElementById('accountsMeta');
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    const list = filteredAccounts();
+    if (!list.length) {
+      emptyEl.classList.remove('hidden');
+      metaEl.textContent = accountsCache.length ? '0 resultados' : '0 contas';
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    metaEl.textContent = list.length + ' conta' + (list.length === 1 ? '' : 's');
+
+    list.forEach(function (a) {
+      const card = document.createElement('div');
+      card.className = 'client-card';
+      const pwdMasked = a.password ? '••••••••' : '—';
+      card.innerHTML =
+        '<div class="client-card-top">' +
+          '<div class="client-name">' + escapeHtml(a.emailOrUsername) + '</div>' +
+          '<span class="badge badge--active">' + escapeHtml(TYPE_LABELS[a.type] || a.type) + '</span>' +
+        '</div>' +
+        '<div class="client-row">' +
+          '<span>Password: <code class="pwd-mask" data-pwd="' + escapeHtml(a.password || '') + '">' + pwdMasked + '</code> ' +
+          (a.password ? '<button type="button" class="admin-btn admin-btn--sm btn-reveal-pwd">Mostrar</button>' : '') +
+          '</span>' +
+        '</div>' +
+        (a.notes ? '<div class="client-row"><span>' + escapeHtml(a.notes) + '</span></div>' : '') +
+        '<div class="client-meta">' + formatDateTime(a.updatedAt || a.createdAt) + '</div>' +
+        '<div class="client-actions">' +
+          '<button type="button" class="admin-btn admin-btn--sm btn-edit-account" data-id="' + escapeHtml(a.id) + '">Editar</button>' +
+          '<button type="button" class="admin-btn admin-btn--sm admin-btn--danger btn-del-account" data-id="' + escapeHtml(a.id) + '">Apagar</button>' +
+        '</div>';
+      listEl.appendChild(card);
+    });
+  }
+
+  async function fetchAccounts() {
+    try {
+      const data = await api('/accounts', { headers: authHeaders() });
+      accountsCache = data.accounts || [];
+      renderAccounts();
+    } catch (e) {
+      document.getElementById('accountsMeta').textContent = 'Erro: ' + (e.message || e);
+    }
+  }
+
+  function openAccountForm(account) {
+    document.getElementById('accountFormPanel').classList.remove('hidden');
+    document.getElementById('accountFormTitle').textContent = account ? 'Editar conta' : 'Nova conta';
+    document.getElementById('afId').value = account ? account.id : '';
+    document.getElementById('afType').value = account ? account.type : 'google';
+    document.getElementById('afEmail').value = account ? account.emailOrUsername : '';
+    document.getElementById('afPassword').value = account ? (account.password || '') : '';
+    document.getElementById('afPassword').type = 'password';
+    document.getElementById('afNotes').value = account ? (account.notes || '') : '';
+  }
+
+  function closeAccountForm() {
+    document.getElementById('accountFormPanel').classList.add('hidden');
+  }
+
+  document.getElementById('btnNewAccount').addEventListener('click', function () { openAccountForm(null); });
+  document.getElementById('afCancel').addEventListener('click', closeAccountForm);
+  document.getElementById('afPwdToggle').addEventListener('click', function () {
+    const inp = document.getElementById('afPassword');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  });
+
+  document.getElementById('accountForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const id = document.getElementById('afId').value;
+    const body = {
+      type: document.getElementById('afType').value,
+      emailOrUsername: document.getElementById('afEmail').value.trim(),
+      password: document.getElementById('afPassword').value,
+      notes: document.getElementById('afNotes').value.trim(),
+    };
+    try {
+      if (id) {
+        body.id = id;
+        await api('/accounts', { method: 'PUT', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      } else {
+        await api('/accounts', { method: 'POST', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      }
+      closeAccountForm();
+      fetchAccounts();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('accountsList').addEventListener('click', function (e) {
+    const reveal = e.target.closest('.btn-reveal-pwd');
+    if (reveal) {
+      const code = reveal.parentElement.querySelector('.pwd-mask');
+      if (!code) return;
+      const showing = code.getAttribute('data-showing') === '1';
+      if (showing) {
+        code.textContent = '••••••••';
+        code.setAttribute('data-showing', '0');
+        reveal.textContent = 'Mostrar';
+      } else {
+        code.textContent = code.getAttribute('data-pwd') || '';
+        code.setAttribute('data-showing', '1');
+        reveal.textContent = 'Ocultar';
+      }
+      return;
+    }
+    const editBtn = e.target.closest('.btn-edit-account');
+    if (editBtn) {
+      const a = accountsCache.find(function (x) { return x.id === editBtn.getAttribute('data-id'); });
+      if (a) openAccountForm(a);
+      return;
+    }
+    const delBtn = e.target.closest('.btn-del-account');
+    if (delBtn) {
+      if (!confirm('Apagar esta conta?')) return;
+      api('/accounts', {
+        method: 'DELETE',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: delBtn.getAttribute('data-id') }),
+      }).then(fetchAccounts).catch(function (err) { alert(err.message || err); });
+    }
+  });
+
+  document.getElementById('accountFilters').addEventListener('click', function (e) {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    accountTypeFilter = chip.getAttribute('data-atype');
+    document.querySelectorAll('#accountFilters .filter-chip').forEach(function (c) {
+      c.classList.toggle('active', c === chip);
+    });
+    renderAccounts();
+  });
+
+  document.getElementById('accountsSearch').addEventListener('input', function (e) {
+    accountsSearchQ = e.target.value.trim();
+    renderAccounts();
+  });
+
+  document.getElementById('btnExportAccounts').addEventListener('click', function () {
+    const rows = [['Tipo', 'Email/Username', 'Password', 'Notas', 'Actualizado']];
+    filteredAccounts().forEach(function (a) {
+      rows.push([a.type, a.emailOrUsername, a.password, a.notes, a.updatedAt || a.createdAt]);
+    });
+    downloadCsv('contas-workersdev.csv', rows);
+  });
+
+  document.getElementById('btnSeedData').addEventListener('click', async function () {
+    if (!confirm('Carregar dados iniciais em falta (não sobrescreve existentes)?')) return;
+    try {
+      const data = await api('/seed', {
+        method: 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: '{}',
+      });
+      alert('Adicionadas: ' + (data.addedAccounts || 0) + ' contas, ' + (data.addedPending || 0) + ' pendentes.');
+      if (currentTab === 'accounts') fetchAccounts();
+      if (currentTab === 'pending') fetchPending();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  /* ---- Websites ---- */
+
+  function filteredWebsites() {
+    let list = websitesCache.slice();
+    if (websitesSearchQ) {
+      const q = websitesSearchQ.toLowerCase();
+      list = list.filter(function (w) {
+        return (w.name || '').toLowerCase().indexOf(q) !== -1
+          || (w.domain || '').toLowerCase().indexOf(q) !== -1
+          || (w.notes || '').toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    return list;
+  }
+
+  function fillAccountSelects() {
+    function fill(selId, type) {
+      const sel = document.getElementById(selId);
+      if (!sel) return;
+      const current = sel.value;
+      sel.innerHTML = '<option value="">—</option>';
+      accountsCache.filter(function (a) { return a.type === type; }).forEach(function (a) {
+        const opt = document.createElement('option');
+        opt.value = a.id;
+        opt.textContent = a.emailOrUsername;
+        sel.appendChild(opt);
+      });
+      if (current) sel.value = current;
+    }
+    fill('wfCloudflare', 'cloudflare');
+    fill('wfGithub', 'github');
+    fill('wfCloudinary', 'cloudinary');
+  }
+
+  function renderWebsites() {
+    const listEl = document.getElementById('websitesList');
+    const emptyEl = document.getElementById('websitesEmpty');
+    const metaEl = document.getElementById('websitesMeta');
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    const list = filteredWebsites();
+    if (!list.length) {
+      emptyEl.classList.remove('hidden');
+      metaEl.textContent = websitesCache.length ? '0 resultados' : '0 websites';
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    metaEl.textContent = list.length + ' website' + (list.length === 1 ? '' : 's');
+
+    list.forEach(function (w) {
+      const card = document.createElement('div');
+      card.className = 'client-card';
+      const statusCls = w.status === 'active' ? 'badge--active' : (w.status === 'paused' ? 'badge--paused' : 'badge--ended');
+      card.innerHTML =
+        '<div class="client-card-top">' +
+          '<div class="client-name">' + escapeHtml(w.name) + '</div>' +
+          '<span class="badge ' + statusCls + '">' + escapeHtml(w.status) + '</span>' +
+        '</div>' +
+        (w.domain ? '<div class="client-row"><span>' + escapeHtml(w.domain) + '</span></div>' : '') +
+        '<div class="client-row">' +
+          '<span>CF: ' + escapeHtml(w.cloudflareEmail || '—') + '</span>' +
+          '<span>GH: ' + escapeHtml(w.githubEmail || '—') + '</span>' +
+          '<span>Cloudinary: ' + escapeHtml(w.cloudinaryEmail || '—') + '</span>' +
+        '</div>' +
+        (w.notes ? '<div class="client-row"><span>' + escapeHtml(w.notes) + '</span></div>' : '') +
+        '<div class="client-actions">' +
+          '<button type="button" class="admin-btn admin-btn--sm btn-edit-website" data-id="' + escapeHtml(w.id) + '">Editar</button>' +
+          '<button type="button" class="admin-btn admin-btn--sm admin-btn--danger btn-del-website" data-id="' + escapeHtml(w.id) + '">Apagar</button>' +
+        '</div>';
+      listEl.appendChild(card);
+    });
+  }
+
+  async function fetchWebsites() {
+    try {
+      if (!accountsCache.length) {
+        const acc = await api('/accounts', { headers: authHeaders() });
+        accountsCache = acc.accounts || [];
+      }
+      const data = await api('/websites', { headers: authHeaders() });
+      websitesCache = data.websites || [];
+      fillAccountSelects();
+      renderWebsites();
+    } catch (e) {
+      document.getElementById('websitesMeta').textContent = 'Erro: ' + (e.message || e);
+    }
+  }
+
+  function openWebsiteForm(website) {
+    fillAccountSelects();
+    document.getElementById('websiteFormPanel').classList.remove('hidden');
+    document.getElementById('websiteFormTitle').textContent = website ? 'Editar website' : 'Novo website';
+    document.getElementById('wfId').value = website ? website.id : '';
+    document.getElementById('wfName').value = website ? website.name : '';
+    document.getElementById('wfDomain').value = website ? (website.domain || '') : '';
+    document.getElementById('wfCloudflare').value = website && website.cloudflareAccountId ? website.cloudflareAccountId : '';
+    document.getElementById('wfGithub').value = website && website.githubAccountId ? website.githubAccountId : '';
+    document.getElementById('wfCloudinary').value = website && website.cloudinaryAccountId ? website.cloudinaryAccountId : '';
+    document.getElementById('wfStatus').value = website ? website.status : 'active';
+    document.getElementById('wfNotes').value = website ? (website.notes || '') : '';
+  }
+
+  function closeWebsiteForm() {
+    document.getElementById('websiteFormPanel').classList.add('hidden');
+  }
+
+  document.getElementById('btnNewWebsite').addEventListener('click', function () { openWebsiteForm(null); });
+  document.getElementById('wfCancel').addEventListener('click', closeWebsiteForm);
+
+  document.getElementById('websiteForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const id = document.getElementById('wfId').value;
+    const body = {
+      name: document.getElementById('wfName').value.trim(),
+      domain: document.getElementById('wfDomain').value.trim(),
+      cloudflareAccountId: document.getElementById('wfCloudflare').value || null,
+      githubAccountId: document.getElementById('wfGithub').value || null,
+      cloudinaryAccountId: document.getElementById('wfCloudinary').value || null,
+      status: document.getElementById('wfStatus').value,
+      notes: document.getElementById('wfNotes').value.trim(),
+    };
+    try {
+      if (id) {
+        body.id = id;
+        await api('/websites', { method: 'PUT', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      } else {
+        await api('/websites', { method: 'POST', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      }
+      closeWebsiteForm();
+      fetchWebsites();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('websitesList').addEventListener('click', function (e) {
+    const editBtn = e.target.closest('.btn-edit-website');
+    if (editBtn) {
+      const w = websitesCache.find(function (x) { return x.id === editBtn.getAttribute('data-id'); });
+      if (w) openWebsiteForm(w);
+      return;
+    }
+    const delBtn = e.target.closest('.btn-del-website');
+    if (delBtn) {
+      if (!confirm('Apagar este website?')) return;
+      api('/websites', {
+        method: 'DELETE',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: delBtn.getAttribute('data-id') }),
+      }).then(fetchWebsites).catch(function (err) { alert(err.message || err); });
+    }
+  });
+
+  document.getElementById('websitesSearch').addEventListener('input', function (e) {
+    websitesSearchQ = e.target.value.trim();
+    renderWebsites();
+  });
+
+  document.getElementById('btnExportWebsites').addEventListener('click', function () {
+    const rows = [['Nome', 'Domínio', 'Cloudflare', 'GitHub', 'Cloudinary', 'Estado', 'Notas']];
+    filteredWebsites().forEach(function (w) {
+      rows.push([w.name, w.domain, w.cloudflareEmail, w.githubEmail, w.cloudinaryEmail, w.status, w.notes]);
+    });
+    downloadCsv('websites-workersdev.csv', rows);
+  });
+
+  /* ---- Pending ---- */
+
+  function filteredPending() {
+    let list = pendingCache.slice();
+    if (pendingStatusFilter !== 'all') {
+      list = list.filter(function (p) { return p.status === pendingStatusFilter; });
+    }
+    if (pendingSearchQ) {
+      const q = pendingSearchQ.toLowerCase();
+      list = list.filter(function (p) {
+        return (p.name || '').toLowerCase().indexOf(q) !== -1
+          || (p.contactName || '').toLowerCase().indexOf(q) !== -1
+          || (p.phone || '').toLowerCase().indexOf(q) !== -1
+          || (p.notes || '').toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    return list;
+  }
+
+  function updateBulkBtn() {
+    const n = Object.keys(selectedPendingIds).length;
+    const btn = document.getElementById('btnBulkPending');
+    btn.disabled = n === 0;
+    btn.textContent = 'Alterar estado (' + n + ')';
+  }
+
+  function renderPending() {
+    const listEl = document.getElementById('pendingList');
+    const emptyEl = document.getElementById('pendingEmpty');
+    const metaEl = document.getElementById('pendingMeta');
+    if (!listEl) return;
+    listEl.innerHTML = '';
+    const list = filteredPending();
+    if (!list.length) {
+      emptyEl.classList.remove('hidden');
+      metaEl.textContent = pendingCache.length ? '0 resultados' : '0 pendentes';
+      updateBulkBtn();
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    metaEl.textContent = list.length + ' pendente' + (list.length === 1 ? '' : 's');
+
+    list.forEach(function (p) {
+      const card = document.createElement('div');
+      card.className = 'client-card';
+      const checked = selectedPendingIds[p.id] ? ' checked' : '';
+      const badgeCls = p.status === 'won' ? 'badge--active'
+        : (p.status === 'lost' ? 'badge--ended'
+          : (p.status === 'proposal' ? 'badge--pending' : 'badge--paused'));
+      card.innerHTML =
+        '<div class="client-card-top">' +
+          '<div style="display:flex;align-items:center;gap:0.6rem;">' +
+            '<input type="checkbox" class="pending-check" data-id="' + escapeHtml(p.id) + '"' + checked + '>' +
+            '<div class="client-name">' + escapeHtml(p.name) + '</div>' +
+          '</div>' +
+          '<span class="badge ' + badgeCls + '">' + escapeHtml(PENDING_LABELS[p.status] || p.status) + '</span>' +
+        '</div>' +
+        '<div class="client-row">' +
+          (p.contactName ? '<span>' + escapeHtml(p.contactName) + '</span>' : '') +
+          (p.phone ? '<span>' + escapeHtml(p.phone) + '</span>' : '') +
+          (p.instagram ? '<span>IG: ' + escapeHtml(p.instagram) + '</span>' : '') +
+          (p.facebook ? '<span>FB: ' + escapeHtml(p.facebook) + '</span>' : '') +
+        '</div>' +
+        (p.notes ? '<div class="client-row"><span>' + escapeHtml(p.notes) + '</span></div>' : '') +
+        '<div class="client-meta">' + formatDate(p.createdAt) + '</div>' +
+        '<div class="client-actions">' +
+          '<button type="button" class="admin-btn admin-btn--sm btn-edit-pending" data-id="' + escapeHtml(p.id) + '">Editar</button>' +
+          '<button type="button" class="admin-btn admin-btn--sm admin-btn--danger btn-del-pending" data-id="' + escapeHtml(p.id) + '">Apagar</button>' +
+        '</div>';
+      listEl.appendChild(card);
+    });
+    updateBulkBtn();
+  }
+
+  async function fetchPending() {
+    try {
+      const data = await api('/pending_clients', { headers: authHeaders() });
+      pendingCache = data.pending || [];
+      renderPending();
+    } catch (e) {
+      document.getElementById('pendingMeta').textContent = 'Erro: ' + (e.message || e);
+    }
+  }
+
+  function openPendingForm(item) {
+    document.getElementById('pendingFormPanel').classList.remove('hidden');
+    document.getElementById('pendingFormTitle').textContent = item ? 'Editar pendente' : 'Novo pendente';
+    document.getElementById('pfId').value = item ? item.id : '';
+    document.getElementById('pfName').value = item ? item.name : '';
+    document.getElementById('pfContact').value = item ? (item.contactName || '') : '';
+    document.getElementById('pfPhone').value = item ? (item.phone || '') : '';
+    document.getElementById('pfStatus').value = item ? item.status : 'pending';
+    document.getElementById('pfInstagram').value = item ? (item.instagram || '') : '';
+    document.getElementById('pfFacebook').value = item ? (item.facebook || '') : '';
+    document.getElementById('pfNotes').value = item ? (item.notes || '') : '';
+  }
+
+  function closePendingForm() {
+    document.getElementById('pendingFormPanel').classList.add('hidden');
+  }
+
+  document.getElementById('btnNewPending').addEventListener('click', function () { openPendingForm(null); });
+  document.getElementById('pfCancel').addEventListener('click', closePendingForm);
+
+  document.getElementById('pendingForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const id = document.getElementById('pfId').value;
+    const body = {
+      name: document.getElementById('pfName').value.trim(),
+      contactName: document.getElementById('pfContact').value.trim(),
+      phone: document.getElementById('pfPhone').value.trim(),
+      status: document.getElementById('pfStatus').value,
+      instagram: document.getElementById('pfInstagram').value.trim(),
+      facebook: document.getElementById('pfFacebook').value.trim(),
+      notes: document.getElementById('pfNotes').value.trim(),
+    };
+    try {
+      if (id) {
+        body.id = id;
+        await api('/pending_clients', { method: 'PUT', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      } else {
+        await api('/pending_clients', { method: 'POST', headers: authHeaders({ 'Content-Type': 'application/json' }), body: JSON.stringify(body) });
+      }
+      closePendingForm();
+      fetchPending();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('pendingList').addEventListener('click', function (e) {
+    const check = e.target.closest('.pending-check');
+    if (check) {
+      const id = check.getAttribute('data-id');
+      if (check.checked) selectedPendingIds[id] = true;
+      else delete selectedPendingIds[id];
+      updateBulkBtn();
+      return;
+    }
+    const editBtn = e.target.closest('.btn-edit-pending');
+    if (editBtn) {
+      const p = pendingCache.find(function (x) { return x.id === editBtn.getAttribute('data-id'); });
+      if (p) openPendingForm(p);
+      return;
+    }
+    const delBtn = e.target.closest('.btn-del-pending');
+    if (delBtn) {
+      if (!confirm('Apagar este pendente?')) return;
+      api('/pending_clients', {
+        method: 'DELETE',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: delBtn.getAttribute('data-id') }),
+      }).then(function () {
+        delete selectedPendingIds[delBtn.getAttribute('data-id')];
+        fetchPending();
+      }).catch(function (err) { alert(err.message || err); });
+    }
+  });
+
+  document.getElementById('pendingFilters').addEventListener('click', function (e) {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    pendingStatusFilter = chip.getAttribute('data-pstatus');
+    document.querySelectorAll('#pendingFilters .filter-chip').forEach(function (c) {
+      c.classList.toggle('active', c === chip);
+    });
+    renderPending();
+  });
+
+  document.getElementById('pendingSearch').addEventListener('input', function (e) {
+    pendingSearchQ = e.target.value.trim();
+    renderPending();
+  });
+
+  document.getElementById('btnBulkPending').addEventListener('click', async function () {
+    const ids = Object.keys(selectedPendingIds);
+    if (!ids.length) return;
+    const status = prompt('Novo estado: pending | contacted | proposal | won | lost', 'contacted');
+    if (!status || !PENDING_LABELS[status]) {
+      if (status !== null) alert('Estado inválido');
+      return;
+    }
+    try {
+      await api('/pending_clients/bulk_status', {
+        method: 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ ids: ids, status: status }),
+      });
+      selectedPendingIds = {};
+      fetchPending();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('btnExportPending').addEventListener('click', function () {
+    const rows = [['Nome', 'Contacto', 'Telefone', 'Instagram', 'Facebook', 'Estado', 'Notas', 'Criado']];
+    filteredPending().forEach(function (p) {
+      rows.push([p.name, p.contactName, p.phone, p.instagram, p.facebook, p.status, p.notes, p.createdAt]);
+    });
+    downloadCsv('pendentes-workersdev.csv', rows);
   });
 
   if (localStorage.getItem(REMEMBER_KEY) === '1' && rememberMe) {

@@ -197,18 +197,53 @@ Response: `{ ok, client }` (enriched).
 
 ---
 
-## 8. Out of scope (planned later)
+## 8. Accounts / Websites / Pending clients
+
+KV keys (same namespace `LEADS`): `accounts` · `websites` · `pending_clients`
+
+### 8.1 `accounts`
+```js
+{ id, type: "google"|"microsoft"|"github"|"cloudflare"|"cloudinary"|"facebook"|"instagram"|"x"|"other",
+  emailOrUsername, password, notes, createdAt, updatedAt }
+```
+Endpoints: `GET/POST/PUT/DELETE /accounts`  
+Auto-seeds Google + Microsoft list on first empty load.  
+`POST /seed` merges missing seed rows without overwriting.
+
+### 8.2 `websites`
+```js
+{ id, name, domain, cloudflareAccountId, githubAccountId, cloudinaryAccountId,
+  notes, status: "active"|"paused"|"archived", createdAt, updatedAt }
+```
+Endpoints: `GET/POST/PUT/DELETE /websites`  
+`GET` enriches with linked account emails.
+
+### 8.3 `pending_clients`
+```js
+{ id, name, contactName, phone, instagram, facebook, notes,
+  status: "pending"|"contacted"|"proposal"|"won"|"lost", createdAt, updatedAt }
+```
+Endpoints: `GET/POST/PUT/DELETE /pending_clients`  
+`POST /pending_clients/bulk_status` body `{ ids[], status }`
+
+Admin UI tabs: **Contas** · **Websites** · **Pendentes**  
+Features: search, type/status filters, password reveal, CSV export, bulk status, seed button.
+
+---
+
+## 9. Out of scope (planned later)
 
 - Automatic WhatsApp / Gmail invoice messages  
 - PDF invoice generation  
 - Public client portal  
 - Background cron for overdue (currently computed on read)  
+- Live API sync with GitHub / Cloudflare / Cloudinary  
 
-These can sit on top of the existing `clients` / `periods` data without schema breakage.
+These can sit on top of the existing data without schema breakage.
 
 ---
 
-## 9. File ownership
+## 10. File ownership
 
 | Concern | File(s) |
 |---------|---------|
