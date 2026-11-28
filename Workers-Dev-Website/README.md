@@ -68,7 +68,7 @@ Construction is one-time. The toggle only changes **maintenance** display.
 Password-protected panel (same `ADMIN_PASSWORD` as the Worker).
 
 ### Layout
-- **Left sidebar** — Contactos · Clientes · Actualizar · Sair  
+- **Left sidebar** — Contactos · Clientes · Contas · **Grok** · Websites · Pendentes · Actualizar · Sair  
 - **Main area** — list / summary for the active section  
 - **Right slide-over** — client detail + payment periods  
 
@@ -84,6 +84,12 @@ Password-protected panel (same `ADMIN_PASSWORD` as the Worker).
 - Mark period as paid · Generate next period  
 - Sequential invoice numbers (starts at **1001**)  
 - Full billing fields: contact name, phone, email, address, NIF, plan, notes  
+
+### Grok (free-tier accounts)
+- Dedicated list of Gmail accounts used for Grok free tier  
+- **Marcar limite (24h)** starts a countdown; **Limpar cooldown** clears it  
+- Filters: Todos / Disponíveis / Em cooldown · live remaining time · summary counts  
+- Import from Contas (Google) when list is empty · CSV export  
 
 See **BLUEPRINT.md** for data model and API details.
 

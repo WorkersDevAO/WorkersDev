@@ -29,11 +29,13 @@ const INVOICE_META_KEY = 'invoice_meta';
 const ACCOUNTS_KEY = 'accounts';
 const WEBSITES_KEY = 'websites';
 const PENDING_KEY = 'pending_clients';
+const GROK_ACCOUNTS_KEY = 'grok_accounts';
 const MAX_LEADS = 500;
 const MAX_CLIENTS = 200;
 const MAX_ACCOUNTS = 300;
 const MAX_WEBSITES = 300;
 const MAX_PENDING = 300;
+const MAX_GROK = 50;
 
 const ACCOUNT_TYPES = ['google', 'microsoft', 'github', 'cloudflare', 'cloudinary', 'facebook', 'instagram', 'x', 'other'];
 const PENDING_STATUSES = ['pending', 'contacted', 'proposal', 'won', 'lost'];
@@ -803,6 +805,158 @@ async function handleDeleteAccount(request, env) {
   return json({ ok: true, total: accounts.length });
 }
 
+/* Grok accounts (free-tier cooldown tracking) */
+
+function enrichGrokAccount(a) {
+  const now = Date.now();
+  const until = a.cooldownUntil ? new Date(a.cooldownUntil).getTime() : 0;
+  const onCooldown = until > now;
+  return Object.assign({}, a, {
+    onCooldown: onCooldown,
+    available: !onCooldown,
+    remainingMs: onCooldown ? until - now : 0,
+  });
+}
+
+async function handleListGrok(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  const list = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  const enriched = list.map(enrichGrokAccount);
+  const available = enriched.filter(function (a) { return a.available; }).length;
+  const onCooldown = enriched.length - available;
+  return json({
+    ok: true,
+    accounts: enriched,
+    total: enriched.length,
+    summary: { available: available, onCooldown: onCooldown },
+  });
+}
+
+async function handleCreateGrok(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  let body;
+  try { body = await request.json(); } catch { return json({ ok: false, error: 'Invalid JSON' }, 400); }
+
+  const email = String(body.email || body.emailOrUsername || '').trim();
+  if (!email) return json({ ok: false, error: 'email required' }, 400);
+
+  const now = new Date().toISOString();
+  const account = {
+    id: uid(),
+    email: email,
+    password: String(body.password || ''),
+    notes: String(body.notes || '').trim(),
+    label: String(body.label || '').trim(),
+    cooldownUntil: body.cooldownUntil ? String(body.cooldownUntil) : null,
+    createdAt: now,
+    updatedAt: now,
+  };
+
+  const list = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  list.unshift(account);
+  if (list.length > MAX_GROK) list.length = MAX_GROK;
+  await writeJsonArray(env, GROK_ACCOUNTS_KEY, list);
+  return json({ ok: true, account: enrichGrokAccount(account) });
+}
+
+async function handleUpdateGrok(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  let body;
+  try { body = await request.json(); } catch { return json({ ok: false, error: 'Invalid JSON' }, 400); }
+
+  const id = String(body.id || '').trim();
+  if (!id) return json({ ok: false, error: 'id required' }, 400);
+
+  const list = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  const idx = list.findIndex(function (a) { return a.id === id; });
+  if (idx === -1) return json({ ok: false, error: 'Not found' }, 404);
+
+  const prev = list[idx];
+  list[idx] = {
+    id: prev.id,
+    email: body.email !== undefined ? String(body.email).trim() : prev.email,
+    password: body.password !== undefined ? String(body.password) : prev.password,
+    notes: body.notes !== undefined ? String(body.notes).trim() : prev.notes,
+    label: body.label !== undefined ? String(body.label).trim() : (prev.label || ''),
+    cooldownUntil: body.cooldownUntil !== undefined
+      ? (body.cooldownUntil ? String(body.cooldownUntil) : null)
+      : prev.cooldownUntil,
+    createdAt: prev.createdAt,
+    updatedAt: new Date().toISOString(),
+  };
+  await writeJsonArray(env, GROK_ACCOUNTS_KEY, list);
+  return json({ ok: true, account: enrichGrokAccount(list[idx]) });
+}
+
+async function handleDeleteGrok(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  let body;
+  try { body = await request.json(); } catch { return json({ ok: false, error: 'Invalid JSON' }, 400); }
+  const id = String(body.id || '').trim();
+  if (!id) return json({ ok: false, error: 'id required' }, 400);
+
+  let list = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  const before = list.length;
+  list = list.filter(function (a) { return a.id !== id; });
+  if (list.length === before) return json({ ok: false, error: 'Not found' }, 404);
+  await writeJsonArray(env, GROK_ACCOUNTS_KEY, list);
+  return json({ ok: true, total: list.length });
+}
+
+/** Mark limited (start 24h cooldown) or clear. body: { id, action: "mark"|"clear" } */
+async function handleGrokCooldown(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  let body;
+  try { body = await request.json(); } catch { return json({ ok: false, error: 'Invalid JSON' }, 400); }
+
+  const id = String(body.id || '').trim();
+  const action = String(body.action || '').trim().toLowerCase();
+  if (!id || (action !== 'mark' && action !== 'clear')) {
+    return json({ ok: false, error: 'id and action (mark|clear) required' }, 400);
+  }
+
+  const list = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  const idx = list.findIndex(function (a) { return a.id === id; });
+  if (idx === -1) return json({ ok: false, error: 'Not found' }, 404);
+
+  if (action === 'mark') {
+    list[idx].cooldownUntil = new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString();
+  } else {
+    list[idx].cooldownUntil = null;
+  }
+  list[idx].updatedAt = new Date().toISOString();
+  await writeJsonArray(env, GROK_ACCOUNTS_KEY, list);
+  return json({ ok: true, account: enrichGrokAccount(list[idx]) });
+}
+
+/** Seed Grok list from existing Google accounts in Contas (only if Grok list is empty). */
+async function handleSeedGrok(request, env) {
+  if (!checkAdmin(request, env)) return json({ ok: false, error: 'Unauthorized' }, 401);
+  const existing = await readJsonArray(env, GROK_ACCOUNTS_KEY);
+  if (existing.length > 0) {
+    return json({ ok: true, added: 0, total: existing.length, message: 'Grok list already has data; skipped.' });
+  }
+
+  await ensureSeed(env);
+  const accounts = await readJsonArray(env, ACCOUNTS_KEY);
+  const now = new Date().toISOString();
+  const google = accounts.filter(function (a) { return a.type === 'google'; });
+  const seeded = google.map(function (a) {
+    return {
+      id: uid(),
+      email: a.emailOrUsername,
+      password: a.password || '',
+      notes: a.notes || '',
+      label: '',
+      cooldownUntil: null,
+      createdAt: now,
+      updatedAt: now,
+    };
+  });
+  await writeJsonArray(env, GROK_ACCOUNTS_KEY, seeded);
+  return json({ ok: true, added: seeded.length, total: seeded.length });
+}
+
 /* Websites CRUD */
 
 async function handleListWebsites(request, env) {
@@ -1107,6 +1261,26 @@ export default {
       // Seed (manual + safe merge)
       if (request.method === 'POST' && path === '/seed') {
         return await handleSeed(request, env);
+      }
+
+      // Grok accounts (free-tier cooldown)
+      if (request.method === 'GET' && path === '/grok_accounts') {
+        return await handleListGrok(request, env);
+      }
+      if (request.method === 'POST' && path === '/grok_accounts') {
+        return await handleCreateGrok(request, env);
+      }
+      if (request.method === 'PUT' && path === '/grok_accounts') {
+        return await handleUpdateGrok(request, env);
+      }
+      if (request.method === 'DELETE' && path === '/grok_accounts') {
+        return await handleDeleteGrok(request, env);
+      }
+      if (request.method === 'POST' && path === '/grok_accounts/cooldown') {
+        return await handleGrokCooldown(request, env);
+      }
+      if (request.method === 'POST' && path === '/grok_accounts/seed') {
+        return await handleSeedGrok(request, env);
       }
 
       return json({ ok: false, error: 'Not found' }, 404);

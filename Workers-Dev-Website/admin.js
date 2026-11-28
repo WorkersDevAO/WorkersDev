@@ -148,6 +148,7 @@
   const accountsView = document.getElementById('accountsView');
   const websitesView = document.getElementById('websitesView');
   const pendingView = document.getElementById('pendingView');
+  const grokView = document.getElementById('grokView');
 
   function hideAllMainViews() {
     leadsView.classList.add('hidden');
@@ -155,6 +156,7 @@
     if (accountsView) accountsView.classList.add('hidden');
     if (websitesView) websitesView.classList.add('hidden');
     if (pendingView) pendingView.classList.add('hidden');
+    if (grokView) grokView.classList.add('hidden');
   }
 
   function switchTab(tab) {
@@ -166,6 +168,7 @@
     hideAllMainViews();
     closeSlide();
     hideClientPanels();
+    stopGrokTicker();
 
     if (tab === 'leads') {
       leadsView.classList.remove('hidden');
@@ -179,6 +182,10 @@
       if (accountsView) accountsView.classList.remove('hidden');
       pageTitle.textContent = 'Contas';
       fetchAccounts();
+    } else if (tab === 'grok') {
+      if (grokView) grokView.classList.remove('hidden');
+      pageTitle.textContent = 'Grok';
+      fetchGrok();
     } else if (tab === 'websites') {
       if (websitesView) websitesView.classList.remove('hidden');
       pageTitle.textContent = 'Websites';
@@ -193,6 +200,8 @@
   document.getElementById('tabLeads').addEventListener('click', function () { switchTab('leads'); });
   document.getElementById('tabClients').addEventListener('click', function () { switchTab('clients'); });
   document.getElementById('tabAccounts').addEventListener('click', function () { switchTab('accounts'); });
+  const tabGrokEl = document.getElementById('tabGrok');
+  if (tabGrokEl) tabGrokEl.addEventListener('click', function () { switchTab('grok'); });
   document.getElementById('tabWebsites').addEventListener('click', function () { switchTab('websites'); });
   document.getElementById('tabPending').addEventListener('click', function () { switchTab('pending'); });
 
@@ -704,6 +713,7 @@
     if (currentTab === 'leads') fetchLeads();
     else if (currentTab === 'clients') fetchClients();
     else if (currentTab === 'accounts') fetchAccounts();
+    else if (currentTab === 'grok') fetchGrok();
     else if (currentTab === 'websites') fetchWebsites();
     else if (currentTab === 'pending') fetchPending();
   });
@@ -1298,6 +1308,311 @@
       rows.push([p.name, p.contactName, p.phone, p.instagram, p.facebook, p.status, p.notes, p.createdAt]);
     });
     downloadCsv('pendentes-workersdev.csv', rows);
+  });
+
+  /* ---------- Grok accounts (24h free-tier cooldown) ---------- */
+
+  let grokCache = [];
+  let grokStatusFilter = 'all';
+  let grokSearchQ = '';
+  let grokTickerId = null;
+
+  function stopGrokTicker() {
+    if (grokTickerId) {
+      clearInterval(grokTickerId);
+      grokTickerId = null;
+    }
+  }
+
+  function startGrokTicker() {
+    stopGrokTicker();
+    grokTickerId = setInterval(function () {
+      if (currentTab === 'grok') renderGrok();
+    }, 30000);
+  }
+
+  function formatRemaining(ms) {
+    if (ms <= 0) return '0m';
+    const totalMin = Math.ceil(ms / 60000);
+    const h = Math.floor(totalMin / 60);
+    const m = totalMin % 60;
+    if (h > 0) return h + 'h ' + m + 'm';
+    return m + 'm';
+  }
+
+  function isGrokOnCooldown(a) {
+    if (!a.cooldownUntil) return false;
+    return new Date(a.cooldownUntil).getTime() > Date.now();
+  }
+
+  function filteredGrok() {
+    let list = grokCache.slice();
+    if (grokStatusFilter === 'available') {
+      list = list.filter(function (a) { return !isGrokOnCooldown(a); });
+    } else if (grokStatusFilter === 'cooldown') {
+      list = list.filter(function (a) { return isGrokOnCooldown(a); });
+    }
+    if (grokSearchQ) {
+      const q = grokSearchQ.toLowerCase();
+      list = list.filter(function (a) {
+        return (a.email || '').toLowerCase().indexOf(q) !== -1
+          || (a.notes || '').toLowerCase().indexOf(q) !== -1
+          || (a.label || '').toLowerCase().indexOf(q) !== -1;
+      });
+    }
+    // Available first, then soonest-to-expire
+    list.sort(function (a, b) {
+      const aOn = isGrokOnCooldown(a);
+      const bOn = isGrokOnCooldown(b);
+      if (aOn !== bOn) return aOn ? 1 : -1;
+      if (aOn && bOn) {
+        return new Date(a.cooldownUntil).getTime() - new Date(b.cooldownUntil).getTime();
+      }
+      return (a.email || '').localeCompare(b.email || '');
+    });
+    return list;
+  }
+
+  function renderGrok() {
+    const listEl = document.getElementById('grokList');
+    const emptyEl = document.getElementById('grokEmpty');
+    const metaEl = document.getElementById('grokMeta');
+    if (!listEl) return;
+
+    const availableCount = grokCache.filter(function (a) { return !isGrokOnCooldown(a); }).length;
+    const cooldownCount = grokCache.length - availableCount;
+    const sumTotal = document.getElementById('grokSumTotal');
+    const sumAvail = document.getElementById('grokSumAvailable');
+    const sumCool = document.getElementById('grokSumCooldown');
+    if (sumTotal) sumTotal.textContent = String(grokCache.length);
+    if (sumAvail) sumAvail.textContent = String(availableCount);
+    if (sumCool) sumCool.textContent = String(cooldownCount);
+
+    listEl.innerHTML = '';
+    const list = filteredGrok();
+    if (!list.length) {
+      emptyEl.classList.remove('hidden');
+      metaEl.textContent = grokCache.length ? '0 resultados' : '0 contas Grok';
+      return;
+    }
+    emptyEl.classList.add('hidden');
+    metaEl.textContent = list.length + ' conta' + (list.length === 1 ? '' : 's');
+
+    const now = Date.now();
+    list.forEach(function (a) {
+      const onCd = isGrokOnCooldown(a);
+      const remaining = onCd ? new Date(a.cooldownUntil).getTime() - now : 0;
+      const card = document.createElement('div');
+      card.className = 'client-card' + (onCd ? ' client-card--cooldown' : '');
+      const badgeClass = onCd ? 'badge badge--overdue' : 'badge badge--active';
+      const badgeText = onCd ? 'Em cooldown' : 'Disponível';
+      const pwdMasked = a.password ? '••••••••' : '—';
+      const title = (a.label ? a.label + ' · ' : '') + (a.email || '');
+
+      card.innerHTML =
+        '<div class="client-card-top">' +
+          '<div class="client-name">' + escapeHtml(title) + '</div>' +
+          '<span class="' + badgeClass + '">' + badgeText + '</span>' +
+        '</div>' +
+        (onCd
+          ? '<div class="client-row"><strong>Disponível em ' + formatRemaining(remaining) + '</strong>' +
+            ' <span style="opacity:0.7">(' + formatDateTime(a.cooldownUntil) + ')</span></div>'
+          : '') +
+        '<div class="client-row">' +
+          '<span>Password: <code class="pwd-mask" data-pwd="' + escapeHtml(a.password || '') + '">' + pwdMasked + '</code> ' +
+          (a.password ? '<button type="button" class="admin-btn admin-btn--sm btn-reveal-pwd">Mostrar</button>' : '') +
+          '</span>' +
+        '</div>' +
+        (a.notes ? '<div class="client-row"><span>' + escapeHtml(a.notes) + '</span></div>' : '') +
+        '<div class="client-meta">' + formatDateTime(a.updatedAt || a.createdAt) + '</div>' +
+        '<div class="client-actions">' +
+          (onCd
+            ? '<button type="button" class="admin-btn admin-btn--sm btn-clear-cooldown" data-id="' + escapeHtml(a.id) + '">Limpar cooldown</button>'
+            : '<button type="button" class="admin-btn admin-btn--sm admin-btn--solid btn-mark-limit" data-id="' + escapeHtml(a.id) + '">Marcar limite (24h)</button>') +
+          '<button type="button" class="admin-btn admin-btn--sm btn-edit-grok" data-id="' + escapeHtml(a.id) + '">Editar</button>' +
+          '<button type="button" class="admin-btn admin-btn--sm admin-btn--danger btn-del-grok" data-id="' + escapeHtml(a.id) + '">Apagar</button>' +
+        '</div>';
+      listEl.appendChild(card);
+    });
+  }
+
+  async function fetchGrok() {
+    try {
+      const data = await api('/grok_accounts', { headers: authHeaders() });
+      grokCache = data.accounts || [];
+      renderGrok();
+      startGrokTicker();
+    } catch (e) {
+      const meta = document.getElementById('grokMeta');
+      if (meta) meta.textContent = 'Erro: ' + (e.message || e);
+    }
+  }
+
+  function openGrokForm(account) {
+    document.getElementById('grokFormPanel').classList.remove('hidden');
+    document.getElementById('grokFormTitle').textContent = account ? 'Editar conta Grok' : 'Nova conta Grok';
+    document.getElementById('gfId').value = account ? account.id : '';
+    document.getElementById('gfEmail').value = account ? account.email : '';
+    document.getElementById('gfLabel').value = account ? (account.label || '') : '';
+    document.getElementById('gfPassword').value = account ? (account.password || '') : '';
+    document.getElementById('gfPassword').type = 'password';
+    document.getElementById('gfNotes').value = account ? (account.notes || '') : '';
+  }
+
+  function closeGrokForm() {
+    document.getElementById('grokFormPanel').classList.add('hidden');
+  }
+
+  document.getElementById('btnNewGrok').addEventListener('click', function () {
+    openGrokForm(null);
+  });
+
+  document.getElementById('gfCancel').addEventListener('click', closeGrokForm);
+
+  document.getElementById('gfPwdToggle').addEventListener('click', function () {
+    const inp = document.getElementById('gfPassword');
+    inp.type = inp.type === 'password' ? 'text' : 'password';
+  });
+
+  document.getElementById('grokForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const id = document.getElementById('gfId').value.trim();
+    const body = {
+      email: document.getElementById('gfEmail').value.trim(),
+      label: document.getElementById('gfLabel').value.trim(),
+      password: document.getElementById('gfPassword').value,
+      notes: document.getElementById('gfNotes').value.trim(),
+    };
+    try {
+      if (id) {
+        body.id = id;
+        await api('/grok_accounts', {
+          method: 'PUT',
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify(body),
+        });
+      } else {
+        await api('/grok_accounts', {
+          method: 'POST',
+          headers: authHeaders({ 'Content-Type': 'application/json' }),
+          body: JSON.stringify(body),
+        });
+      }
+      closeGrokForm();
+      fetchGrok();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('grokList').addEventListener('click', function (e) {
+    const reveal = e.target.closest('.btn-reveal-pwd');
+    if (reveal) {
+      const code = reveal.parentElement.querySelector('.pwd-mask');
+      if (code) {
+        const real = code.getAttribute('data-pwd') || '';
+        if (code.textContent === '••••••••') {
+          code.textContent = real;
+          reveal.textContent = 'Ocultar';
+        } else {
+          code.textContent = '••••••••';
+          reveal.textContent = 'Mostrar';
+        }
+      }
+      return;
+    }
+
+    const markBtn = e.target.closest('.btn-mark-limit');
+    if (markBtn) {
+      const id = markBtn.getAttribute('data-id');
+      api('/grok_accounts/cooldown', {
+        method: 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: id, action: 'mark' }),
+      }).then(function () { fetchGrok(); }).catch(function (err) {
+        alert('Erro: ' + (err.message || err));
+      });
+      return;
+    }
+
+    const clearBtn = e.target.closest('.btn-clear-cooldown');
+    if (clearBtn) {
+      const id = clearBtn.getAttribute('data-id');
+      api('/grok_accounts/cooldown', {
+        method: 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: id, action: 'clear' }),
+      }).then(function () { fetchGrok(); }).catch(function (err) {
+        alert('Erro: ' + (err.message || err));
+      });
+      return;
+    }
+
+    const editBtn = e.target.closest('.btn-edit-grok');
+    if (editBtn) {
+      const a = grokCache.find(function (x) { return x.id === editBtn.getAttribute('data-id'); });
+      if (a) openGrokForm(a);
+      return;
+    }
+
+    const delBtn = e.target.closest('.btn-del-grok');
+    if (delBtn) {
+      if (!confirm('Apagar esta conta Grok?')) return;
+      api('/grok_accounts', {
+        method: 'DELETE',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ id: delBtn.getAttribute('data-id') }),
+      }).then(function () { fetchGrok(); }).catch(function (err) {
+        alert('Erro: ' + (err.message || err));
+      });
+    }
+  });
+
+  document.getElementById('grokFilters').addEventListener('click', function (e) {
+    const chip = e.target.closest('.filter-chip');
+    if (!chip) return;
+    grokStatusFilter = chip.getAttribute('data-gstatus');
+    document.querySelectorAll('#grokFilters .filter-chip').forEach(function (c) {
+      c.classList.toggle('active', c === chip);
+    });
+    renderGrok();
+  });
+
+  document.getElementById('grokSearch').addEventListener('input', function (e) {
+    grokSearchQ = e.target.value.trim();
+    renderGrok();
+  });
+
+  document.getElementById('btnSeedGrok').addEventListener('click', async function () {
+    if (!confirm('Importar contas Google de Contas para a lista Grok? (só se a lista Grok estiver vazia)')) return;
+    try {
+      const data = await api('/grok_accounts/seed', {
+        method: 'POST',
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
+        body: '{}',
+      });
+      alert(data.message || ('Importadas: ' + (data.added || 0)));
+      fetchGrok();
+    } catch (err) {
+      alert('Erro: ' + (err.message || err));
+    }
+  });
+
+  document.getElementById('btnExportGrok').addEventListener('click', function () {
+    const rows = [['Email', 'Etiqueta', 'Password', 'Cooldown até', 'Estado', 'Notas', 'Actualizado']];
+    filteredGrok().forEach(function (a) {
+      const onCd = isGrokOnCooldown(a);
+      rows.push([
+        a.email,
+        a.label || '',
+        a.password || '',
+        a.cooldownUntil || '',
+        onCd ? 'cooldown' : 'available',
+        a.notes || '',
+        a.updatedAt || a.createdAt || '',
+      ]);
+    });
+    downloadCsv('grok-accounts-workersdev.csv', rows);
   });
 
   if (localStorage.getItem(REMEMBER_KEY) === '1' && rememberMe) {

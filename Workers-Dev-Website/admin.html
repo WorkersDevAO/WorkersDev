@@ -163,6 +163,7 @@
     .badge--paid { background: rgba(80,200,120,0.2); color: #8fefb0; }
     .badge--paused { background: rgba(160,160,180,0.2); color: #c0c0d0; }
     .badge--ended { background: rgba(120,120,140,0.25); color: #a0a0b0; }
+    .client-card--cooldown { border-color: rgba(255,100,100,0.35); opacity: 0.92; }
 
     .lead-row, .client-row {
       display: flex; flex-wrap: wrap; gap: 0.35rem 1.25rem;
@@ -325,6 +326,7 @@
         <button type="button" class="sidebar-link active" data-tab="leads" id="tabLeads">Contactos</button>
         <button type="button" class="sidebar-link" data-tab="clients" id="tabClients">Clientes</button>
         <button type="button" class="sidebar-link" data-tab="accounts" id="tabAccounts">Contas</button>
+        <button type="button" class="sidebar-link" data-tab="grok" id="tabGrok">Grok</button>
         <button type="button" class="sidebar-link" data-tab="websites" id="tabWebsites">Websites</button>
         <button type="button" class="sidebar-link" data-tab="pending" id="tabPending">Pendentes</button>
       </nav>
@@ -504,6 +506,61 @@
             <div class="form-actions">
               <button type="submit" class="admin-btn admin-btn--solid">Guardar</button>
               <button type="button" class="admin-btn" id="afCancel">Cancelar</button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- GROK VIEW -->
+      <div id="grokView" class="hidden">
+        <div class="summary-strip" style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+          <div class="summary-card"><div class="label">Total</div><div class="value" id="grokSumTotal">—</div></div>
+          <div class="summary-card"><div class="label">Disponíveis</div><div class="value" id="grokSumAvailable">—</div></div>
+          <div class="summary-card"><div class="label">Em cooldown</div><div class="value" id="grokSumCooldown">—</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewGrok">+ Nova conta Grok</button>
+          <button type="button" class="admin-btn" id="btnSeedGrok">Importar Google (Contas)</button>
+          <button type="button" class="admin-btn" id="btnExportGrok">Exportar CSV</button>
+          <input type="search" id="grokSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="grokFilters">
+          <button type="button" class="filter-chip active" data-gstatus="all">Todos</button>
+          <button type="button" class="filter-chip" data-gstatus="available">Disponíveis</button>
+          <button type="button" class="filter-chip" data-gstatus="cooldown">Em cooldown</button>
+        </div>
+        <p class="admin-meta" id="grokMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="grokEmpty">Ainda não há contas Grok. Usa “Importar Google (Contas)” ou adiciona manualmente.</div>
+        <div class="client-list" id="grokList"></div>
+
+        <div class="admin-form-panel hidden" id="grokFormPanel">
+          <h2 id="grokFormTitle">Nova conta Grok</h2>
+          <form id="grokForm">
+            <input type="hidden" id="gfId">
+            <div class="form-grid">
+              <div class="form-field">
+                <label for="gfEmail">E-mail *</label>
+                <input type="text" id="gfEmail" required placeholder="conta@gmail.com">
+              </div>
+              <div class="form-field">
+                <label for="gfLabel">Etiqueta</label>
+                <input type="text" id="gfLabel" placeholder="ex. Grok #3">
+              </div>
+              <div class="form-field">
+                <label for="gfPassword">Password</label>
+                <div style="display:flex;gap:0.4rem;">
+                  <input type="password" id="gfPassword" placeholder="••••••••" style="flex:1;">
+                  <button type="button" class="admin-btn admin-btn--sm" id="gfPwdToggle" title="Mostrar">👁</button>
+                </div>
+              </div>
+              <div class="form-field full">
+                <label for="gfNotes">Notas</label>
+                <textarea id="gfNotes" placeholder="Notas internas…"></textarea>
+              </div>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="admin-btn admin-btn--solid">Guardar</button>
+              <button type="button" class="admin-btn" id="gfCancel">Cancelar</button>
             </div>
           </form>
         </div>

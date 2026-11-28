@@ -226,8 +226,27 @@ Endpoints: `GET/POST/PUT/DELETE /websites`
 Endpoints: `GET/POST/PUT/DELETE /pending_clients`  
 `POST /pending_clients/bulk_status` body `{ ids[], status }`
 
-Admin UI tabs: **Contas** · **Websites** · **Pendentes**  
+Admin UI tabs: **Contas** · **Grok** · **Websites** · **Pendentes**  
 Features: search, type/status filters, password reveal, CSV export, bulk status, seed button.
+
+### 8.4 `grok_accounts` (Grok free-tier cooldown)
+
+```js
+{
+  id, email, password, label, notes,
+  cooldownUntil: ISO8601 | null,   // null = available
+  createdAt, updatedAt
+}
+```
+
+Endpoints (admin auth):
+- `GET /grok_accounts` → list + summary `{ available, onCooldown }`
+- `POST /grok_accounts` · `PUT /grok_accounts` · `DELETE /grok_accounts`
+- `POST /grok_accounts/cooldown` body `{ id, action: "mark"|"clear" }`  
+  `mark` sets `cooldownUntil = now + 24h`
+- `POST /grok_accounts/seed` — copies Google accounts from Contas **only if** Grok list is empty
+
+UI: summary strip, filters (Todos / Disponíveis / Em cooldown), live countdown, mark/clear buttons. Sort: available first, then soonest-to-expire.
 
 ---
 
