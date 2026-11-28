@@ -178,13 +178,60 @@
     .lead-date, .client-meta { font-size: 0.75rem; color: rgba(244,247,252,0.45); margin-top: 0.5rem; }
     .lead-actions, .client-actions { margin-top: 0.65rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
 
-    /* Form panel (inline, for create/edit) */
+    /* Form panel — right slide-over (create / edit) */
     .admin-form-panel {
-      background: rgba(20, 52, 138, 0.65);
-      border: 1px solid rgba(255,255,255,0.14);
-      border-radius: 12px; padding: 1.25rem 1.35rem; margin-bottom: 1.25rem;
+      position: fixed !important;
+      top: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      left: auto !important;
+      width: min(480px, 100vw) !important;
+      max-width: 100vw;
+      z-index: 60;
+      background: #0a1a4a;
+      border-left: 1px solid rgba(255,255,255,0.1);
+      box-shadow: -12px 0 40px rgba(0,0,0,0.35);
+      margin: 0 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      border-top: none;
+      border-right: none;
+      border-bottom: none;
+      display: flex !important;
+      flex-direction: column;
+      transform: translateX(100%);
+      visibility: hidden;
+      pointer-events: none;
+      transition: transform 0.25s ease, visibility 0.25s;
+      overflow: hidden;
     }
-    .admin-form-panel h2 { font-size: 1.05rem; margin-bottom: 1rem; font-weight: 600; }
+    /* .hidden uses display:none !important — when removed, panel slides in */
+    .admin-form-panel:not(.hidden) {
+      transform: translateX(0);
+      visibility: visible;
+      pointer-events: auto;
+    }
+    .admin-form-panel .form-panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: 1.15rem 1.25rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .admin-form-panel .form-panel-header h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .admin-form-panel form {
+      flex: 1;
+      overflow-y: auto;
+      padding: 1.1rem 1.25rem 2rem;
+      -webkit-overflow-scrolling: touch;
+    }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 1rem; }
     @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
     .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
@@ -200,7 +247,12 @@
       border-color: rgba(255,255,255,0.45);
     }
     .form-field textarea { min-height: 70px; resize: vertical; }
-    .form-actions { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+    .form-actions {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
 
     /* ===== Right slide-over panel ===== */
     .slide-overlay {
@@ -274,6 +326,7 @@
       .sidebar-backdrop.open { display: block; }
       .admin-main { padding: 1.1rem 1rem 2rem; padding-top: 3.5rem; }
       .slide-panel { width: 100vw; }
+      .admin-form-panel { width: 100vw; }
     }
   </style>
 </head>
@@ -371,9 +424,103 @@
         <div class="admin-empty hidden" id="clientsEmpty">Ainda não há clientes.</div>
         <div class="client-list" id="clientList"></div>
 
-        <!-- New / Edit client form (inline) -->
-        <div class="admin-form-panel hidden" id="clientFormPanel">
-          <h2 id="clientFormTitle">Novo cliente</h2>
+        <!-- New / Edit client form (slide-over) -->
+        </div>
+
+      <!-- ACCOUNTS VIEW -->
+      <div id="accountsView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewAccount">+ Nova conta</button>
+          <button type="button" class="admin-btn" id="btnExportAccounts">Exportar CSV</button>
+          <button type="button" class="admin-btn" id="btnSeedData">Carregar dados iniciais</button>
+          <input type="search" id="accountsSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="accountFilters">
+          <button type="button" class="filter-chip active" data-atype="all">Todos</button>
+          <button type="button" class="filter-chip" data-atype="google">Google</button>
+          <button type="button" class="filter-chip" data-atype="microsoft">Microsoft</button>
+          <button type="button" class="filter-chip" data-atype="github">GitHub</button>
+          <button type="button" class="filter-chip" data-atype="cloudflare">Cloudflare</button>
+          <button type="button" class="filter-chip" data-atype="cloudinary">Cloudinary</button>
+          <button type="button" class="filter-chip" data-atype="facebook">Facebook</button>
+          <button type="button" class="filter-chip" data-atype="instagram">Instagram</button>
+          <button type="button" class="filter-chip" data-atype="x">X</button>
+          <button type="button" class="filter-chip" data-atype="other">Outro</button>
+        </div>
+        <p class="admin-meta" id="accountsMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="accountsEmpty">Ainda não há contas.</div>
+        <div class="client-list" id="accountsList"></div>
+
+        </div>
+
+      <!-- GROK VIEW -->
+      <div id="grokView" class="hidden">
+        <div class="summary-strip" style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
+          <div class="summary-card"><div class="label">Total</div><div class="value" id="grokSumTotal">—</div></div>
+          <div class="summary-card"><div class="label">Disponíveis</div><div class="value" id="grokSumAvailable">—</div></div>
+          <div class="summary-card"><div class="label">Em cooldown</div><div class="value" id="grokSumCooldown">—</div></div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewGrok">+ Nova conta Grok</button>
+          <button type="button" class="admin-btn" id="btnSeedGrok">Importar Google (Contas)</button>
+          <button type="button" class="admin-btn" id="btnExportGrok">Exportar CSV</button>
+          <input type="search" id="grokSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="grokFilters">
+          <button type="button" class="filter-chip active" data-gstatus="all">Todos</button>
+          <button type="button" class="filter-chip" data-gstatus="available">Disponíveis</button>
+          <button type="button" class="filter-chip" data-gstatus="cooldown">Em cooldown</button>
+        </div>
+        <p class="admin-meta" id="grokMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="grokEmpty">Ainda não há contas Grok. Usa “Importar Google (Contas)” ou adiciona manualmente.</div>
+        <div class="client-list" id="grokList"></div>
+
+        </div>
+
+      <!-- WEBSITES VIEW -->
+      <div id="websitesView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewWebsite">+ Novo website</button>
+          <button type="button" class="admin-btn" id="btnExportWebsites">Exportar CSV</button>
+          <input type="search" id="websitesSearch" placeholder="Pesquisar nome ou domínio…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <p class="admin-meta" id="websitesMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="websitesEmpty">Ainda não há websites.</div>
+        <div class="client-list" id="websitesList"></div>
+
+        </div>
+
+      <!-- PENDING VIEW -->
+      <div id="pendingView" class="hidden">
+        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
+          <button type="button" class="admin-btn admin-btn--solid" id="btnNewPending">+ Novo pendente</button>
+          <button type="button" class="admin-btn" id="btnExportPending">Exportar CSV</button>
+          <button type="button" class="admin-btn" id="btnBulkPending" disabled>Alterar estado (0)</button>
+          <input type="search" id="pendingSearch" placeholder="Pesquisar nome, contacto…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
+        </div>
+        <div class="filter-row" style="margin-bottom:1rem;" id="pendingFilters">
+          <button type="button" class="filter-chip active" data-pstatus="all">Todos</button>
+          <button type="button" class="filter-chip" data-pstatus="pending">Pendentes</button>
+          <button type="button" class="filter-chip" data-pstatus="contacted">Contactados</button>
+          <button type="button" class="filter-chip" data-pstatus="proposal">Proposta</button>
+          <button type="button" class="filter-chip" data-pstatus="won">Ganhos</button>
+          <button type="button" class="filter-chip" data-pstatus="lost">Perdidos</button>
+        </div>
+        <p class="admin-meta" id="pendingMeta">A carregar…</p>
+        <div class="admin-empty hidden" id="pendingEmpty">Ainda não há pendentes.</div>
+        <div class="client-list" id="pendingList"></div>
+
+        </div>
+    </main>
+  </div>
+
+
+  <!-- FORM SLIDE-OVERS (create / edit) -->
+<div class="admin-form-panel hidden" id="clientFormPanel" aria-hidden="true">
+          <div class="form-panel-header">
+            <h2 id="clientFormTitle">Novo cliente</h2>
+            <button type="button" class="admin-btn admin-btn--sm form-panel-close" data-close-form="clientFormPanel" aria-label="Fechar">✕</button>
+          </div>
           <form id="clientForm">
             <input type="hidden" id="cfId">
             <div class="form-grid">
@@ -442,34 +589,12 @@
             </div>
           </form>
         </div>
-      </div>
 
-      <!-- ACCOUNTS VIEW -->
-      <div id="accountsView" class="hidden">
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-          <button type="button" class="admin-btn admin-btn--solid" id="btnNewAccount">+ Nova conta</button>
-          <button type="button" class="admin-btn" id="btnExportAccounts">Exportar CSV</button>
-          <button type="button" class="admin-btn" id="btnSeedData">Carregar dados iniciais</button>
-          <input type="search" id="accountsSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
-        </div>
-        <div class="filter-row" style="margin-bottom:1rem;" id="accountFilters">
-          <button type="button" class="filter-chip active" data-atype="all">Todos</button>
-          <button type="button" class="filter-chip" data-atype="google">Google</button>
-          <button type="button" class="filter-chip" data-atype="microsoft">Microsoft</button>
-          <button type="button" class="filter-chip" data-atype="github">GitHub</button>
-          <button type="button" class="filter-chip" data-atype="cloudflare">Cloudflare</button>
-          <button type="button" class="filter-chip" data-atype="cloudinary">Cloudinary</button>
-          <button type="button" class="filter-chip" data-atype="facebook">Facebook</button>
-          <button type="button" class="filter-chip" data-atype="instagram">Instagram</button>
-          <button type="button" class="filter-chip" data-atype="x">X</button>
-          <button type="button" class="filter-chip" data-atype="other">Outro</button>
-        </div>
-        <p class="admin-meta" id="accountsMeta">A carregar…</p>
-        <div class="admin-empty hidden" id="accountsEmpty">Ainda não há contas.</div>
-        <div class="client-list" id="accountsList"></div>
-
-        <div class="admin-form-panel hidden" id="accountFormPanel">
-          <h2 id="accountFormTitle">Nova conta</h2>
+<div class="admin-form-panel hidden" id="accountFormPanel" aria-hidden="true">
+          <div class="form-panel-header">
+            <h2 id="accountFormTitle">Nova conta</h2>
+            <button type="button" class="admin-btn admin-btn--sm form-panel-close" data-close-form="accountFormPanel" aria-label="Fechar">✕</button>
+          </div>
           <form id="accountForm">
             <input type="hidden" id="afId">
             <div class="form-grid">
@@ -509,32 +634,12 @@
             </div>
           </form>
         </div>
-      </div>
 
-      <!-- GROK VIEW -->
-      <div id="grokView" class="hidden">
-        <div class="summary-strip" style="display:flex;flex-wrap:wrap;gap:0.75rem;margin-bottom:1rem;">
-          <div class="summary-card"><div class="label">Total</div><div class="value" id="grokSumTotal">—</div></div>
-          <div class="summary-card"><div class="label">Disponíveis</div><div class="value" id="grokSumAvailable">—</div></div>
-          <div class="summary-card"><div class="label">Em cooldown</div><div class="value" id="grokSumCooldown">—</div></div>
-        </div>
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-          <button type="button" class="admin-btn admin-btn--solid" id="btnNewGrok">+ Nova conta Grok</button>
-          <button type="button" class="admin-btn" id="btnSeedGrok">Importar Google (Contas)</button>
-          <button type="button" class="admin-btn" id="btnExportGrok">Exportar CSV</button>
-          <input type="search" id="grokSearch" placeholder="Pesquisar e-mail ou notas…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
-        </div>
-        <div class="filter-row" style="margin-bottom:1rem;" id="grokFilters">
-          <button type="button" class="filter-chip active" data-gstatus="all">Todos</button>
-          <button type="button" class="filter-chip" data-gstatus="available">Disponíveis</button>
-          <button type="button" class="filter-chip" data-gstatus="cooldown">Em cooldown</button>
-        </div>
-        <p class="admin-meta" id="grokMeta">A carregar…</p>
-        <div class="admin-empty hidden" id="grokEmpty">Ainda não há contas Grok. Usa “Importar Google (Contas)” ou adiciona manualmente.</div>
-        <div class="client-list" id="grokList"></div>
-
-        <div class="admin-form-panel hidden" id="grokFormPanel">
-          <h2 id="grokFormTitle">Nova conta Grok</h2>
+<div class="admin-form-panel hidden" id="grokFormPanel" aria-hidden="true">
+          <div class="form-panel-header">
+            <h2 id="grokFormTitle">Nova conta Grok</h2>
+            <button type="button" class="admin-btn admin-btn--sm form-panel-close" data-close-form="grokFormPanel" aria-label="Fechar">✕</button>
+          </div>
           <form id="grokForm">
             <input type="hidden" id="gfId">
             <div class="form-grid">
@@ -564,21 +669,12 @@
             </div>
           </form>
         </div>
-      </div>
 
-      <!-- WEBSITES VIEW -->
-      <div id="websitesView" class="hidden">
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-          <button type="button" class="admin-btn admin-btn--solid" id="btnNewWebsite">+ Novo website</button>
-          <button type="button" class="admin-btn" id="btnExportWebsites">Exportar CSV</button>
-          <input type="search" id="websitesSearch" placeholder="Pesquisar nome ou domínio…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
-        </div>
-        <p class="admin-meta" id="websitesMeta">A carregar…</p>
-        <div class="admin-empty hidden" id="websitesEmpty">Ainda não há websites.</div>
-        <div class="client-list" id="websitesList"></div>
-
-        <div class="admin-form-panel hidden" id="websiteFormPanel">
-          <h2 id="websiteFormTitle">Novo website</h2>
+<div class="admin-form-panel hidden" id="websiteFormPanel" aria-hidden="true">
+          <div class="form-panel-header">
+            <h2 id="websiteFormTitle">Novo website</h2>
+            <button type="button" class="admin-btn admin-btn--sm form-panel-close" data-close-form="websiteFormPanel" aria-label="Fechar">✕</button>
+          </div>
           <form id="websiteForm">
             <input type="hidden" id="wfId">
             <div class="form-grid">
@@ -621,30 +717,12 @@
             </div>
           </form>
         </div>
-      </div>
 
-      <!-- PENDING VIEW -->
-      <div id="pendingView" class="hidden">
-        <div style="display:flex;flex-wrap:wrap;gap:0.5rem;align-items:center;margin-bottom:1rem;">
-          <button type="button" class="admin-btn admin-btn--solid" id="btnNewPending">+ Novo pendente</button>
-          <button type="button" class="admin-btn" id="btnExportPending">Exportar CSV</button>
-          <button type="button" class="admin-btn" id="btnBulkPending" disabled>Alterar estado (0)</button>
-          <input type="search" id="pendingSearch" placeholder="Pesquisar nome, contacto…" style="flex:1;min-width:160px;padding:0.45rem 0.75rem;border-radius:8px;border:1px solid rgba(255,255,255,0.2);background:rgba(0,0,0,0.2);color:#fff;font-size:0.9rem;">
-        </div>
-        <div class="filter-row" style="margin-bottom:1rem;" id="pendingFilters">
-          <button type="button" class="filter-chip active" data-pstatus="all">Todos</button>
-          <button type="button" class="filter-chip" data-pstatus="pending">Pendentes</button>
-          <button type="button" class="filter-chip" data-pstatus="contacted">Contactados</button>
-          <button type="button" class="filter-chip" data-pstatus="proposal">Proposta</button>
-          <button type="button" class="filter-chip" data-pstatus="won">Ganhos</button>
-          <button type="button" class="filter-chip" data-pstatus="lost">Perdidos</button>
-        </div>
-        <p class="admin-meta" id="pendingMeta">A carregar…</p>
-        <div class="admin-empty hidden" id="pendingEmpty">Ainda não há pendentes.</div>
-        <div class="client-list" id="pendingList"></div>
-
-        <div class="admin-form-panel hidden" id="pendingFormPanel">
-          <h2 id="pendingFormTitle">Novo pendente</h2>
+<div class="admin-form-panel hidden" id="pendingFormPanel" aria-hidden="true">
+          <div class="form-panel-header">
+            <h2 id="pendingFormTitle">Novo pendente</h2>
+            <button type="button" class="admin-btn admin-btn--sm form-panel-close" data-close-form="pendingFormPanel" aria-label="Fechar">✕</button>
+          </div>
           <form id="pendingForm">
             <input type="hidden" id="pfId">
             <div class="form-grid">
@@ -689,9 +767,6 @@
             </div>
           </form>
         </div>
-      </div>
-    </main>
-  </div>
 
   <!-- RIGHT SLIDE-OVER (client detail / periods) -->
   <div class="slide-overlay" id="slideOverlay"></div>

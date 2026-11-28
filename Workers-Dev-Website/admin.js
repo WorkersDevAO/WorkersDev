@@ -166,9 +166,11 @@
     });
     closeSidebarMobile();
     hideAllMainViews();
+    closeAllFormPanels();
     closeSlide();
     hideClientPanels();
     stopGrokTicker();
+    if (slideOverlay) slideOverlay.classList.remove('open');
 
     if (tab === 'leads') {
       leadsView.classList.remove('hidden');
@@ -305,21 +307,70 @@
   });
 
   /* ---------- Clients ---------- */
-  function closeSlide() {
+  const FORM_PANEL_IDS = [
+    'clientFormPanel',
+    'accountFormPanel',
+    'grokFormPanel',
+    'websiteFormPanel',
+    'pendingFormPanel',
+  ];
+
+  function closeAllFormPanels() {
+    FORM_PANEL_IDS.forEach(function (id) {
+      const el = document.getElementById(id);
+      if (el) {
+        el.classList.add('hidden');
+        el.setAttribute('aria-hidden', 'true');
+      }
+    });
+  }
+
+  function openFormPanel(panelEl) {
+    if (!panelEl) return;
+    closeSlide(false);
+    closeAllFormPanels();
+    panelEl.classList.remove('hidden');
+    panelEl.setAttribute('aria-hidden', 'false');
+    if (slideOverlay) slideOverlay.classList.add('open');
+    // Focus first input for keyboard users
+    setTimeout(function () {
+      const first = panelEl.querySelector('input:not([type="hidden"]), select, textarea');
+      if (first) first.focus();
+    }, 50);
+  }
+
+  function closeFormPanel(panelEl) {
+    if (panelEl) {
+      panelEl.classList.add('hidden');
+      panelEl.setAttribute('aria-hidden', 'true');
+    }
+    // Only hide overlay if detail panel is also closed
+    if (clientDetailPanel && !clientDetailPanel.classList.contains('open') && slideOverlay) {
+      slideOverlay.classList.remove('open');
+    }
+  }
+
+  function closeSlide(clearSelection) {
+    if (clearSelection !== false) selectedClientId = null;
     clientDetailPanel.classList.remove('open');
     clientDetailPanel.setAttribute('aria-hidden', 'true');
-    if (slideOverlay) slideOverlay.classList.remove('open');
-    selectedClientId = null;
+    // Keep overlay if a form panel is open
+    const formOpen = FORM_PANEL_IDS.some(function (id) {
+      const el = document.getElementById(id);
+      return el && !el.classList.contains('hidden');
+    });
+    if (!formOpen && slideOverlay) slideOverlay.classList.remove('open');
   }
 
   function openSlide() {
+    closeAllFormPanels();
     clientDetailPanel.classList.add('open');
     clientDetailPanel.setAttribute('aria-hidden', 'false');
     if (slideOverlay) slideOverlay.classList.add('open');
   }
 
   function hideClientPanels() {
-    clientFormPanel.classList.add('hidden');
+    closeFormPanel(clientFormPanel);
     closeSlide();
   }
 
@@ -434,19 +485,16 @@
 
   /* Client form */
   function openNewClientForm() {
-    closeSlide();
-    clientFormPanel.classList.remove('hidden');
     clientFormTitle.textContent = 'Novo cliente';
     clientForm.reset();
     document.getElementById('cfId').value = '';
     document.getElementById('cfStatus').value = 'active';
     document.getElementById('cfStartDate').value = new Date().toISOString().slice(0, 10);
     selectedClientId = null;
+    openFormPanel(clientFormPanel);
   }
 
   function openEditClientForm(client) {
-    closeSlide();
-    clientFormPanel.classList.remove('hidden');
     clientFormTitle.textContent = 'Editar cliente';
     document.getElementById('cfId').value = client.id;
     document.getElementById('cfName').value = client.name || '';
@@ -462,11 +510,12 @@
     document.getElementById('cfAddress').value = client.address || '';
     document.getElementById('cfNotes').value = client.notes || '';
     selectedClientId = client.id;
+    openFormPanel(clientFormPanel);
   }
 
   document.getElementById('btnNewClient').addEventListener('click', openNewClientForm);
   document.getElementById('cfCancel').addEventListener('click', function () {
-    clientFormPanel.classList.add('hidden');
+    closeFormPanel(clientFormPanel);
   });
 
   clientForm.addEventListener('submit', async function (e) {
@@ -502,7 +551,7 @@
           body: JSON.stringify(payload),
         });
       }
-      clientFormPanel.classList.add('hidden');
+      closeFormPanel(clientFormPanel);
       await fetchClients();
     } catch (err) {
       if (err.message !== '401') {
@@ -515,7 +564,7 @@
   /* Client detail / periods — right slide-over */
   function openClientDetail(client) {
     selectedClientId = client.id;
-    clientFormPanel.classList.add('hidden');
+    closeFormPanel(clientFormPanel);
     detailTitle.textContent = client.name;
 
     const websiteLink = client.website
@@ -601,8 +650,36 @@
 
   document.getElementById('btnDetailClose').addEventListener('click', closeSlide);
   if (slideOverlay) {
-    slideOverlay.addEventListener('click', closeSlide);
+    slideOverlay.addEventListener('click', function () {
+      closeAllFormPanels();
+      closeSlide();
+    });
   }
+
+  // ✕ buttons on form slide-overs
+  document.addEventListener('click', function (e) {
+    const closeBtn = e.target.closest('.form-panel-close');
+    if (!closeBtn) return;
+    const panelId = closeBtn.getAttribute('data-close-form');
+    if (panelId) closeFormPanel(document.getElementById(panelId));
+  });
+
+  // Escape closes form or detail panel
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    const formOpen = FORM_PANEL_IDS.some(function (id) {
+      const el = document.getElementById(id);
+      return el && !el.classList.contains('hidden');
+    });
+    if (formOpen) {
+      closeAllFormPanels();
+      if (slideOverlay) slideOverlay.classList.remove('open');
+      return;
+    }
+    if (clientDetailPanel && clientDetailPanel.classList.contains('open')) {
+      closeSlide();
+    }
+  });
 
   document.getElementById('btnDetailEdit').addEventListener('click', function () {
     if (!selectedClientId) return;
@@ -824,7 +901,6 @@
   }
 
   function openAccountForm(account) {
-    document.getElementById('accountFormPanel').classList.remove('hidden');
     document.getElementById('accountFormTitle').textContent = account ? 'Editar conta' : 'Nova conta';
     document.getElementById('afId').value = account ? account.id : '';
     document.getElementById('afType').value = account ? account.type : 'google';
@@ -832,10 +908,11 @@
     document.getElementById('afPassword').value = account ? (account.password || '') : '';
     document.getElementById('afPassword').type = 'password';
     document.getElementById('afNotes').value = account ? (account.notes || '') : '';
+    openFormPanel(document.getElementById('accountFormPanel'));
   }
 
   function closeAccountForm() {
-    document.getElementById('accountFormPanel').classList.add('hidden');
+    closeFormPanel(document.getElementById('accountFormPanel'));
   }
 
   document.getElementById('btnNewAccount').addEventListener('click', function () { openAccountForm(null); });
@@ -1031,7 +1108,6 @@
 
   function openWebsiteForm(website) {
     fillAccountSelects();
-    document.getElementById('websiteFormPanel').classList.remove('hidden');
     document.getElementById('websiteFormTitle').textContent = website ? 'Editar website' : 'Novo website';
     document.getElementById('wfId').value = website ? website.id : '';
     document.getElementById('wfName').value = website ? website.name : '';
@@ -1041,10 +1117,11 @@
     document.getElementById('wfCloudinary').value = website && website.cloudinaryAccountId ? website.cloudinaryAccountId : '';
     document.getElementById('wfStatus').value = website ? website.status : 'active';
     document.getElementById('wfNotes').value = website ? (website.notes || '') : '';
+    openFormPanel(document.getElementById('websiteFormPanel'));
   }
 
   function closeWebsiteForm() {
-    document.getElementById('websiteFormPanel').classList.add('hidden');
+    closeFormPanel(document.getElementById('websiteFormPanel'));
   }
 
   document.getElementById('btnNewWebsite').addEventListener('click', function () { openWebsiteForm(null); });
@@ -1192,7 +1269,6 @@
   }
 
   function openPendingForm(item) {
-    document.getElementById('pendingFormPanel').classList.remove('hidden');
     document.getElementById('pendingFormTitle').textContent = item ? 'Editar pendente' : 'Novo pendente';
     document.getElementById('pfId').value = item ? item.id : '';
     document.getElementById('pfName').value = item ? item.name : '';
@@ -1202,10 +1278,11 @@
     document.getElementById('pfInstagram').value = item ? (item.instagram || '') : '';
     document.getElementById('pfFacebook').value = item ? (item.facebook || '') : '';
     document.getElementById('pfNotes').value = item ? (item.notes || '') : '';
+    openFormPanel(document.getElementById('pendingFormPanel'));
   }
 
   function closePendingForm() {
-    document.getElementById('pendingFormPanel').classList.add('hidden');
+    closeFormPanel(document.getElementById('pendingFormPanel'));
   }
 
   document.getElementById('btnNewPending').addEventListener('click', function () { openPendingForm(null); });
@@ -1449,7 +1526,6 @@
   }
 
   function openGrokForm(account) {
-    document.getElementById('grokFormPanel').classList.remove('hidden');
     document.getElementById('grokFormTitle').textContent = account ? 'Editar conta Grok' : 'Nova conta Grok';
     document.getElementById('gfId').value = account ? account.id : '';
     document.getElementById('gfEmail').value = account ? account.email : '';
@@ -1457,10 +1533,11 @@
     document.getElementById('gfPassword').value = account ? (account.password || '') : '';
     document.getElementById('gfPassword').type = 'password';
     document.getElementById('gfNotes').value = account ? (account.notes || '') : '';
+    openFormPanel(document.getElementById('grokFormPanel'));
   }
 
   function closeGrokForm() {
-    document.getElementById('grokFormPanel').classList.add('hidden');
+    closeFormPanel(document.getElementById('grokFormPanel'));
   }
 
   document.getElementById('btnNewGrok').addEventListener('click', function () {
